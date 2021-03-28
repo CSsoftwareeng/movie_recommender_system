@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>team9</groupId>
+    <artifactId>cse364-project-1</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>movie-recommender-system</name>
+    <url>https://github.com/CSsoftwareeng/movie_recommender_system.git</url>
+
+
+
+    <properties>
+        <maven.version>3.0.5</maven.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <classWorldsVersion>2.6.0</classWorldsVersion>
+        <commonsCliVersion>1.4</commonsCliVersion>
+        <commonsLangVersion>3.8.1</commonsLangVersion>
+        <junitVersion>5.7.0</junitVersion>
+        <mockitoVersion>3.2.0</mockitoVersion>
+        <plexusVersion>2.1.0</plexusVersion>
+        <plexusInterpolationVersion>1.26</plexusInterpolationVersion>
+        <plexusUtilsVerion>3.3.0</plexusUtilsVerion>
+        <guiceVersion>4.2.3</guiceVersion>
+        <guavaVersion>30.1-jre</guavaVersion>
+    </properties>
+
+</project>
