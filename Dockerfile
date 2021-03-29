@@ -15,3 +15,5 @@ RUN apt-get install -y maven
 RUN mkdir /root/project
 
 WORKDIR /root/project
+
+ADD run.sh ./
