@@ -1,5 +1,21 @@
-./target/*
-./.ida/*
+/target/
+**/target
+
+/example/
+
+#IntelliJ
+.idea
+.idea/*.xml
+*.iml
+out
+gen
+build
+rebel.xml
+
+#Gradle
+./.gradle
+/build/
+.gradletasknamecache
 
 *.sh
 !run.sh
