@@ -64,6 +64,9 @@ public class Arguments {
         }
         st2 = st2.trim().toLowerCase().replaceAll("\\p{Z}", "");
 
+        if (genres.size() == 0) {
+            throw new ArgNotExistError( this,true);
+        };
         for (int i = 0; i < genres.size(); i++) {
             String genre = genres.get(i);
             if (!GENRE_MAP.containsKey(genre)) {
