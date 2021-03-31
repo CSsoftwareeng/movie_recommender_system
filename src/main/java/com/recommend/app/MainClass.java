@@ -13,8 +13,12 @@ public class MainClass {
                 throw new ArgCntError(args, args.length);
             }
             Arguments arg = new Arguments(args[0], args[1]);
-            System.out.println("genres : " + arg.genres);
-            System.out.println("occupations : " + arg.occupation);
+
+            // Main function here.
+            arg.printArgs();
+
+
+
         }catch (ArgCntError e) {
             System.out.println("[ERROR] The number of argument should be 2.");
             System.out.println("You have currently put " + e.number + "argument(s).");
@@ -28,7 +32,7 @@ public class MainClass {
                 System.out.println("[ERROR] Can't find [" + e.user_input + "] in the available occupation list.");
             }
         }finally {
-            System.out.println("----------Program is terminated.-----------\n\n");
+            System.out.println("-------------Program is terminated.--------------\n");
         }
     }
 }
