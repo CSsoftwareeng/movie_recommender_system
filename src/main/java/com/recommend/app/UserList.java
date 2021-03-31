@@ -11,7 +11,7 @@ public class UserList {
     // Extracting userlist from 'users.dat' based on given occupation
     // And store the list into the 'users' member
     public void build(int occupation) throws IOException,UserNotExistError {
-        File usersFile = new File("/root/project/movie_recommender_system/data/users_test.dat");
+        File usersFile = new File("./data/users.dat");
         FileReader reader = new FileReader(usersFile);
         BufferedReader buffer = new BufferedReader(reader);
         String line = "";
