@@ -13,24 +13,11 @@ public class MainClass {
                 throw new ArgCntError(args, args.length);
             }
             Arguments arg = new Arguments(args[0], args[1]);
-
-            // Main function here.
             arg.printArgs();
-
-
-
         }catch (ArgCntError e) {
-            System.out.println("[ERROR] The number of argument should be 2.");
-            System.out.println("You have currently put " + e.number + "argument(s).");
-            System.out.println("Your arguments : " + Arrays.toString(e.user_input));
+            e.errMessage();
         }catch (ArgNotExistError e) {
-            if (e.getArgType().equals("genre")) {
-                System.out.println("[ERROR] The movie genre [" + e.user_input + "] is invalid.");
-                System.out.println("Can't find [" + e.processed_input + "] in the list.");
-            }
-            else {
-                System.out.println("[ERROR] Can't find [" + e.user_input + "] in the available occupation list.");
-            }
+            e.errMessage();
         }finally {
             System.out.println("-------------Program is terminated.--------------\n");
         }

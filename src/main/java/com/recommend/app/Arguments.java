@@ -15,6 +15,8 @@ public class Arguments {
     String raw_genres = null;
     String raw_occupation = null;
 
+    public String err_sender_str = null;
+
     final static Map<String, String> GENRE_MAP = new HashMap<String, String>();
     final static Map<String, Integer> OCCUPATIONS_MAP = new HashMap<String, Integer>();
 
@@ -66,13 +68,17 @@ public class Arguments {
         for (int i = 0; i < genres.size(); i++) {
             String genre = genres.get(i);
             if (!GENRE_MAP.containsKey(genre)) {
-                throw new ArgNotExistError(genre, raw_genres,true);
+                this.err_sender_str = genre;
+                throw new ArgNotExistError( this,true);
             }
             else {
                 genres.set(i, GENRE_MAP.get(genre));
             }
         }
-        if (!OCCUPATIONS_MAP.containsKey(st2)) throw new ArgNotExistError(st2, raw_occupation, false);
+        if (!OCCUPATIONS_MAP.containsKey(st2)) {
+            this.err_sender_str = st2;
+            throw new ArgNotExistError(this, false);
+        }
         else {
             this.occupation = OCCUPATIONS_MAP.get(st2.trim().toLowerCase().replaceAll("\\p{Z}", ""));
         }
@@ -81,4 +87,11 @@ public class Arguments {
         System.out.println("*** arg 1 : " + this.genres + " ***");
         System.out.println("*** arg 2 : " + this.occupation + " ***");
     }
+    public String getRawGenre() {
+        return this.raw_genres;
+    }
+    public String getRawOccupation() {
+        return this.raw_occupation;
+    }
+
 }
