@@ -3,9 +3,6 @@ package com.recommend.app;
 import com.recommend.utils.errors.ArgCntError;
 import com.recommend.utils.errors.ArgNotExistError;
 
-import java.util.Arrays;
-
-
 public class MainClass {
     public static void main(String[] args) throws ArgCntError,ArgNotExistError  {
         try {

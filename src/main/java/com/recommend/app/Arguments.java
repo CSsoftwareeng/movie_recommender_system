@@ -14,7 +14,6 @@ public class Arguments {
 
     String raw_genres = null;
     String raw_occupation = null;
-
     public String err_sender_str = null;
 
     final static Map<String, String> GENRE_MAP = new HashMap<String, String>();
