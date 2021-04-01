@@ -52,6 +52,9 @@ If there is no user who have occupation and doesn't watch movie that contains al
 ## Authors
 
 김형규 creates the code for Arguments and Rating Calculator.
+
 홍다빈 creates the code for parsing Movielist.
+
 차준형 creates the code for parsing Userlist.
+
 문지헌 creates the code for MainClass and writes README.
