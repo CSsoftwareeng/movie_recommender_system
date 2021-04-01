@@ -10,7 +10,7 @@ import com.recommend.utils.errors.MovieNotExistError;
 public class MovieList {
     TreeSet<Integer> movies = new TreeSet<Integer>();
 
-    public void search(ArrayList<String> genres)throws IOException, MovieNotExistError {
+    public void search(List<String> genres)throws IOException, MovieNotExistError {
         try {
             int genres_num = genres.size();
             File moviefile = new File("./data/movies.dat");
