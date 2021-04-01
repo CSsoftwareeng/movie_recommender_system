@@ -10,7 +10,7 @@ public class ArgNotExistError extends IllegalArgumentException{
         this.isGenre = isGenre;
         user_input = isGenre ? args.getRawGenre() : args.getRawOccupation();
         processed_input = args.err_sender_str;
-
+        errMessage();
     }
     public String getArgType(boolean isGenre) {
         return isGenre ? "genre" : "occupation";
@@ -20,10 +20,14 @@ public class ArgNotExistError extends IllegalArgumentException{
             System.out.println("[ERROR : ArgNotExistError]");
             System.out.println("  The movie genre [" + this.user_input + "] is invalid.");
             System.out.println("  Can't find [" + this.processed_input + "] in the list.");
+            System.out.println("-------------Program was forced to exit.-------------\n");
+            System.exit(0);
         }
         else {
             System.out.println("[ERROR : ArgNotExistError]");
             System.out.println("  Can't find [" + this.user_input + "] in the available occupation list.");
+            System.out.println("-------------Program was forced to exit.-------------\n");
+            System.exit(0);
         }
     }
 }

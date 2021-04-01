@@ -11,7 +11,7 @@ public class MovieNotExistError extends Exception{
 
     public void errorMessage() {
         System.out.println("Can't find a movie that belong to the selected genres: " + this.selected_genres);
-        System.out.println("Program was forced to exit.");
+        System.out.println("-------------Program was forced to exit.-------------\n");
         System.exit(0);
     }
 }

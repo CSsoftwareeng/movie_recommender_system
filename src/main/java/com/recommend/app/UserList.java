@@ -21,9 +21,7 @@ public class UserList {
                 users.add(Integer.parseInt(user[0]));
             }
         }
-	if(users.size() == 0) {
-	    throw new UserNotExistError();
-	}
+	if(users.size() == 0) throw new UserNotExistError();
     }
 
     public boolean find(int occupation) {
