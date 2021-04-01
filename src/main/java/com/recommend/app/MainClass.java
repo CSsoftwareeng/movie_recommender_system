@@ -10,6 +10,18 @@ public class MainClass {
             throw new ArgCntError(args, args.length);
         }
         Arguments arg = new Arguments(args[0], args[1]);
+        MovieList mov = new MovieList();
+        UserList us = new UserList();
+        RatingCalculator cal = new RatingCalculator();
+
+        mov.search(arg.getGenres());
+
+        us.build(arg.getOccupation());
+
+        cal.calcAverage(mov,us);
+
+        cal.showResult();
+
     }
 }
 
