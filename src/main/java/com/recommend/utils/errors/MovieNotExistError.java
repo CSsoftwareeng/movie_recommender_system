@@ -1,3 +1,4 @@
+package com.recommend.utils.errors;
 import java.util.ArrayList;
 
 public class MovieNotExistError extends Exception{
