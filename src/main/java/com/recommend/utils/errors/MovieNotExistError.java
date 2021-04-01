@@ -1,12 +1,13 @@
 package com.recommend.utils.errors;
 import java.util.List;
 
-public class MovieNotExistError extends Exception{
+public class MovieNotExistError extends IllegalArgumentException{
 
     public List<String> selected_genres;
 
     public MovieNotExistError(List<String> genres) {
         selected_genres = genres;
+        errorMessage();
     }
 
     public void errorMessage() {
