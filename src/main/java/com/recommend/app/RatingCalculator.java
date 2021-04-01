@@ -6,10 +6,10 @@ import java.util.*;
 public class RatingCalculator {
     int sum = 0;
     int count = 0;
-    int average = 0;
+    double average = 0;
 
     public void calcAverage (MovieList movies, UserList users) throws IOException {
-        File usersFile = new File("/root/project/movie_recommender_system/data/users.dat");
+        File usersFile = new File("./data/ratings.dat");
         FileReader reader = new FileReader(usersFile);
         BufferedReader buffer = new BufferedReader(reader);
         String line = "";
@@ -22,7 +22,7 @@ public class RatingCalculator {
         }
 
         if (count != 0){
-            average = sum/count;
+            average = (double)sum/count;
         }
     }
 
