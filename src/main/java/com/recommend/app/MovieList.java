@@ -13,7 +13,7 @@ public class MovieList {
     public void search(ArrayList<String> genres)throws IOException, MovieNotExistError {
         try {
             int genres_num = genres.size();
-            File moviefile = new File(".data/movies.dat");
+            File moviefile = new File("./data/movies.dat");
             FileReader fileReader = new FileReader(moviefile);
             BufferedReader bufReader = new BufferedReader(fileReader);
             String data = "";
