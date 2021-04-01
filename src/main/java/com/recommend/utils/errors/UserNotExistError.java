@@ -8,6 +8,7 @@ public class UserNotExistError extends Exception{
 
     public void errMessage() {
         System.out.println("Can't find any user whose occupation matchs");
-	System.exit(0);
+	System.out.println("Program was forced to exit.");
+        System.exit(0);
     }
 }
