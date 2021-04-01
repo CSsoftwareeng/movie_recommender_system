@@ -89,6 +89,14 @@ public class Arguments {
         System.out.println("*** arg 1 : " + this.genres + " ***");
         System.out.println("*** arg 2 : " + this.occupation + " ***");
     }
+
+    public List<String> getGenres() {
+        return this.genres;
+    }
+    public int getOccupation() {
+        return this.occupation;
+    }
+
     public String getRawGenre() {
         return this.raw_genres;
     }
