@@ -10,9 +10,9 @@ import com.recommend.utils.errors.MovieNotExistError;
 public class MovieList {
     TreeSet<Integer> movies = new TreeSet<Integer>();
 
-    public void search(String[] genres)throws IOException, MovieNotExistError {
+    public void search(ArrayList<String> genres)throws IOException, MovieNotExistError {
         try {
-            int genres_num = genres.length;
+            int genres_num = genres.size();
             File moviefile = new File(".data/movies.dat");
             FileReader fileReader = new FileReader(moviefile);
             BufferedReader bufReader = new BufferedReader(fileReader);
@@ -20,7 +20,7 @@ public class MovieList {
             while ((data = bufReader.readLine()) != null) {
                 String[] temp = data.split("::");
                 for (int i = 0; i < genres_num; i++) {
-                    if (!temp[2].contains(genres[i])) {
+                    if (!temp[2].contains(genres.get(i))) {
                         break;
                     }
                     if (i == genres_num -1) {
