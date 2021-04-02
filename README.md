@@ -24,20 +24,20 @@ java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.reco
 ```
 Examples:
 ```
-Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass Comedy educator
-Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass "Comedy|Adventure" doctor
+Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass "Comedy" "educator"
+Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass "Comedy|Adventure" "doctor"
 ```
 
 ------------------------------------------
 ## User Guide
 [genres]
-- Enter the movie genres you want
-- You can put multiple genres seperated with '|' and double quotes -> example : "Adventure|Comedy"
+- Enter the movie genres you want with double quotes -> Ex : "educator"
+- You can put multiple genres seperated with '|' -> Ex : "Adventure|Comedy"
 - Output is a rating average of all movies in the selected categories.
 - If genres are not passed through as an argument, the program will be forced to exit.
 -----------------------------
 [occupation]
-- Enter the occupation.
+- Enter the occupation with double quotes -> Ex : "Documentary"
 - Only one occupation is allowed.
 - If you don't pass through an occupation as an argument or try to put multiple occupations, the program will be forced to exit.
 -----------------------------
