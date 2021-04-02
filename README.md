@@ -10,7 +10,7 @@ For this milestone, we implement JAVA code reading arguments, parsing movie data
 
 ------------------------------------------
 ## Getting Started
-Clone this repository, then enter the main didrectory and install maven:
+Clone this repository, then enter the main directory and install maven:
 ```
 git clone https://github.com/CSsoftwareeng/movie_recommender_system.git
 cd movie_recommender_system
