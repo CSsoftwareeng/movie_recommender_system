@@ -5,14 +5,18 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+
 import com.recommend.utils.errors.MovieNotExistError;
 
 public class MovieList {
     TreeSet<Integer> movies = new TreeSet<Integer>();
 
-    public void search(ArrayList<String> genres)throws IOException, MovieNotExistError {
+    public MovieList(List<String> genres) {
+        search(genres);
+    }
+    void search(List<String> genres) throws MovieNotExistError {
+        int genres_num = genres.size();
         try {
-            int genres_num = genres.size();
             File moviefile = new File("./data/movies.dat");
             FileReader fileReader = new FileReader(moviefile);
             BufferedReader bufReader = new BufferedReader(fileReader);
@@ -23,16 +27,16 @@ public class MovieList {
                     if (!temp[2].contains(genres.get(i))) {
                         break;
                     }
-                    if (i == genres_num -1) {
+                    if (i == genres_num - 1) {
                         movies.add(Integer.parseInt(temp[0]));
                     }
                 }
             }
-            if(movies.isEmpty())
-                throw new MovieNotExistError(genres);
-        }catch (MovieNotExistError e) {
-            e.errorMessage();
-        }
+            if (!movies.isEmpty()) {
+                return;
+            }
+            throw new MovieNotExistError(genres);
+        } catch (IOException e) {}
     }
 
     public boolean find(int MovieID) {
