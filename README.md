@@ -4,19 +4,21 @@ The movie platform system supports a great multitude of movies, so it is not eas
 For this milestone, we implement JAVA code reading arguments, parsing movie dataset by genre, parsing movie dataset by occupation, and calculating average rating of occupation and genres.
 
 
-## Installation
-    docker build -t cse364-ubuntu20.04/movie_recommender_os .
-    docker run -it --name container cse364-ubuntu20.04/movie_recommender_os
-
+## Building Dodker Image
+This program will be executed on the Ubuntu20:04. Building docker image, the docker file will install 'openjdk-11-jdk' and 'maven' on the Ubuntu. Then 'run.sh' file will be migrated to the docker container.
+```
+docker build -t cse364-ubuntu20.04/movie_recommender_os .
+docker run -it --name container cse364-ubuntu20.04/movie_recommender_os
+```
 ------------------------------------------
 ## Getting Started
-Clone this repository, then enter the main directory and install maven:
+Clone and change directory to this repository, then compile via maven package manager:
 ```
 git clone https://github.com/CSsoftwareeng/movie_recommender_system.git
 cd movie_recommender_system
 mvn install
 ```
-Now, you can start this program:
+Now, you can start this program with arguments:
 ```
 java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass [genres] [occupation]
 ```
@@ -30,14 +32,14 @@ Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.
 ## User Guide
 [genres]
 - Enter the movie genres you want
-- The genre input can be one or more genres with '|'.
+- You can put multiple genres seperated with '|' -> example : 'Adventure|Comedy'
 - Output is a rating average of all movies in the selected categories.
-- If genres are not selected, this program will terminate.
+- If genres are not passed through as an argument, the program will be forced to exit.
 -----------------------------
 [occupation]
 - Enter the occupation.
 - Only one occupation is allowed.
-- With fewer or more input occupations, this program will terminate.
+- If you don't pass through an occupation as an argument or try to put multiple occupations, the program will be forced to exit.
 -----------------------------
 For user convenience, it supports various cases of input:
 1. Case-insensitive<br/>
@@ -47,7 +49,7 @@ Ex. a d m in => admin
 3. In case that '-' is omitted or replaced by spacing<br/>
 Ex. self employed => self-employed
 ----------------------------
-This program terminates with the phrase "Program was forced to exit." in the following cases:
+The program will be terminated illegally with the phrase "Program was forced to exit." in the following cases: 
 1. In case that there is invalid input
     - There are fewer or more than 2 input arguments.
     - The selected genres or occupation is not on a spcified list.
@@ -59,11 +61,27 @@ With a vaild input, the output of this program:
 ```
 Sum:  Count:  Average: 
 ```
-Example:
-```
-java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass Adventure educator
-Sum: 34979 Count: 10215 Average: 3.424278022515908
-```
+Sample1:<br/>
+  -Input:
+  ```
+  java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass Adventure educator
+  ```
+  -Output:
+  ```
+  Sum: 34979 Count: 10215 Average: 3.424278022515908
+  ```
+  
+
+Sample2:<br/>
+  -Input:
+  ```
+  java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass Documentary doctor
+  ```
+  -Output:
+  ```
+  Sum: 1212 Count: 302 Average: 4.013245033112582
+  ```
+
 
 If there is no user with the selected occupation who watched a movie belonging to all selected movie genres, the output of this program:
 ```
