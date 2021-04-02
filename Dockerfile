@@ -17,3 +17,4 @@ RUN mkdir /root/project
 WORKDIR /root/project
 
 ADD run.sh ./
+RUN sed -i -e 's/\r$//' /root/project/run.sh
