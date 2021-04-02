@@ -41,7 +41,7 @@ Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.
 -----------------------------
 For user convenience, it supports various cases of input:
 1. Case-insensitive
-    Ex. AdMiN => admin
+> Ex. AdMiN => admin
 2. Fixing a spacing error
 > Ex. a d m in => admin
 3. In case that '-' is omitted or replaced by spacing
