@@ -25,14 +25,14 @@ java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.reco
 Examples:
 ```
 Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass Comedy educator
-Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass Comedy|Action doctor
+Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass "Comedy|Adventure" doctor
 ```
 
 ------------------------------------------
 ## User Guide
 [genres]
 - Enter the movie genres you want
-- You can put multiple genres seperated with '|' -> example : 'Adventure|Comedy'
+- You can put multiple genres seperated with '|' and double quotes -> example : "Adventure|Comedy"
 - Output is a rating average of all movies in the selected categories.
 - If genres are not passed through as an argument, the program will be forced to exit.
 -----------------------------
@@ -75,11 +75,11 @@ Sample1:<br/>
 Sample2:<br/>
   -Input:
   ```
-  java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass Documentary doctor
+  java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass "Action|Comedy" doctor
   ```
   -Output:
   ```
-  Sum: 1212 Count: 302 Average: 4.013245033112582
+  Sum: 4134 Count: 1178 Average: 3.5093378607809846
   ```
 
 
