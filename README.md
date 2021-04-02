@@ -17,9 +17,14 @@ Clone this repository, then enter the main didrectory and install maven:
     mvn install
 ```
 Now, you can start this program:
-    java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass [genres] [occupation]
-	 Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass Comedy educator
-	 Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass Comedy|Action doctor
+```
+java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass [genres] [occupation]
+```
+Examples:
+```
+Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass Comedy educator
+Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass Comedy|Action doctor
+```
 
 ------------------------------------------
 ## User Guide
