@@ -52,12 +52,12 @@ Ex. self employed => self-employed
 The program will be terminated illegally with the phrase "Program was forced to exit." in the following cases: 
 1. In case that there is invalid input
     - There are fewer or more than 2 input arguments.
-    - The selected genres or occupation is not on a spcified list.
+    - The selected genres or occupation is not on a specified list.
     - In case that the inputs are [occupation] [genres], not [genres] [occupation]
 2. In case that there is no movie that belongs to all selected genres.
 3. In case that there is no user that belongs to selected occupation.
 ----------------------------
-With a vaild input, the output of this program:
+With a valid input, the output of this program:
 ```
 Sum:  Count:  Average: 
 ```
