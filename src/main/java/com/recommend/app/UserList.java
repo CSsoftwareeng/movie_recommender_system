@@ -27,8 +27,7 @@ public class UserList {
                     users.add(Integer.parseInt(user[0]));
                 }
             }
-        } catch (IOException e) {
-        }
+        } catch (IOException e) {}
     }
 
     public boolean find(int occupation) {

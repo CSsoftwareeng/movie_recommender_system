@@ -1,9 +1,6 @@
 package com.recommend.app;
 
 import com.recommend.utils.errors.ArgCntError;
-import com.recommend.utils.errors.ArgNotExistError;
-import com.recommend.utils.errors.MovieNotExistError;
-import com.recommend.utils.errors.UserNotExistError;
 
 public class MainClass {
     public static void main(String[] args) throws ArgCntError {
