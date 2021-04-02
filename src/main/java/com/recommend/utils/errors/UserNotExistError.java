@@ -1,9 +1,10 @@
 package com.recommend.utils.errors;
 
-public class UserNotExistError extends Exception{
+public class UserNotExistError extends IllegalArgumentException{
 
     public UserNotExistError() {
         super();
+        errMessage();
     }
 
     public void errMessage() {

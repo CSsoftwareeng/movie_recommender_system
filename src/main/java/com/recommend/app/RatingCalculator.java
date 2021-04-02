@@ -8,18 +8,24 @@ public class RatingCalculator {
     int count = 0;
     double average = 0;
 
-    public void calcAverage (MovieList movies, UserList users) throws IOException {
-        File usersFile = new File("./data/ratings.dat");
-        FileReader reader = new FileReader(usersFile);
-        BufferedReader buffer = new BufferedReader(reader);
-        String line = "";
-        while((line = buffer.readLine()) != null){
-            String[] rating = line.split("::");
-            if(users.find(Integer.parseInt(rating[0])) && movies.find(Integer.parseInt(rating[1]))) {
-                count += 1;
-                sum += Integer.parseInt(rating[2]);
+    public RatingCalculator(MovieList movieList, UserList userList) {
+        calcAverage(movieList, userList);
+    }
+
+    void calcAverage (MovieList movies, UserList users) {
+        try {
+            File usersFile = new File("./data/ratings.dat");
+            FileReader reader = new FileReader(usersFile);
+            BufferedReader buffer = new BufferedReader(reader);
+            String line;
+            while ((line = buffer.readLine()) != null) {
+                String[] rating = line.split("::");
+                if (users.find(Integer.parseInt(rating[0])) && movies.find(Integer.parseInt(rating[1]))) {
+                    count += 1;
+                    sum += Integer.parseInt(rating[2]);
+                }
             }
-        }
+        } catch (IOException e) {}
 
         if (count != 0){
             average = (double)sum/count;
