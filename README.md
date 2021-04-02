@@ -4,7 +4,7 @@ The movie platform system supports a great multitude of movies, so it is not eas
 For this milestone, we implement JAVA code reading arguments, parsing movie dataset by genre, parsing movie dataset by occupation, and calculating average rating of occupation and genres.
 
 
-## Building Dodker Image
+## Building Docker Image
 This program will be executed on the Ubuntu20:04. Building docker image, the docker file will install 'openjdk-11-jdk' and 'maven' on the Ubuntu. Then 'run.sh' file will be migrated to the docker container.
 ```
 docker build -t cse364-ubuntu20.04/movie_recommender_os .
