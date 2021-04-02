@@ -40,12 +40,12 @@ Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.
 - With fewer or more input occupations, this program will terminate.
 -----------------------------
 For user convenience, it supports various cases of input:
-1. Case-insensitive
-> Ex. AdMiN => admin
-2. Fixing a spacing error
-> Ex. a d m in => admin
-3. In case that '-' is omitted or replaced by spacing
-> Ex. self employed => self-employed
+1. Case-insensitive<br/>
+Ex. AdMiN => admin
+2. Fixing a spacing error<br/>
+Ex. a d m in => admin
+3. In case that '-' is omitted or replaced by spacing<br/>
+Ex. self employed => self-employed
 ----------------------------
 This program terminates with the phrase "Program was forced to exit." in the following cases:
 1. In case that there is invalid input
@@ -56,23 +56,23 @@ This program terminates with the phrase "Program was forced to exit." in the fol
 3. In case that there is no user that belongs to selected occupation.
 ----------------------------
 With a vaild input, the output of this program:
-    Sum:  Count:  Average: 
 ```
-Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass Adventure educator
-Sum: 34979 Count: 10215 Average: 3.424278
+Sum:  Count:  Average: 
+```
+Example:
+```
+java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass Adventure educator
+Sum: 34979 Count: 10215 Average: 3.424278022515908
 ```
 
-If there is no user with the selected occupation who watched a movie belonging to all inputted movie genres, the output of this program:
+If there is no user with the selected occupation who watched a movie belonging to all selected movie genres, the output of this program:
 ```
 Sum: 0 Count: 0 Average: 0
 ```
 
 ------------------------------------------
 ## Authors
--김형규: develops Userlist and Rating Calculator Classes
-
--문지헌: develops MainClass and writes README
-
--차준형: develops Arguments Class and Environment setup
-
+-김형규: develops Userlist and Rating Calculator Classes<br/>
+-문지헌: develops MainClass and writes README<br/>
+-차준형: develops Arguments Class and Environment setup<br/>
 -홍다빈: develops Movielist Class and build test cases
