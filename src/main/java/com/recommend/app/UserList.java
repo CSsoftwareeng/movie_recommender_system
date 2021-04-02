@@ -11,17 +11,21 @@ public class UserList {
     // Extracting userlist from 'users.dat' based on given occupation
     // And store the list into the 'users' member
     public void build(int occupation) throws IOException,UserNotExistError {
-        File usersFile = new File("./data/users.dat");
-        FileReader reader = new FileReader(usersFile);
-        BufferedReader buffer = new BufferedReader(reader);
-        String line = "";
-        while((line = buffer.readLine()) != null){
-            String[] user = line.split("::");
-            if(Integer.parseInt(user[3]) == occupation) {
-                users.add(Integer.parseInt(user[0]));
+        try{
+            File usersFile = new File("./data/users.dat");
+            FileReader reader = new FileReader(usersFile);
+            BufferedReader buffer = new BufferedReader(reader);
+            String line = "";
+            while((line = buffer.readLine()) != null){
+                String[] user = line.split("::");
+                if(Integer.parseInt(user[3]) == occupation) {
+                    users.add(Integer.parseInt(user[0]));
+                }
             }
-        }
-	if(users.size() == 0) throw new UserNotExistError();
+	    if(users.size() == 0) throw new UserNotExistError();
+	}catch (UserNotExistError e) {
+            e.errMessage();
+	}
     }
 
     public boolean find(int occupation) {

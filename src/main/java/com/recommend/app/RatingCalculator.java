@@ -27,6 +27,6 @@ public class RatingCalculator {
     }
 
     public void showResult () {
-        System.out.println("Sum: "+sum+" Count:"+count+" Average: "+average);
+        System.out.println("Sum: "+sum+" Count: "+count+" Average: "+average);
     }
 }
