@@ -12,9 +12,9 @@ public class MovieList {
     TreeSet<Integer> movies = new TreeSet<Integer>();
 
     public MovieList(List<String> genres) {
-        search(genres);
+        searchID(genres);
     }
-    void search(List<String> genres) throws MovieNotExistError {
+    void searchID(List<String> genres) throws MovieNotExistError {
         int genres_num = genres.size();
         try {
             File moviefile = new File("./data/movies.dat");
@@ -24,11 +24,9 @@ public class MovieList {
             while ((data = bufReader.readLine()) != null) {
                 String[] temp = data.split("::");
                 for (int i = 0; i < genres_num; i++) {
-                    if (!temp[2].contains(genres.get(i))) {
+                    if (temp[2].contains(genres.get(i))) {
+                        movieID.add(Integer.parseInt(temp[0]));
                         break;
-                    }
-                    if (i == genres_num - 1) {
-                        movies.add(Integer.parseInt(temp[0]));
                     }
                 }
             }
@@ -39,11 +37,11 @@ public class MovieList {
         } catch (IOException e) {}
     }
 
-    public boolean find(int MovieID) {
+    public boolean findID(int MovieID) {
         return movies.contains(MovieID);
     }
 
-    public TreeSet<Integer> getMovies() {
+    public TreeSet<Integer> getMoviesID() {
         return movies;
     }
 }
