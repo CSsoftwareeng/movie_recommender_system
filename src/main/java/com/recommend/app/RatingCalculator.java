@@ -45,14 +45,31 @@ public class RatingCalculator {
             while ((line = buffer.readLine()) != null) {
                 String[] rating = line.split("::");
                 if (users.find(Integer.parseInt(rating[0])) && movies.find(Integer.parseInt(rating[1]))) {
-                    count += 1;
-                    sum += Integer.parseInt(rating[2]);
+                    int movie = Integer.parseInt(rating[1]);
+                    if(sum_map.containsKey(movie))
+                    {
+                        int tsum = sum_map.get(movie) + Integer.parseInt(rating[2]);
+                        int tcount = count_map.get(movie) + 1;
+                        sum_map.put(movie, tsum);
+                        count_map.put(movie, tcount);
+                        count += 1;
+                    }
+                    else
+                    {
+                        sum_map.put(movie,Integer.parseInt(rating[2]));
+                        count_map.put(movie,1);
+                        count += 1;
+                    }
                 }
             }
         } catch (IOException e) {}
 
         if (count != 0){
-            average = (double)sum/count;
+            for(Integer key : sum_map.keySet())
+    	    {
+    		    double temp = (double)sum_map.get(key) / count_map.get(key);
+    		    aver_map.put(key,temp);
+    	    }
         }
     }
 
