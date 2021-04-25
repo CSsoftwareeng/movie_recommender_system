@@ -120,7 +120,7 @@ public class Arguments {
         String st1 = raw_genres;
 
         if (st1.equals("")) {
-            this.occupation = "";
+            return;
         }
         else {
             StringTokenizer gen_st = new StringTokenizer(st1, "|");
