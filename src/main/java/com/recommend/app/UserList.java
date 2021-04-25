@@ -46,8 +46,8 @@ public class UserList {
         } catch (IOException e) {}
     }
 
-    public boolean find(int occupation) {
-        return users.contains(occupation);
+    public boolean find(int userid) {
+        return users.contains(userid);
     }
 
     public void printUsers() {
