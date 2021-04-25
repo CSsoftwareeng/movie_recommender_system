@@ -8,10 +8,6 @@ import com.recommend.utils.errors.UserNotExistError;
 public class UserList {
     TreeSet<Integer> users = new TreeSet<Integer>();
 
-    public UserList(int occupation) {
-        build(occupation);
-    }
-
     void build(int occupation) throws UserNotExistError {
 
         try {
