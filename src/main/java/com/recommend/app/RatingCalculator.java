@@ -70,14 +70,14 @@ public class RatingCalculator {
     		    double temp = (double)sum_map.get(key) / count_map.get(key);
     		    aver_map.put(key,temp);
 
-                List<Map.Entry<Integer, Double>> entries = new LinkedList<>(aver_map.entrySet());
-                Collections.sort(entries, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
-                
-                for (Map.Entry<String, Double> entry : entries) {
-                    result.put(entry.getKey(), entry.getValue());
-                }
-
     	    }
+
+            List<Map.Entry<Integer, Double>> entries = new LinkedList<>(aver_map.entrySet());
+            Collections.sort(entries, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
+                
+            for (Map.Entry<String, Double> entry : entries) {
+                    result.put(entry.getKey(), entry.getValue());
+            }
         }
     }
 
