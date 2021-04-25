@@ -77,11 +77,9 @@ public class RatingCalculator {
                 
             for (Map.Entry<String, Double> entry : entries) {
                     List<Integer> idlist = new ArrayList<Integer>();
-                    List<String> namelist = new ArrayList<String>();
                     idlist.add(entry.getKey());
                     movies.searchName(idlist);
-                    namelist = moives.getMoviesName();
-                    result.put(entry.getKey(), namelist.get(0));
+                    result.put(entry.getKey(), moives.getMoviesName().get(0));
             }
         }
     }
