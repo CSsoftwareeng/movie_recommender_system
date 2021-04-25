@@ -21,10 +21,15 @@ public class MovieList {
             String data = "";
             while ((data = bufReader.readLine()) != null) {
                 String[] temp = data.split("::");
-                for (int i = 0; i < genres_num; i++) {
-                    if (temp[2].contains(genres.get(i)) || genres.contains("X")) {
-                        movieID.add(Integer.parseInt(temp[0]));
-                        break;
+                if(genres.isEmpty() || genres.contains("")){
+                    movieID.add(Integer.parseInt(temp[0]));
+                }
+                else{
+                    for (int i = 0; i < genres_num; i++) {
+                        if (temp[2].contains(genres.get(i))) {
+                            movieID.add(Integer.parseInt(temp[0]));
+                            break;
+                        }
                     }
                 }
             }
