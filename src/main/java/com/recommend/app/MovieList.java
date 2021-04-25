@@ -22,12 +22,12 @@ public class MovieList {
             while ((data = bufReader.readLine()) != null) {
                 String[] temp = data.split("::");
                 if(genres.isEmpty() || genres.contains("")){
-                    movieID.add(Integer.parseInt(temp[0]));
+                    movies.add(Integer.parseInt(temp[0]));
                 }
                 else{
                     for (int i = 0; i < genres_num; i++) {
                         if (temp[2].contains(genres.get(i))) {
-                            movieID.add(Integer.parseInt(temp[0]));
+                            movies.add(Integer.parseInt(temp[0]));
                             break;
                         }
                     }
