@@ -80,6 +80,8 @@ public class RatingCalculator {
                     idlist.add(entry.getKey());
                     movies.searchName(idlist);
                     result.put(entry.getKey(), moives.getMoviesName().get(0));
+                    if(result.size() == 10)
+                        break;
             }
         }
     }
@@ -87,11 +89,9 @@ public class RatingCalculator {
     public void showResult () {
         String moviename;
         String movielink;
-        int i = 0;
         try{
             for(Integer key : result.keySet())
     	        {
-                    i += 1;
                     File linkfile = new File("./data/links.dat");
                     FileReader fileReader = new FileReader(linkfile);
                     BufferedReader bufReader = new BufferedReader(fileReader);
@@ -106,8 +106,6 @@ public class RatingCalculator {
                         }
                     }
                     System.out.println(moviename+" (http://www.imdb.com/title/tt"+movielink+")");
-                    if(i == 10)
-                        break;
     	        }
         } catch (IOException e) {}
     }
