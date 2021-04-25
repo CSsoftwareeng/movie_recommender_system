@@ -31,6 +31,9 @@ public class UserList {
     }
 
     void build(char gender, int age, int occupation) throws UserNotExistError {
+        bool isGenderUnassigned = (gender == 'X');
+        bool isAgeUnassigned = (age == -1);
+        bool isOccupationUnassigned = (occupation == -1);
 
         try {
             File usersFile = new File("./data/users.dat");
@@ -39,7 +42,7 @@ public class UserList {
             String line;
             while ((line = buffer.readLine()) != null) {
                 String[] user = line.split("::");
-                if (user[1].charAt(0) == gender  && Integer.parseInt(user[2]) == age && Integer.parseInt(user[3]) == occupation) {
+                if ((isGenderUnassigned || user[1].charAt(0) == gender) && (isAgeUnassigned || Integer.parseInt(user[2]) == age) && (isOccupationUnassigned || Integer.parseInt(user[3]) == occupation)) {
                     users.add(Integer.parseInt(user[0]));
                 }
             }
