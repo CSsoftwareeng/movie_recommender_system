@@ -24,7 +24,7 @@ public class RatingCalculator {
             String line;
             while ((line = buffer.readLine()) != null) {
                 String[] rating = line.split("::");
-                if (users.find(Integer.parseInt(rating[0])) && movies.find(Integer.parseInt(rating[1]))) {
+                if (users.findID(Integer.parseInt(rating[0])) && movies.find(Integer.parseInt(rating[1]))) {
                     count += 1;
                     sum += Integer.parseInt(rating[2]);
                 }
