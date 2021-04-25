@@ -11,6 +11,9 @@ import com.recommend.utils.errors.MovieNotExistError;
 public class MovieList {
     TreeSet<Integer> movies = new TreeSet<Integer>();
     List<String> movieName = new ArrayList<String>();
+    public MovieList(List<String> genres) {
+        searchID(genres);
+    }
 
     void searchID(List<String> genres) throws MovieNotExistError {
         int genres_num = genres.size();
