@@ -22,7 +22,7 @@ public class MovieList {
             while ((data = bufReader.readLine()) != null) {
                 String[] temp = data.split("::");
                 for (int i = 0; i < genres_num; i++) {
-                    if (temp[2].contains(genres.get(i))) {
+                    if (temp[2].contains(genres.get(i)) || genres.contains("X")) {
                         movieID.add(Integer.parseInt(temp[0]));
                         break;
                     }
