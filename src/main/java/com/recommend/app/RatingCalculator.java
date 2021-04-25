@@ -7,10 +7,10 @@ public class RatingCalculator {
     int sum = 0;
     int count = 0;
     double average = 0;
-    HashMap<Integer,Integer> sum_map = new HashMap <Integer,Integer>();
-    HashMap<Integer,Integer> count_map = new HashMap <Integer,Integer>();
-    HashMap<Integer,Double> aver_map = new HashMap <Integer,Double>();
-    LinkedHashMap<Integer, Double> result = new LinkedHashMap<>();
+    HashMap<Integer,Integer> sum_map = new HashMap <>();
+    HashMap<Integer,Integer> count_map = new HashMap <>();
+    HashMap<Integer,Double> aver_map = new HashMap <>();
+    LinkedHashMap<Integer, String> result = new LinkedHashMap<>();
 
     public RatingCalculator(MovieList movieList, UserList userList) {
         calcAverageHash(movieList, userList);
@@ -44,7 +44,7 @@ public class RatingCalculator {
             String line;
             while ((line = buffer.readLine()) != null) {
                 String[] rating = line.split("::");
-                if (users.find(Integer.parseInt(rating[0])) && movies.find(Integer.parseInt(rating[1]))) {
+                if (users.find(Integer.parseInt(rating[0])) && movies.findID(Integer.parseInt(rating[1]))) {
                     int movie = Integer.parseInt(rating[1]);
                     if(sum_map.containsKey(movie))
                     {
@@ -76,12 +76,19 @@ public class RatingCalculator {
             Collections.sort(entries, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
                 
             for (Map.Entry<String, Double> entry : entries) {
-                    result.put(entry.getKey(), entry.getValue());
+                    List<Integer> idlist = new ArrayList<Integer>();
+                    List<String> namelist = new ArrayList<String>();
+                    idlist.add(entry.getKey());
+                    movies.searchName(idlist);
+                    namelist = moives.getMoviesName();
+                    result.put(entry.getKey(), namelist.get(0));
             }
         }
     }
 
     public void showResult () {
+        String moviename;
+        String movielink;
         System.out.println("Sum: "+sum+" Count: "+count+" Average: "+average);
     }
 }
