@@ -29,9 +29,9 @@ public class UserList {
     }
 
     void build(char gender, int age, int occupation) throws UserNotExistError {
-        bool isGenderUnassigned = (gender == 'X');
-        bool isAgeUnassigned = (age == -1);
-        bool isOccupationUnassigned = (occupation == -1);
+        boolean isGenderUnassigned = (gender == 'X');
+        boolean isAgeUnassigned = (age == -1);
+        boolean isOccupationUnassigned = (occupation == -1);
 
         try {
             File usersFile = new File("./data/users.dat");
