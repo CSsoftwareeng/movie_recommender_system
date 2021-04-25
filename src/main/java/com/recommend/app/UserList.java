@@ -12,8 +12,6 @@ public class UserList {
         build(occupation);
     }
 
-    // Extracting userlist from 'users.dat' based on given occupation
-    // And store the list into the 'users' member
     void build(int occupation) throws UserNotExistError {
 
         try {
