@@ -89,6 +89,28 @@ public class RatingCalculator {
     public void showResult () {
         String moviename;
         String movielink;
-        System.out.println("Sum: "+sum+" Count: "+count+" Average: "+average);
+        int i = 0;
+        try{
+            for(Integer key : result.keySet())
+    	        {
+                    i += 1;
+                    File linkfile = new File("./data/links.dat");
+                    FileReader fileReader = new FileReader(linkfile);
+                    BufferedReader bufReader = new BufferedReader(fileReader);
+                    String data = "";
+
+    		        moviename = result.get(key);
+                    while ((data = bufReader.readLine()) != null) {
+                        String[] temp = data.split("::");
+                        if(key == Integer.parseInt(temp[0])) {
+                            movielink = temp[1];
+                            break;
+                        }
+                    }
+                    System.out.println(moviename+" (http://www.imdb.com/title/tt"+movielink+")");
+                    if(i == 10)
+                        break;
+    	        }
+        } catch (IOException e) {}
     }
 }
