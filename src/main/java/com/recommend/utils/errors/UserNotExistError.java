@@ -8,6 +8,7 @@ public class UserNotExistError extends IllegalArgumentException{
     }
 
     public void errMessage() {
+        System.out.println("[ERROR : UserNotExistError]");
         System.out.println("Can't find any corresponding user.");
         System.out.println("-------------Program was forced to exit.-------------\n");
         System.exit(0);
