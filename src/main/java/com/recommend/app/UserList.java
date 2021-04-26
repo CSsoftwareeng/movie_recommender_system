@@ -21,13 +21,15 @@ public class UserList {
                     users.add(Integer.parseInt(user[0]));
                 }
             }
+            if (users.isEmpty())
+                throw new UserNotExistError();
         } catch (IOException e) {}
     }
 
     void build(String gender, String age, String occupation) throws UserNotExistError {
-        boolean isGenderUnassigned = gender.isEmpty();
-        boolean isAgeUnassigned = age.isEmpty();
-        boolean isOccupationUnassigned = occupation.isEmpty();
+        boolean genderEmpty = gender.isEmpty();
+        boolean ageEmpty = age.isEmpty();
+        boolean occupationEmpty = occupation.isEmpty();
 
         try {
             File usersFile = new File("./data/users.dat");
@@ -36,10 +38,14 @@ public class UserList {
             String line;
             while ((line = buffer.readLine()) != null) {
                 String[] user = line.split("::");
-                if ((isGenderUnassigned || user[1].equals(gender)) && (isAgeUnassigned || user[2].equals(age)) && (isOccupationUnassigned || user[3].equals(occupation))) {
+                if ((genderEmpty || user[1].equals(gender))
+		    && (ageEmpty || user[2].equals(age))
+		    && (occupationEmpty || user[3].equals(occupation))) {
                     users.add(Integer.parseInt(user[0]));
                 }
             }
+            if (users.isEmpty())
+                throw new UserNotExistError();
         } catch (IOException e) {}
     }
 
