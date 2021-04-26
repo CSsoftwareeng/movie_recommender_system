@@ -10,11 +10,12 @@ import com.recommend.utils.errors.MovieNotExistError;
 
 public class MovieList {
     TreeSet<Integer> movies = new TreeSet<Integer>();
-
+    List<String> movieName = new ArrayList<String>();
     public MovieList(List<String> genres) {
-        search(genres);
+        searchID(genres);
     }
-    void search(List<String> genres) throws MovieNotExistError {
+
+    void searchID(List<String> genres) throws MovieNotExistError {
         int genres_num = genres.size();
         try {
             File moviefile = new File("./data/movies.dat");
@@ -23,12 +24,15 @@ public class MovieList {
             String data = "";
             while ((data = bufReader.readLine()) != null) {
                 String[] temp = data.split("::");
-                for (int i = 0; i < genres_num; i++) {
-                    if (!temp[2].contains(genres.get(i))) {
-                        break;
-                    }
-                    if (i == genres_num - 1) {
-                        movies.add(Integer.parseInt(temp[0]));
+                if(genres.isEmpty() || genres.contains("")){
+                    movies.add(Integer.parseInt(temp[0]));
+                }
+                else{
+                    for (int i = 0; i < genres_num; i++) {
+                        if (temp[2].contains(genres.get(i))) {
+                            movies.add(Integer.parseInt(temp[0]));
+                            break;
+                        }
                     }
                 }
             }
@@ -39,11 +43,33 @@ public class MovieList {
         } catch (IOException e) {}
     }
 
-    public boolean find(int MovieID) {
+    public boolean findID(int MovieID) {
         return movies.contains(MovieID);
     }
 
-    public TreeSet<Integer> getMovies() {
+    public TreeSet<Integer> getMoviesID() {
         return movies;
+    }
+
+    public void searchName(List<Integer> ID) throws IOException {
+        try {
+            File moviefile = new File("./data/movies.dat");
+            FileReader fileReader = new FileReader(moviefile);
+            BufferedReader bufReader = new BufferedReader(fileReader);
+            String data = "";
+            while ((data = bufReader.readLine()) != null) {
+                String[] temp = data.split("::");
+                if(ID.contains(Integer.parseInt(temp[0]))) {
+                    movieName.add(temp[1]);
+                }
+                if(movieName.size() == 10) {
+                    break;
+                }
+            }
+        }catch (IOException e) {}
+    }
+
+    public List<String> getMoviesName() {
+        return movieName;
     }
 }
