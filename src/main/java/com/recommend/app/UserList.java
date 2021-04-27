@@ -29,7 +29,7 @@ public class UserList {
         } catch (IOException e) {}
     }
 
-    void searchSimlarUser(String gender, String age, String occupation) {
+    void searchSimilarUser(String gender, String age, String occupation) {
         boolean genderEmpty = gender.isEmpty();
         boolean ageEmpty = age.isEmpty();
         boolean occupationEmpty = occupation.isEmpty();
