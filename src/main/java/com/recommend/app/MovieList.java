@@ -55,20 +55,16 @@ public class MovieList {
         try {
             Integer[] ids = new Integer[ID.size()];
             String[] names = new String[ID.size()];
-            int i = 0;
             File moviefile = new File("./data/movies.dat");
             FileReader fileReader = new FileReader(moviefile);
             BufferedReader bufReader = new BufferedReader(fileReader);
             String data = "";
-            while ((data = bufReader.readLine()) != null) {
+            for(int i = 0; i<ID.size() && ((data=bufReader.readLine()) != null);) {
                 String[] temp = data.split("::");
                 if(ID.contains(Integer.parseInt(temp[0]))) {
                     ids[i] = Integer.parseInt(temp[0]);
                     names[i] = temp[1];
                     i++;
-                }
-                if(i == ID.size()) {
-                    break;
                 }
             }
             if(ID.size() != 0) {
