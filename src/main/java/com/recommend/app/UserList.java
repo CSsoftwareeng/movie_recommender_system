@@ -6,9 +6,12 @@ import java.util.*;
 import com.recommend.utils.errors.UserNotExistError;
 
 public class UserList {
-    TreeSet<Integer> users = new TreeSet<Integer>();
+    TreeSet<Integer> matchedUsers = new TreeSet<Integer>();
+    TreeSet<Integer> mostSimUsers = new TreeSet<Integer>();
+    TreeSet<Integer> lessSimUsers = new TreeSet<Integer>();
+    TreeSet<Integer> unalikeUsers = new TreeSet<Integer>();
 
-    void build(int occupation) throws UserNotExistError {
+    void searchMatchedUser(int occupation) throws UserNotExistError {
 
         try {
             File usersFile = new File("./data/users.dat");
@@ -18,15 +21,15 @@ public class UserList {
             while ((line = buffer.readLine()) != null) {
                 String[] user = line.split("::");
                 if (Integer.parseInt(user[3]) == occupation) {
-                    users.add(Integer.parseInt(user[0]));
+                    matchedUsers.add(Integer.parseInt(user[0]));
                 }
             }
-            if (users.isEmpty())
+            if (matchedUsers.isEmpty())
                 throw new UserNotExistError();
         } catch (IOException e) {}
     }
 
-    void build(String gender, String age, String occupation) throws UserNotExistError {
+    void searchSimlarUser(String gender, String age, String occupation) {
         boolean genderEmpty = gender.isEmpty();
         boolean ageEmpty = age.isEmpty();
         boolean occupationEmpty = occupation.isEmpty();
@@ -38,22 +41,48 @@ public class UserList {
             String line;
             while ((line = buffer.readLine()) != null) {
                 String[] user = line.split("::");
-                if ((genderEmpty || user[1].equals(gender))
-		    && (ageEmpty || user[2].equals(age))
-		    && (occupationEmpty || user[3].equals(occupation))) {
-                    users.add(Integer.parseInt(user[0]));
+                int numMatched = (genderEmpty || user[1].equals(gender) ? 1 : 0)
+                                + (ageEmpty || user[2].equals(age) ? 1 : 0)
+                                + (occupationEmpty || user[3].equals(occupation) ? 1 : 0);
+                switch (numMatched) {
+                    case 0:
+                        unalikeUsers.add(Integer.parseInt(user[0]));
+                        continue;
+                    case 1:
+                        lessSimUsers.add(Integer.parseInt(user[0]));
+                        continue;
+                    case 2:
+                        mostSimUsers.add(Integer.parseInt(user[0]));
+                        continue;
+                    case 3:
+                        matchedUsers.add(Integer.parseInt(user[0]));
+                        continue;
                 }
             }
-            if (users.isEmpty())
-                throw new UserNotExistError();
         } catch (IOException e) {}
     }
 
-    public boolean find(int userid) {
-        return users.contains(userid);
+    public boolean isMatched(int userid) {
+        return matchedUsers.contains(userid);
+    }
+    public boolean isSimilar(int userid) {
+        return mostSimUsers.contains(userid);
+    }
+    public boolean isLessSimilar(int userid) {
+        return lessSimUsers.contains(userid);
+    }
+    public boolean isNotSimilar(int userid) {
+        return unalikeUsers.contains(userid);
     }
 
     public void printUsers() {
-	    System.out.println(users);
+        System.out.println("number of matched users :" + matchedUsers.size());
+        System.out.println("number of most similar users :" + mostSimUsers.size());
+        System.out.println("number of less similar users :" + lessSimUsers.size());
+        System.out.println("number of unalike users :" + unalikeUsers.size());
+        System.out.println(matchedUsers);
+        System.out.println(mostSimUsers);
+        System.out.println(lessSimUsers);
+        System.out.println(unalikeUsers);
     }
 }
