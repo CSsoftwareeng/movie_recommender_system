@@ -74,15 +74,4 @@ public class UserList {
     public boolean isNotSimilar(int userid) {
         return unalikeUsers.contains(userid);
     }
-
-    public void printUsers() {
-        System.out.println("number of matched users :" + matchedUsers.size());
-        System.out.println("number of most similar users :" + mostSimUsers.size());
-        System.out.println("number of less similar users :" + lessSimUsers.size());
-        System.out.println("number of unalike users :" + unalikeUsers.size());
-        System.out.println(matchedUsers);
-        System.out.println(mostSimUsers);
-        System.out.println(lessSimUsers);
-        System.out.println(unalikeUsers);
-    }
 }
