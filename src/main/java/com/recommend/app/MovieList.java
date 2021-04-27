@@ -55,6 +55,7 @@ public class MovieList {
         try {
             Integer[] ids = new Integer[ID.size()];
             String[] names = new String[ID.size()];
+            int i = 0;
             File moviefile = new File("./data/movies.dat");
             FileReader fileReader = new FileReader(moviefile);
             BufferedReader bufReader = new BufferedReader(fileReader);
