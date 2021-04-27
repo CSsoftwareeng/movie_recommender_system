@@ -53,6 +53,8 @@ public class MovieList {
 
     public void searchName(List<Integer> ID) throws IOException {
         try {
+            Integer[] ids = new Integer[ID.size()];
+            String[] names = new String[ID.size()];
             File moviefile = new File("./data/movies.dat");
             FileReader fileReader = new FileReader(moviefile);
             BufferedReader bufReader = new BufferedReader(fileReader);
@@ -60,10 +62,18 @@ public class MovieList {
             while ((data = bufReader.readLine()) != null) {
                 String[] temp = data.split("::");
                 if(ID.contains(Integer.parseInt(temp[0]))) {
-                    movieName.add(temp[1]);
+                    ids[i] = Integer.parseInt(temp[0]);
+                    names[i] = temp[1];
+                    i++;
                 }
-                if(movieName.size() == 10) {
+                if(i == ID.size()) {
                     break;
+                }
+            }
+            if(ID.size() != 0) {
+                for(int j=0; j<ID.size(); j++) {
+                    int index = Arrays.asList(ids).indexOf(ID.get(j));
+                    movieName.add(names[index]);
                 }
             }
         }catch (IOException e) {}
