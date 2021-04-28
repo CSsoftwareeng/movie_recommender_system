@@ -9,7 +9,7 @@ public class UserList {
     TreeSet<Integer> matchedUsers = new TreeSet<Integer>();
     TreeSet<Integer> mostSimUsers = new TreeSet<Integer>();
     TreeSet<Integer> lessSimUsers = new TreeSet<Integer>();
-    TreeSet<Integer> unalikeUsers = new TreeSet<Integer>();
+    TreeSet<Integer> notSimUsers = new TreeSet<Integer>();
 
     void searchMatchedUser(int occupation) throws UserNotExistError {
 
@@ -46,7 +46,7 @@ public class UserList {
                                 + (occupationEmpty || user[3].equals(occupation) ? 1 : 0);
                 switch (numMatched) {
                     case 0:
-                        unalikeUsers.add(Integer.parseInt(user[0]));
+                        notSimUsers.add(Integer.parseInt(user[0]));
                         continue;
                     case 1:
                         lessSimUsers.add(Integer.parseInt(user[0]));
@@ -72,6 +72,6 @@ public class UserList {
         return lessSimUsers.contains(userid);
     }
     public boolean isNotSimilar(int userid) {
-        return unalikeUsers.contains(userid);
+        return notSimUsers.contains(userid);
     }
 }
