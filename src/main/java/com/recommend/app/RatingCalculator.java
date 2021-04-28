@@ -203,7 +203,7 @@ public class RatingCalculator {
                             break;
                         }
                     }
-                    System.out.println(moviename+" (http://www.imdb.com/title/tt"+movielink+")");
+                    System.out.println(moviename+" (http://www.imdb.com/title/tt"+movielink+")" + "Rating : " + result.get(key).getAverage());
     	        }
         } catch (IOException e) {}
     }
