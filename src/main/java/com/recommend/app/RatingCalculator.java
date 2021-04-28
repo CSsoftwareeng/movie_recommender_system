@@ -58,9 +58,7 @@ class Rating implements Comparable<Rating>{
 
 
 public class RatingCalculator {
-    int sum = 0;
-    int count = 0;
-    double average = 0;
+
     HashMap<Integer,Rating> map = new HashMap <>();
     LinkedHashMap<Integer, Rating> result = new LinkedHashMap<>();
 
@@ -68,25 +66,7 @@ public class RatingCalculator {
         calcAverageHash(movieList, userList);
     }
 
-    void calcAverage (MovieList movies, UserList users) {
-        try {
-            File usersFile = new File("./data/ratings.dat");
-            FileReader reader = new FileReader(usersFile);
-            BufferedReader buffer = new BufferedReader(reader);
-            String line;
-            while ((line = buffer.readLine()) != null) {
-                String[] rating = line.split("::");
-                if (users.findID(Integer.parseInt(rating[0])) && movies.find(Integer.parseInt(rating[1]))) {
-                    count += 1;
-                    sum += Integer.parseInt(rating[2]);
-                }
-            }
-        } catch (IOException e) {}
 
-        if (count != 0){
-            average = (double)sum/count;
-        }
-    }
 
     void calcAverageHash (MovieList movies, UserList users) {
         try {
@@ -199,9 +179,10 @@ public class RatingCalculator {
 
     }
 
-    public void showResult () {
+    public void showResult (MovieList movies) {
         String moviename;
         String movielink;
+        int i = 0;
         try{
             for(Integer key : result.keySet())
     	        {
@@ -209,8 +190,12 @@ public class RatingCalculator {
                     FileReader fileReader = new FileReader(linkfile);
                     BufferedReader bufReader = new BufferedReader(fileReader);
                     String data = "";
+                    List<Integer> ID = new List<>();
+    		        ID.add(key);
+                    movies.searchName(ID);
+                    moviename = movies.getMoviesName().get(i);
+                    i += 1;
 
-    		        moviename = result.get(key);
                     while ((data = bufReader.readLine()) != null) {
                         String[] temp = data.split("::");
                         if(key == Integer.parseInt(temp[0])) {
