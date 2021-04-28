@@ -3,14 +3,66 @@ package com.recommend.app;
 import java.io.*;
 import java.util.*;
 
+class Rating implements Comparable<Rating>{
+    int sum;
+    int count;
+    double average;
+    int match;
+
+    public Rating(int a, int b, int c){
+        this.sum = a;
+        this.count = b;
+        this.match = c;
+        this.average = (double)a/b;
+    }
+
+    public int getSum(){
+        return this.sum;
+    }
+
+    public int getCount(){
+        return this.count;
+    }
+
+    public double getAverage(){
+        return this.average;
+    }
+
+    public int getMatch(){
+        return this.match;
+    }
+
+
+    @Override
+    public int compareTo(Rating t){
+        if(this.match>t.getMatch()){
+            return 1;
+        }
+        else if(this.match<t.getMatch()){
+            return -1;
+        }
+        else
+        {
+        	if(this.average>t.getAverage()){
+            	return 1;
+    		}
+        	else if(this.average<t.getAverage()){
+            	return -1;
+        	}
+        }
+        return 0;
+    }
+
+}
+
+
+
 public class RatingCalculator {
     int sum = 0;
     int count = 0;
     double average = 0;
-    HashMap<Integer,Integer> sum_map = new HashMap <>();
-    HashMap<Integer,Integer> count_map = new HashMap <>();
-    HashMap<Integer,Double> aver_map = new HashMap <>();
-    LinkedHashMap<Integer, String> result = new LinkedHashMap<>();
+    HashMap<Integer,Rating> map = new HashMap <>();
+    LinkedHashMap<Integer, Rating> result = new LinkedHashMap<>();
 
     public RatingCalculator(MovieList movieList, UserList userList) {
         calcAverageHash(movieList, userList);
@@ -42,48 +94,109 @@ public class RatingCalculator {
             FileReader reader = new FileReader(usersFile);
             BufferedReader buffer = new BufferedReader(reader);
             String line;
+            buffer.mark();
+            int matched = 3;
             while ((line = buffer.readLine()) != null) {
                 String[] rating = line.split("::");
-                if (users.find(Integer.parseInt(rating[0])) && movies.findID(Integer.parseInt(rating[1]))) {
+                if (users.isMatched(Integer.parseInt(rating[0])) && movies.findID(Integer.parseInt(rating[1]))) {
                     int movie = Integer.parseInt(rating[1]);
-                    if(sum_map.containsKey(movie))
+                    if(map.containsKey(movie))
                     {
-                        int tsum = sum_map.get(movie) + Integer.parseInt(rating[2]);
-                        int tcount = count_map.get(movie) + 1;
-                        sum_map.put(movie, tsum);
-                        count_map.put(movie, tcount);
-                        count += 1;
+                        int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
+                        int tcount = map.get(movie).getCount() + 1;
+                        map.put(movie, new Rating(tsum,tcount,matched));
                     }
                     else
                     {
-                        sum_map.put(movie,Integer.parseInt(rating[2]));
-                        count_map.put(movie,1);
-                        count += 1;
+                        map.put(movie, new Rating(Integer.parseInt(rating[2]),1,matched));
                     }
                 }
             }
+
+            if(map.size() < 10)
+            {
+                matched = 2;
+                buffer.reset();
+                while ((line = buffer.readLine()) != null) {
+                    String[] rating = line.split("::");
+                    if (users.isSimilar(Integer.parseInt(rating[0])) && movies.findID(Integer.parseInt(rating[1]))) {
+                        int movie = Integer.parseInt(rating[1]);
+                        if(map.containsKey(movie) && map.get(movie).getMatch() == matched)
+                        {
+                            int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
+                            int tcount = map.get(movie).getCount() + 1;
+                            map.put(movie, new Rating(tsum,tcount,matched));
+                        }
+                        else if(!map.containsKey(movie))
+                        {
+                            map.put(movie, new Rating(Integer.parseInt(rating[2]),1,matched));
+                        }
+                    }
+                }
+            }
+    
+            if(map.size() < 10)
+            {
+                matched = 1;
+                buffer.reset();
+                while ((line = buffer.readLine()) != null) {
+                    String[] rating = line.split("::");
+                    if (users.isLessSimilar(Integer.parseInt(rating[0])) && movies.findID(Integer.parseInt(rating[1]))) {
+                        int movie = Integer.parseInt(rating[1]);
+                        if(map.containsKey(movie) && map.get(movie).getMatch() == matched)
+                        {
+                            int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
+                            int tcount = map.get(movie).getCount() + 1;
+                            map.put(movie, new Rating(tsum,tcount,matched));
+                        }
+                        else if(!map.containsKey(movie))
+                        {
+                            map.put(movie, new Rating(Integer.parseInt(rating[2]),1,matched));
+                        }
+                    }
+                }
+            }
+    
+            if(map.size() < 10)
+            {
+                matched = 0;
+                buffer.reset();
+                while ((line = buffer.readLine()) != null) {
+                    String[] rating = line.split("::");
+                    if (users.isNotSimilar(Integer.parseInt(rating[0])) && movies.findID(Integer.parseInt(rating[1]))) {
+                        int movie = Integer.parseInt(rating[1]);
+                        if(map.containsKey(movie) && map.get(movie).getMatch() == matched)
+                        {
+                            int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
+                            int tcount = map.get(movie).getCount() + 1;
+                            map.put(movie, new Rating(tsum,tcount,matched));
+                        }
+                        else if(!map.containsKey(movie))
+                        {
+                            map.put(movie, new Rating(Integer.parseInt(rating[2]),1,matched));
+                        }
+                    }
+                }
+            }
+
+
+
+
+
+
         } catch (IOException e) {}
 
-        if (count != 0){
-            for(Integer key : sum_map.keySet())
-    	    {
-    		    double temp = (double)sum_map.get(key) / count_map.get(key);
-    		    aver_map.put(key,temp);
+        
 
-    	    }
-
-            List<Map.Entry<Integer, Double>> entries = new LinkedList<>(aver_map.entrySet());
-            Collections.sort(entries, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
+        List<Map.Entry<Integer, Rating>> entries = new LinkedList<>(map.entrySet());
+        Collections.sort(entries, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
                 
-            for (Map.Entry<String, Double> entry : entries) {
-                    List<Integer> idlist = new ArrayList<Integer>();
-                    idlist.add(entry.getKey());
-                    movies.searchName(idlist);
-                    result.put(entry.getKey(), moives.getMoviesName().get(0));
-                    if(result.size() == 10)
-                        break;
-            }
+        for (Map.Entry<Integer, Rating> entry : entries) {
+                result.put(entry.getKey(), entry.getValue());
+                if(result.size() == 10)
+                    break;
         }
+
     }
 
     public void showResult () {
