@@ -27,7 +27,12 @@ Examples:
 Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass "Comedy" "educator"
 Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass "Comedy|Adventure" "doctor"
 ```
-
+Note:
+If you compile with run.sh script file in container on top of local Windows machine,<br/>
+you may need to replace 'new line character' properly with below command.
+```
+sed -i 's/\r$//' run.sh
+```
 ------------------------------------------
 ## User Guide
 [genres]
