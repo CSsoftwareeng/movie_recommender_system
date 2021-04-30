@@ -4,16 +4,16 @@ import com.recommend.utils.errors.ArgCntError;
 
 public class MainClass {
     public static void main(String[] args) throws ArgCntError {
-        if (args.length != 2) {
+        if (args.length <= 2 || args.length > 4) {
             throw new ArgCntError(args, args.length);
         }
 
-        Arguments arg = new Arguments(args[0], args[1]);
+        Arguments arg = args.length == 3 ? new Arguments(args[0], args[1], args[2]) : new Arguments(args[0], args[1], args[2], args[3]);
+        arg.printArgs();
         MovieList movieList = new MovieList(arg.getGenres());
-        UserList userList = new UserList(arg.getOccupation());
-        RatingCalculator cal = new RatingCalculator(movieList, userList);
 
-        cal.showResult();
+        UserList userlist = new UserList();
+        userlist.searchSimilarUser(arg.getGender(), arg.getAge(), arg.getOccupation());
     }
 }
 
