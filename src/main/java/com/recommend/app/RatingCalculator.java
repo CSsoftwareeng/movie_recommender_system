@@ -190,7 +190,7 @@ public class RatingCalculator {
                     FileReader fileReader = new FileReader(linkfile);
                     BufferedReader bufReader = new BufferedReader(fileReader);
                     String data = "";
-                    List<Integer> ID = new List<>();
+                    List<Integer> ID = new ArrayList<>();
     		        ID.add(key);
                     movies.searchName(ID);
                     moviename = movies.getMoviesName().get(i);
