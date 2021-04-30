@@ -74,7 +74,7 @@ public class RatingCalculator {
             FileReader reader = new FileReader(usersFile);
             BufferedReader buffer = new BufferedReader(reader);
             String line;
-            buffer.mark();
+            buffer.mark(999999999);
             int matched = 3;
             while ((line = buffer.readLine()) != null) {
                 String[] rating = line.split("::");
