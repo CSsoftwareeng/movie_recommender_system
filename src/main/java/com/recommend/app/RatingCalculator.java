@@ -183,6 +183,10 @@ public class RatingCalculator {
         String moviename = "";
         String movielink = "";
         int i = 0;
+        List<Integer> ID = new ArrayList<>(result.keySet());;
+        movies.searchName(ID);
+        List<String> names = movies.getMoviesName();
+        
         try{
             for(Integer key : result.keySet())
     	        {
@@ -190,10 +194,8 @@ public class RatingCalculator {
                     FileReader fileReader = new FileReader(linkfile);
                     BufferedReader bufReader = new BufferedReader(fileReader);
                     String data = "";
-                    List<Integer> ID = new ArrayList<>();
-    		        ID.add(key);
-                    movies.searchName(ID);
-                    moviename = movies.getMoviesName().get(i);
+                    
+                    moviename = names.get(i);
                     i += 1;
 
                     while ((data = bufReader.readLine()) != null) {
