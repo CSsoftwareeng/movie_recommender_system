@@ -180,8 +180,8 @@ public class RatingCalculator {
     }
 
     public void showResult (MovieList movies) {
-        String moviename;
-        String movielink;
+        String moviename = "";
+        String movielink = "";
         int i = 0;
         try{
             for(Integer key : result.keySet())
