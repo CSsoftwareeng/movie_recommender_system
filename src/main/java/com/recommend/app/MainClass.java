@@ -8,6 +8,7 @@ public class MainClass {
     if (args.length <= 2 || args.length > 4) {
       throw new ArgCntError(args, args.length);
     }
+
     Arguments arg = args.length == 3
       ? new Arguments(args[0], args[1], args[2])
       : new Arguments(args[0], args[1], args[2], args[3]);
