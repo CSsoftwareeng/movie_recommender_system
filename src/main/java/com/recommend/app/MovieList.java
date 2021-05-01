@@ -51,7 +51,7 @@ public class MovieList {
         return movies;
     }
 
-    public void searchName(List<Integer> ID) throws IOException {
+    public void searchName(List<Integer> ID) {
         try {
             Integer[] ids = new Integer[ID.size()];
             String[] names = new String[ID.size()];

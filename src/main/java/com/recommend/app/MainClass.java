@@ -14,6 +14,8 @@ public class MainClass {
 
         UserList userlist = new UserList();
         userlist.searchSimilarUser(arg.getGender(), arg.getAge(), arg.getOccupation());
+        RatingCalculator rating = new RatingCalculator(movieList,userlist);
+        rating.showResult(movieList);
     }
 }
 
