@@ -7,7 +7,7 @@ The program calculates the average movie rating of users who are similar to you 
 The program first calculates the average movie rating for users whose gender, age, and occupation all match with yours. If the list of movies does not reach 10, the program fills the rest of the list with the average movie ratings of users who match only two of them: gender, age, or occupation. If still don't have 10 movie, the program fills the rest of the list with the average movie ratings of users who match only one of their gender, age, or occupation. If it is not possible to create 10 movie lists from users similar to you, a movie list is created based on the average movie rating of all users.
 
 ------------------------------------------
-## Building Dodker Image
+## Building Docker Image
 This program will be executed on the Ubuntu20:04. Building docker image, the docker file will install 'openjdk-11-jdk' and 'maven' on the Ubuntu. Then 'run.sh' file will be migrated to the docker container.
 ```
 docker build -t cse364-ubuntu20.04/movie_recommender_os .
