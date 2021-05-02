@@ -122,9 +122,10 @@ public class RatingCalculator {
         Collections.sort(entries, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
                 
         for (Map.Entry<Integer, Rating> entry : entries) {
+            if(result.size() < 10)
                 result.put(entry.getKey(), entry.getValue());
-                if(result.size() == 10)
-                    break;
+            else
+                continue;
         }
 
     }
@@ -152,8 +153,9 @@ public class RatingCalculator {
                         String[] temp = data.split("::");
                         if(key == Integer.parseInt(temp[0])) {
                             movielink = temp[1];
-                            break;
                         }
+                        else
+                            continue;
                     }
                     System.out.println(moviename+" (http://www.imdb.com/title/tt"+movielink+")" + " Match : "+ result.get(key).getMatch() + " Rating : " + result.get(key).getAverage());
     	        }
