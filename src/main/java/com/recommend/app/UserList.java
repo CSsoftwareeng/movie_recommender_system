@@ -45,9 +45,6 @@ public class UserList {
                                 + (ageEmpty || user[2].equals(age) ? 1 : 0)
                                 + (occupationEmpty || user[3].equals(occupation) ? 1 : 0);
                 switch (numMatched) {
-                    case 0:
-                        notSimUsers.add(Integer.parseInt(user[0]));
-                        continue;
                     case 1:
                         lessSimUsers.add(Integer.parseInt(user[0]));
                         continue;
@@ -56,6 +53,9 @@ public class UserList {
                         continue;
                     case 3:
                         matchedUsers.add(Integer.parseInt(user[0]));
+                        continue;
+                    default:
+                        notSimUsers.add(Integer.parseInt(user[0]));
                         continue;
                 }
             }
