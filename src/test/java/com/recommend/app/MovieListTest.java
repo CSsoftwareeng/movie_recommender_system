@@ -66,4 +66,16 @@ public class MovieListTest {
         movie.searchName(ids);
         Assert.assertEquals("testSearchNmae", expected, movie.getMoviesName());
     }
+
+    @Test
+    public void testBufferSearch() {
+        List<String> expected = new ArrayList<String>();
+        expected.addAll(Arrays.asList(arrayname));
+        ids.addAll(Arrays.asList(arrayid));
+        ids.add(3952);
+        expected.add("Contender, The (2000)");
+        MovieList_V2 movie = new MovieList_V2(genres);
+        movie.searchName(ids);
+        Assert.assertEquals("testBufferSearch", expected, movie.getMoviesName());
+    }
 }
