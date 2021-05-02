@@ -61,6 +61,10 @@ public class RatingCalculator {
 
     HashMap<Integer,Rating> map = new HashMap <>();
     LinkedHashMap<Integer, Rating> result = new LinkedHashMap<>();
+    List<String> names;
+    List<Integer> ID;
+    
+    
 
     public RatingCalculator(MovieList movieList, UserList userList) {
         calcAverageHash(movieList, userList);
@@ -74,17 +78,35 @@ public class RatingCalculator {
             FileReader reader = new FileReader(usersFile);
             BufferedReader buffer = new BufferedReader(reader);
             String line;
-            buffer.mark(100000);
             int matched = 3;
             while ((line = buffer.readLine()) != null) {
                 String[] rating = line.split("::");
-                if (users.isMatched(Integer.parseInt(rating[0])) && movies.findID(Integer.parseInt(rating[1]))) {
-                    int movie = Integer.parseInt(rating[1]);
+                int user = Integer.parseInt(rating[0]);
+                int movie = Integer.parseInt(rating[1]);
+                if(users.isMatched(user)){
+                    matched = 3;
+                }
+                else if(users.isSimilar(user)){
+                    matched = 2;
+                }
+                else if(users.isLessSimilar(user)){
+                    matched = 1;
+                }
+                else{
+                    matched = 0;
+                }
+
+                if (movies.findID(movie)) {
                     if(map.containsKey(movie))
                     {
-                        int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
-                        int tcount = map.get(movie).getCount() + 1;
-                        map.put(movie, new Rating(tsum,tcount,matched));
+                        if(map.get(movie).getMatch() == matched){
+                            int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
+                            int tcount = map.get(movie).getCount() + 1;
+                            map.put(movie, new Rating(tsum,tcount,matched));
+                        }
+                        else if(map.get(movie).getMatch() < matched){
+                            map.put(movie, new Rating(Integer.parseInt(rating[2]),1,matched));
+                        }
                     }
                     else
                     {
@@ -92,78 +114,6 @@ public class RatingCalculator {
                     }
                 }
             }
-
-            if(map.size() < 10)
-            {
-                matched = 2;
-                buffer.reset();
-                while ((line = buffer.readLine()) != null) {
-                    String[] rating = line.split("::");
-                    if (users.isSimilar(Integer.parseInt(rating[0])) && movies.findID(Integer.parseInt(rating[1]))) {
-                        int movie = Integer.parseInt(rating[1]);
-                        if(map.containsKey(movie) && map.get(movie).getMatch() == matched)
-                        {
-                            int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
-                            int tcount = map.get(movie).getCount() + 1;
-                            map.put(movie, new Rating(tsum,tcount,matched));
-                        }
-                        else if(!map.containsKey(movie))
-                        {
-                            map.put(movie, new Rating(Integer.parseInt(rating[2]),1,matched));
-                        }
-                    }
-                }
-            }
-    
-            if(map.size() < 10)
-            {
-                matched = 1;
-                buffer.reset();
-                while ((line = buffer.readLine()) != null) {
-                    String[] rating = line.split("::");
-                    if (users.isLessSimilar(Integer.parseInt(rating[0])) && movies.findID(Integer.parseInt(rating[1]))) {
-                        int movie = Integer.parseInt(rating[1]);
-                        if(map.containsKey(movie) && map.get(movie).getMatch() == matched)
-                        {
-                            int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
-                            int tcount = map.get(movie).getCount() + 1;
-                            map.put(movie, new Rating(tsum,tcount,matched));
-                        }
-                        else if(!map.containsKey(movie))
-                        {
-                            map.put(movie, new Rating(Integer.parseInt(rating[2]),1,matched));
-                        }
-                    }
-                }
-            }
-    
-            if(map.size() < 10)
-            {
-                matched = 0;
-                buffer.reset();
-                while ((line = buffer.readLine()) != null) {
-                    String[] rating = line.split("::");
-                    if (users.isNotSimilar(Integer.parseInt(rating[0])) && movies.findID(Integer.parseInt(rating[1]))) {
-                        int movie = Integer.parseInt(rating[1]);
-                        if(map.containsKey(movie) && map.get(movie).getMatch() == matched)
-                        {
-                            int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
-                            int tcount = map.get(movie).getCount() + 1;
-                            map.put(movie, new Rating(tsum,tcount,matched));
-                        }
-                        else if(!map.containsKey(movie))
-                        {
-                            map.put(movie, new Rating(Integer.parseInt(rating[2]),1,matched));
-                        }
-                    }
-                }
-            }
-
-
-
-
-
-
         } catch (IOException e) {}
 
         
@@ -183,9 +133,9 @@ public class RatingCalculator {
         String moviename = "";
         String movielink = "";
         int i = 0;
-        List<Integer> ID = new ArrayList<>(result.keySet());;
+        ID = new ArrayList<>(result.keySet());;
         movies.searchName(ID);
-        List<String> names = movies.getMoviesName();
+        names = movies.getMoviesName();
         
         try{
             for(Integer key : result.keySet())
@@ -205,7 +155,7 @@ public class RatingCalculator {
                             break;
                         }
                     }
-                    System.out.println(moviename+" (http://www.imdb.com/title/tt"+movielink+")" + "Rating : " + result.get(key).getAverage());
+                    System.out.println(moviename+" (http://www.imdb.com/title/tt"+movielink+")" + " Match : "+ result.get(key).getMatch() + " Rating : " + result.get(key).getAverage());
     	        }
         } catch (IOException e) {}
     }
