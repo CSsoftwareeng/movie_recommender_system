@@ -125,7 +125,7 @@ public class RatingCalculator {
             if(result.size() < 10)
                 result.put(entry.getKey(), entry.getValue());
             else
-                continue;
+                break;
         }
 
     }
@@ -153,9 +153,8 @@ public class RatingCalculator {
                         String[] temp = data.split("::");
                         if(key == Integer.parseInt(temp[0])) {
                             movielink = temp[1];
+                            break;
                         }
-                        else
-                            continue;
                     }
                     System.out.println(moviename+" (http://www.imdb.com/title/tt"+movielink+")" + " Rating : " + result.get(key).getAverage());
     	        }
