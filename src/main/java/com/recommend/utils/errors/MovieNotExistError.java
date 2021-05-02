@@ -14,6 +14,5 @@ public class MovieNotExistError extends IllegalArgumentException{
         System.out.println("[ERROR : MovieNotExistError]");
         System.out.println("Can't find any movie that belong to at least one selected genres: " + this.selected_genres);
         System.out.println("-------------Program was forced to exit.-------------\n");
-        System.exit(0);
     }
 }
