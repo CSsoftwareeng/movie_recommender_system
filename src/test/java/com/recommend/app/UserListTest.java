@@ -31,6 +31,10 @@ public class UserListTest {
         Assert.assertEquals(userlist.mostSimUsers.size(),815);
         Assert.assertEquals(userlist.lessSimUsers.size(),2757);
         Assert.assertEquals(userlist.notSimUsers.size(),2409);
+
+        userlist = new UserList();
+        userlist.searchSimilarUser("","","");
+
     }
 
     @Test
