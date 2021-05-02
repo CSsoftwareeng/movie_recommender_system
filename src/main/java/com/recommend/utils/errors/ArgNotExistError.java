@@ -20,7 +20,7 @@ public class ArgNotExistError extends IllegalArgumentException {
       case 3:
         user_input = args.getRawOccupation();
         break;
-      case 4:
+      default:
         user_input = args.getRawGenre();
         break;
     }
@@ -57,7 +57,7 @@ public class ArgNotExistError extends IllegalArgumentException {
           "-------------Program was forced to exit.-------------\n"
         );
         break;
-      case 4:
+      default:
         System.out.println("[ERROR : ArgNotExistError]");
         System.out.println(
           "  The movie genre [" + this.user_input + "] is invalid."

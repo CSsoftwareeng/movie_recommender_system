@@ -32,19 +32,16 @@ public class ArgumentTest {
 
   @Test
   public void testSetMap() {
-    Arguments args1 = new Arguments("F", "25", "Grad student");
-    Arguments args2 = new Arguments("F", "25", "Grad student", "Action|Comedy");
-    Arguments args3 = new Arguments("", "", "", "");
+    Arguments args1 = new Arguments();
+    args1.setMap();
     Assert.assertEquals("Result", args1.OCCUPATIONS_MAP.size(), 47);
-    Assert.assertEquals("Result", args2.OCCUPATIONS_MAP.size(), 47);
     Assert.assertEquals("Result", args1.GENRE_MAP.size(), 20);
-    Assert.assertEquals("Result", args2.GENRE_MAP.size(), 20);
   }
 
   @Test
   public void testSetArgs() {
-    Arguments args1 = new Arguments("F", "25", "Grad student");
-    Arguments args2 = new Arguments("F", "25", "Grad student", "Action|Comedy");
+    Arguments args1 = new Arguments();
+    Arguments args2 = new Arguments();
     args1.setArgs("1", "2", "3");
     args2.setArgs("4", "5", "6", "7");
     Assert.assertEquals("Result", args1.gender, "1");
@@ -58,23 +55,49 @@ public class ArgumentTest {
 
   @Test
   public void testParseGender() {
-    Arguments args1 = new Arguments("f", "25", "Grad student");
+    Arguments args1 = new Arguments();
+    Arguments args2 = new Arguments();
+    Arguments args3 = new Arguments();
+
+    args1.setArgs("f", "25", "Grad student");
+    args2.setArgs("m", "25", "Grad student", "Action|Comedy");
+    args3.setArgs("", "25", "Grad student");
+
+    args1.parseGender();
+    args2.parseGender();
+    args3.parseGender();
+
     Assert.assertEquals("Result", args1.gender, "F");
-    Arguments args2 = new Arguments("m", "25", "Grad student", "Action|Comedy");
     Assert.assertEquals("Result", args2.gender, "M");
-    Arguments args3 = new Arguments("", "25", "Grad student");
     Assert.assertEquals("Result", args3.gender, "");
   }
 
   @Test
   public void testParseAge() {
-    Arguments args1 = new Arguments("", "10", "Grad student");
-    Arguments args2 = new Arguments("", "20", "Grad student");
-    Arguments args3 = new Arguments("", "30", "Grad student");
-    Arguments args4 = new Arguments("", "40", "Grad student");
-    Arguments args5 = new Arguments("", "48", "Grad student");
-    Arguments args6 = new Arguments("", "52", "Grad student");
-    Arguments args7 = new Arguments("", "60", "Grad student");
+    Arguments args1 = new Arguments();
+    Arguments args2 = new Arguments();
+    Arguments args3 = new Arguments();
+    Arguments args4 = new Arguments();
+    Arguments args5 = new Arguments();
+    Arguments args6 = new Arguments();
+    Arguments args7 = new Arguments();
+
+    args1.age = "10";
+    args2.age = "20";
+    args3.age = "30";
+    args4.age = "40";
+    args5.age = "48";
+    args6.age = "52";
+    args7.age = "60";
+
+    args1.parseAge();
+    args2.parseAge();
+    args3.parseAge();
+    args4.parseAge();
+    args5.parseAge();
+    args6.parseAge();
+    args7.parseAge();
+
     Assert.assertEquals("Result", args1.age, "1");
     Assert.assertEquals("Result", args2.age, "18");
     Assert.assertEquals("Result", args3.age, "25");
@@ -86,8 +109,7 @@ public class ArgumentTest {
 
   @Test
   public void testPrintArgs() {
-    Arguments args1 = new Arguments("", "", "", "");
-    args1.setArgs("1", "2", "3", "4");
+    Arguments args1 = new Arguments("F", "25", "grad student", "action|comedy");
     args1.printArgs();
   }
 
