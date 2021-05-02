@@ -3,8 +3,8 @@ The movie platform system supports a great multitude of movies, so it is not eas
 
 
 ## Algorithm
-The program calculates the average movie rating of users who are similar to you and recommends 10 movies in the highest order(These processes are executed in RatingCalculator.class). This program prints the average rating together, so that if the average rating is the same, the user knows that it is recommended as the same priorit.
-The program first calculates the average movie rating for users whose gender, age, and occupation all match with yours. If the list of movies does not reach 10, the program fills the rest of the list with the average movie ratings of users who match only two of them: gender, age, or occupation. If still don't have 10 movie, the program fills the rest of the list with the average movie ratings of users who match only one of their gender, age, or occupation. If it is not possible to create 10 movie lists from users similar to you, a movie list is created based on the average movie rating of all users(These processes are executed in UserList.class).
+The program calculates the average movie rating of users who are similar to you and recommends 10 movies in the highest order(These processes are executed in RatingCalculator.class). This program prints the average rating together, so that if the average rating is the same, the user knows that it is recommended as the same priority.
+The program first calculates the average movie rating for users whose gender, age, and occupation all match with yours. If the list of movies does not reach 10, the program fills the rest of the list with the average movie ratings of users who match only two of them: gender, age, or occupation. If still don't have 10 movies, the program fills the rest of the list with the average movie ratings of users who match only one of their gender, age, or occupation. If it is not possible to create 10 movie lists from users similar to you, a movie list is created based on the average movie rating of all users(These processes are executed in UserList.class).
 
 ------------------------------------------
 ## Building Docker Image
@@ -65,7 +65,7 @@ __[genres]__
 - Enter the movie genres you want with double quotes -> Ex : "Documentary"
 - You can put multiple genres seperated with '|' -> Ex : "Adventure|Comedy"
 - Output is a list of recommended movies that belong to at least one selected categories.
-- If you pass through an genres as an empty string "", the program doesn't take genres into account when selecting a list of recommended movies
+- If you pass through an genres as an empty string "", the program doesn't take genres into account when selecting a list of recommended movies.
 - Genres can be chosen from the following choices:<br/>
 
 Action | Adventure | Animation | Children's | Comedy | Crime | Documentary | Drama | Fantasy
