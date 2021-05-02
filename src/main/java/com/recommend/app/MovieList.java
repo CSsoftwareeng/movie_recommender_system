@@ -59,7 +59,7 @@ public class MovieList {
             FileReader fileReader = new FileReader(moviefile);
             BufferedReader bufReader = new BufferedReader(fileReader);
             String data = "";
-            for(int i = 0; i<ID.size() && ((data=bufReader.readLine()) != null);) {
+            for(int i = 0; ((data=bufReader.readLine()) != null) && i<ID.size();) {
                 String[] temp = data.split("::");
                 if(ID.contains(Integer.parseInt(temp[0]))) {
                     ids[i] = Integer.parseInt(temp[0]);
