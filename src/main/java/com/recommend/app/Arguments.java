@@ -17,6 +17,8 @@ public class Arguments {
   static final Map<String, String> GENRE_MAP = new HashMap<String, String>();
   static final Map<String, Integer> OCCUPATIONS_MAP = new HashMap<String, Integer>();
 
+  public Arguments() {}
+
   public Arguments(String arg1, String arg2, String arg3) {
     setMap();
     setArgs(arg1, arg2, arg3);
