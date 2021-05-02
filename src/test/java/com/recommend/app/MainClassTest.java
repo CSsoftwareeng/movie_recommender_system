@@ -8,24 +8,37 @@ import org.junit.*;
 
 public class MainClassTest {
 
-  @Test(expected = ArgCntError.class)
+  ByteArrayOutputStream output = new ByteArrayOutputStream();
+  PrintStream originalOutput = System.out;
+
+  @Before
+  public void setOutput() {
+    System.setOut(new PrintStream(output));
+  }
+
+  @After
+  public void restoreOutput() {
+    System.setOut(originalOutput);
+  }
+
+  @Test
   public void testArgCntErrorUnder() {
     String[] args1 = { "1", "2" };
     MainClass.main(args1);
+    Assert.assertTrue(output.toString().contains("[ERROR : ArgCntError]"));
   }
 
-  @Test(expected = ArgCntError.class)
+  @Test
   public void testArgCntErrorOver() {
     String[] args1 = { "1", "2", "3", "4", "5" };
     MainClass.main(args1);
+    Assert.assertTrue(output.toString().contains("[ERROR : ArgCntError]"));
   }
 
   @Test
   public void testMainClassFourInputs() {
-    ByteArrayOutputStream output = new ByteArrayOutputStream();
-    PrintStream originalOutput = System.out;
     String[] args1 = { "F", "25", "Grad student", "Action|Comedy" };
-    System.setOut(new PrintStream(output));
+
     MainClass.main(args1);
     Assert.assertTrue(
       output
@@ -34,15 +47,12 @@ public class MainClassTest {
           "Dead Presidents (1995) (http://www.imdb.com/title/tt0112819) Rating : 5.0"
         )
     );
-    System.setOut(originalOutput);
   }
 
   @Test
   public void testMainClassThreeInputs() {
-    ByteArrayOutputStream output = new ByteArrayOutputStream();
-    PrintStream originalOutput = System.out;
     String[] args1 = { "F", "25", "Grad student" };
-    System.setOut(new PrintStream(output));
+
     MainClass.main(args1);
     Assert.assertTrue(
       output
@@ -51,6 +61,5 @@ public class MainClassTest {
           "Chungking Express (1994) (http://www.imdb.com/title/tt0109424) Rating : 5.0"
         )
     );
-    System.setOut(originalOutput);
   }
 }
