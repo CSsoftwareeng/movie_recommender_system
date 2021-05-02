@@ -23,13 +23,15 @@ mvn install
 ```
 Now, you can start this program with arguments:
 ```
+java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass [gender] [age] [occupation]
 java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass [gender] [age] [occupation] [genres]
 ```
 Examples:
 ```
-Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass “F” “22” “Grad student”
-Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass “M” “45” “doctor” “Action|Comedy”
-Ex. java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass “” “” “”
+java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass “F” “22” “Grad student”
+java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass “M” “45” “doctor” “Action|Comedy”
+java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass “” “” “”
+java -cp target/cse364-project-1-1.0-SNAPSHOT-jar-with-dependencies.jar com.recommend.app.MainClass “” “” “” “Action|Comedy”
 ```
 Note:
 If you compile with run.sh script file in container on top of local Windows machine,<br/>
@@ -41,16 +43,16 @@ sed -i 's/\r$//' run.sh
 ## User Guide
 __[gender]__
 - Enter the gender with double quotes -> Ex : "F" or "M"
-- If gender is not passed through as an argument, the program doesn't take gender into account when selecting a list of recommended movies.
+- If gender is passed through as an empty string "", the program doesn't take gender into account when selecting a list of recommended movies.
 -----------------------------
 __[age]__
 - Enter the age with double quotes -> EX: "22"
-- If age is not passed through as an argument, the program doesn't take age into account when selecting a list of recommended movies.
+- If age is passed through as an empty string "", the program doesn't take age into account when selecting a list of recommended movies.
 -----------------------------
 __[occupation]__
 - Enter the occupation with double quotes -> Ex : "educator"
 - Only one occupation is allowed.
-- If you don't pass through an occupation as an argument, the program doesn't take occupation into account when selecting a list of recommended movies.
+- If you pass through an occupation as an empty string "", the program doesn't take occupation into account when selecting a list of recommended movies.
 - Occupation can be chosen from the following choices:<br/>
 
 other | academic | educator | artist | clerical | admin | college | grad student | customer service | doctor
@@ -63,7 +65,7 @@ __[genres]__
 - Enter the movie genres you want with double quotes -> Ex : "Documentary"
 - You can put multiple genres seperated with '|' -> Ex : "Adventure|Comedy"
 - Output is a list of recommended movies that belong to at least one selected categories.
-- If you don't pass through an genres as an argument, the program doesn't take genres into account when selecting a list of recommended movies
+- If you pass through an genres as an empty string "", the program doesn't take genres into account when selecting a list of recommended movies
 - Genres can be chosen from the following choices:<br/>
 
 Action | Adventure | Animation | Children's | Comedy | Crime | Documentary | Drama | Fantasy
