@@ -11,7 +11,7 @@ public class MainClass {
     Arguments arg = args.length == 3
       ? new Arguments(args[0], args[1], args[2])
       : new Arguments(args[0], args[1], args[2], args[3]);
-    
+
     try {
       MovieList movieList = new MovieList(arg.getGenres());
       UserList userlist = new UserList();
