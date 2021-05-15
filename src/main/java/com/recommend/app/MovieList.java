@@ -119,7 +119,7 @@ public class MovieList {
     return simMovies;
   }
 
-  public void searchFavoriteMovie(String name) {
+  public void searchFavoriteMovie(String name) throws MovieNotExistError {
     boolean isFind = false;
     String raw_name = null;
     raw_name = name.trim().toLowerCase().replaceAll("\\p{Z}", "").replaceAll("\\p{Punct}", "");
@@ -138,9 +138,7 @@ public class MovieList {
           isFind = true;
           favoriteMovieID = Integer.parseInt(temp[0]);
           String[] temp_genres = temp[2].split("\\|");
-          for (int i = 0; i< temp_genres.length; i++) {
-            favoriteGenre.add(temp_genres[i]);
-          }
+          favoriteGenre.addAll(Arrays.asList(temp_genres));
           break;
         }
       }
