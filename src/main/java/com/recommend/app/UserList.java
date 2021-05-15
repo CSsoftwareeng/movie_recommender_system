@@ -10,6 +10,7 @@ public class UserList {
   TreeSet<Integer> mostSimUsers = new TreeSet<Integer>();
   TreeSet<Integer> lessSimUsers = new TreeSet<Integer>();
   TreeSet<Integer> notSimUsers = new TreeSet<Integer>();
+  TreeSet<Integer> favoriteUsers = new TreeSet<Integer>();
 
   void searchMatchedUser(int occupation) throws UserNotExistError {
     try {
@@ -56,6 +57,44 @@ public class UserList {
           default:
             notSimUsers.add(Integer.parseInt(user[0]));
             continue;
+        }
+      }
+    } catch (IOException e) {}
+  }
+
+  void searchFavoriteUsers(int MovieID) {
+    try {
+      File usersFile = new File("./data/ratings.dat");
+      FileReader reader = new FileReader(usersFile);
+      BufferedReader buffer = new BufferedReader(reader);
+      String line;
+      int userID = -1;
+      int count = 0;
+      int total = 0;
+      boolean isWatched = false;
+      double rating = 0;
+      while ((line = buffer.readLine()) != null) {
+        String[] user = line.split("::");
+        if (Integer.parseInt(user[0]) == userID) {
+          total += Integer.parseInt(user[2]);
+          count++;
+        }
+        else {
+          if(isWatched) {
+            if (rating >= (double)(total/count)) {
+              favoriteUsers.add(userID);
+            }
+          }
+          userID = Integer.parseInt(user[0]);
+          total = Integer.parseInt(user[2]);
+          count = 1;
+          isWatched = false;
+          rating = 0;
+        }
+
+        if (Integer.parseInt(user[1]) == MovieID) {
+          isWatched = true;
+          rating = Integer.parseInt(user[2]);
         }
       }
     } catch (IOException e) {}
