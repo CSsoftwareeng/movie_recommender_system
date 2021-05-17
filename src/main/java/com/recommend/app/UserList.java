@@ -4,12 +4,12 @@ import com.recommend.utils.errors.UserNotExistError;
 import java.io.*;
 import java.util.*;
 
-class Rating {
+class AvgRating {
   int sum;
   int count;
   double average;
 
-  public Rating(int sum, int count) {
+  public AvgRating(int sum, int count) {
     this.sum = sum;
     this.count = count;
   }
@@ -91,7 +91,7 @@ public class UserList {
 
   void searchFavoriteUsers(int MovieID) {
     HashMap<Integer, Integer> users = new HashMap<Integer, Integer>();
-    HashMap<Integer, Rating> usersAvg = new HashMap<Integer, Rating>();
+    HashMap<Integer, AvgRating> usersAvg = new HashMap<Integer, AvgRating>();
     try {
       File ratingFile = new File("./data/ratings.dat");
       FileReader reader = new FileReader(ratingFile);
@@ -113,12 +113,12 @@ public class UserList {
         String[] rating = line.split("::");
         if (users.containsKey(Integer.parseInt(rating[0]))) {
           if (usersAvg.containsKey(Integer.parseInt(rating[0]))) {
-            Rating temp = new Rating((usersAvg.get(Integer.parseInt(rating[0])).getSum() + Integer.parseInt(rating[2])), (usersAvg.get(Integer.parseInt(rating[0])).getCount()+1));
+            AvgRating temp = new AvgRating((usersAvg.get(Integer.parseInt(rating[0])).getSum() + Integer.parseInt(rating[2])), (usersAvg.get(Integer.parseInt(rating[0])).getCount()+1));
             temp.setAverage();
             usersAvg.replace(Integer.parseInt(rating[0]), temp);
           }
           else {
-            Rating temp = new Rating(Integer.parseInt(rating[2]), 1);
+            AvgRating temp = new AvgRating(Integer.parseInt(rating[2]), 1);
             temp.setAverage();
             usersAvg.put(Integer.parseInt(rating[0]), temp);
           }
