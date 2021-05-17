@@ -4,6 +4,33 @@ import com.recommend.utils.errors.UserNotExistError;
 import java.io.*;
 import java.util.*;
 
+class Rating {
+  int sum;
+  int count;
+  double average;
+
+  public Rating(int sum, int count) {
+    this.sum = sum;
+    this.count = count;
+  }
+
+  public int getSum() {
+    return this.sum;
+  }
+
+  public int getCount() {
+    return this.count;
+  }
+
+  public double getAverage() {
+    return this.average;
+  }
+
+  public void setAverage() {
+    this.average = (double) (this.sum)/(this.count);
+  }
+}
+
 public class UserList {
 
   TreeSet<Integer> matchedUsers = new TreeSet<Integer>();
@@ -63,38 +90,44 @@ public class UserList {
   }
 
   void searchFavoriteUsers(int MovieID) {
+    HashMap<Integer, Integer> users = new HashMap<Integer, Integer>();
+    HashMap<Integer, Rating> usersAvg = new HashMap<Integer, Rating>();
     try {
-      File usersFile = new File("./data/ratings.dat");
-      FileReader reader = new FileReader(usersFile);
+      File ratingFile = new File("./data/ratings.dat");
+      FileReader reader = new FileReader(ratingFile);
       BufferedReader buffer = new BufferedReader(reader);
       String line;
-      int userID = -1;
-      int count = 0;
-      int total = 0;
-      boolean isWatched = false;
-      double rating = 0;
       while ((line = buffer.readLine()) != null) {
-        String[] user = line.split("::");
-        if (Integer.parseInt(user[0]) == userID) {
-          total += Integer.parseInt(user[2]);
-          count++;
+        String[] rating = line.split("::");
+        if (Integer.parseInt(rating[1]) == MovieID) {
+          users.put(Integer.parseInt(rating[0]), Integer.parseInt(rating[2]));
         }
-        else {
-          if(isWatched) {
-            if (rating >= (double)(total/count)) {
-              favoriteUsers.add(userID);
-            }
+      }
+    } catch (IOException e) {}
+    try {
+      File ratingFile = new File("./data/ratings.dat");
+      FileReader reader = new FileReader(ratingFile);
+      BufferedReader buffer = new BufferedReader(reader);
+      String line;
+      while ((line = buffer.readLine()) != null) {
+        String[] rating = line.split("::");
+        if (users.containsKey(Integer.parseInt(rating[0]))) {
+          if (usersAvg.containsKey(Integer.parseInt(rating[0]))) {
+            Rating temp = new Rating((usersAvg.get(Integer.parseInt(rating[0])).getSum() + Integer.parseInt(rating[2])), (usersAvg.get(Integer.parseInt(rating[0])).getCount()+1));
+            temp.setAverage();
+            usersAvg.replace(Integer.parseInt(rating[0]), temp);
           }
-          userID = Integer.parseInt(user[0]);
-          total = Integer.parseInt(user[2]);
-          count = 1;
-          isWatched = false;
-          rating = 0;
+          else {
+            Rating temp = new Rating(Integer.parseInt(rating[2]), 1);
+            temp.setAverage();
+            usersAvg.put(Integer.parseInt(rating[0]), temp);
+          }
         }
+      }
 
-        if (Integer.parseInt(user[1]) == MovieID) {
-          isWatched = true;
-          rating = Integer.parseInt(user[2]);
+      for (Integer key : users.keySet()) {
+        if (users.get(key) >= usersAvg.get(key).getAverage()) {
+          favoriteUsers.add(key);
         }
       }
     } catch (IOException e) {}
