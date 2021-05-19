@@ -26,11 +26,11 @@ public class MovieBasedRecommController {
       MovieList movielist = new MovieList();
       UserList userlist = new UserList();
 
-      movielist.searchFavoriteMovie(title);
+      movielist.registerFavoriteMovie(title);
       userlist.searchFavoriteUsers(title);
 
       RatingCalculator rating = new RatingCalculator(movielist, userlist);
-      rating.calcAverageHash(limit);
+      rating.rankUserBasedRating(limit);
       rating.calcResult();
       return rating.getMoviesResult();
     } catch (MovieNotExistError e) {} catch (ArgNotExistError e) {} catch (

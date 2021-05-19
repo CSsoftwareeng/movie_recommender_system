@@ -29,7 +29,7 @@ public class UsersBasedRecommController {
         arg.getOccupation()
       );
       RatingCalculator rating = new RatingCalculator(movielist, userlist);
-      rating.calcAverageHash(10);
+      rating.rankGenreBasedRating(10);
       rating.calcResult();
       return rating.getMoviesResult();
     } catch (MovieNotExistError e) {} catch (ArgNotExistError e) {} catch (
