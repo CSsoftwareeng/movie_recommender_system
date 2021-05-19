@@ -12,6 +12,7 @@ public class MovieList {
   TreeSet<Integer> movies = new TreeSet<Integer>();
   List<String> movieName = new ArrayList<String>();
   List<String> movieGenres = new ArrayList<String>();
+  List<String> favoriteGenres = new ArrayList<String>();
   Integer favoriteMovieID;
 
   public MovieList() {}
@@ -118,8 +119,8 @@ public class MovieList {
     return simMovies;
   }
 
-  public void searchFavoriteMovie(String name) throws MovieNotExistError {
-      List<String> favoriteGenres = Tool.getMovieGenre(name);
-      searchID(favoriteGenres);
+  public void registerFavoriteMovie(String title) throws MovieNotExistError {
+      this.favoriteGenres = Tool.getMovieGenre(title);
+      this.favoriteMovieID = Tool.getMovieID(title);
   }
 }
