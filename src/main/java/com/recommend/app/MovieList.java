@@ -91,9 +91,9 @@ public class MovieList {
   }
   public List<String> getMovieGenres() {return movieGenres;} //
 
-  public void searchSimilarID(int match, List<String> genres) throws MovieNotExistError {
+  public void searchSimilarID(int match) throws MovieNotExistError {
     movies = new TreeSet<Integer>();
-    int genres_num = genres.size();
+    int genres_num = favoriteGenres.size();
     try {
       File moviefile = new File("./data/movies.dat");
       FileReader fileReader = new FileReader(moviefile);
@@ -103,7 +103,7 @@ public class MovieList {
         int count = 0;
         String[] temp = data.split("::");
         for (int i = 0; i < genres_num; i++) {
-          if (temp[2].contains(genres.get(i))) {
+          if (temp[2].contains(favoriteGenres.get(i))) {
             count++;
           }
         }
@@ -112,7 +112,7 @@ public class MovieList {
         }
       }
       if (movies.isEmpty()) {
-        throw new MovieNotExistError(genres);
+        throw new MovieNotExistError(favoriteGenres);
       }
     } catch (IOException e) {} catch (MovieNotExistError e) {}
   }
