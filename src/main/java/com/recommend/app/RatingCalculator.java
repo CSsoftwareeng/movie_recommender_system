@@ -58,12 +58,15 @@ public class RatingCalculator {
   List<String> genres;
   List<Integer> ID;
   List moviesResult = new ArrayList<Movie>();
+  MovieList movies;
+  UserList users;
 
   public RatingCalculator(MovieList movieList, UserList userList) {
-    calcAverageHash(movieList, userList);
+    this.movies = movieList;
+    this.users = userList;
   }
 
-  void calcAverageHash(MovieList movies, UserList users) {
+  void calcAverageHash(int limit) {
     try {
       File usersFile = new File("./data/ratings.dat");
       FileReader reader = new FileReader(usersFile);
@@ -110,14 +113,15 @@ public class RatingCalculator {
     );
 
     for (Map.Entry<Integer, Rating> entry : entries) {
-      if (result.size() < 10) result.put(
+      if (result.size() < limit) result.put(
         entry.getKey(),
         entry.getValue()
       ); else break;
     }
   }
 
-  public void calcResult(MovieList movies) {
+  public void calcResult(int limit) {
+    calcAverageHash(limit);
     String moviename = "";
     String moviegenre = "";
     String movielink = "";

@@ -89,9 +89,10 @@ public class UserList {
     } catch (IOException e) {}
   }
 
-  void searchFavoriteUsers(int MovieID) {
+  void searchFavoriteUsers(String title) {
     HashMap<Integer, Integer> users = new HashMap<Integer, Integer>();
     HashMap<Integer, AvgRating> usersAvg = new HashMap<Integer, AvgRating>();
+    int MovieID = Tool.getMovieID(title);
     try {
       File ratingFile = new File("./data/ratings.dat");
       FileReader reader = new FileReader(ratingFile);

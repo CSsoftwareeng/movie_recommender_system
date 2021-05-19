@@ -9,27 +9,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UsersBasedRecommController {
+public class MovieBasedRecommController {
 
-  @GetMapping("/users/recommendations")
-  public List<Movie> userBasedAPI(
+  @GetMapping("/movies/recommendations")
+  public List<Movie> movieBasedAPI(
     @RequestBody Map<String, String> requestParams
   ) {
     try {
-      String gender = requestParams.get("gender");
-      String age = requestParams.get("age");
-      String occupation = requestParams.get("occupation");
-      String genre = requestParams.get("genre");
-      Arguments arg = new Arguments(gender, age, occupation, genre);
-      MovieList movielist = new MovieList(arg.getGenres());
+      String title = requestParams.get("title");
+      String limit_str = requestParams.get("limit");
+      int limit = 10;
+      // Arguments arg = new Arguments(title, limit_str);
+      if(limit_str.length()!=0)
+        limit = Integer.parseInt(limit_str);
+      
+      MovieList movielist = new MovieList();
       UserList userlist = new UserList();
-      userlist.searchSimilarUser(
-        arg.getGender(),
-        arg.getAge(),
-        arg.getOccupation()
-      );
+
+      movielist.searchFavoriteMovie(title);
+      userlist.searchFavoriteUsers(title);
+
       RatingCalculator rating = new RatingCalculator(movielist, userlist);
-      rating.calcResult(10);
+      rating.calcResult(limit);
       return rating.getMoviesResult();
     } catch (MovieNotExistError e) {} catch (ArgNotExistError e) {} catch (
       ArgCntError e
