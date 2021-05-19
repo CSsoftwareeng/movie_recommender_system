@@ -153,7 +153,9 @@ public class RatingCalculator {
           }
         }
       }
+      map.remove(movies.favoriteMovieID);
     } catch (IOException e) {}
+    
 
     List<Map.Entry<Integer, Rating>> entries = new LinkedList<>(map.entrySet());
     Collections.sort(
