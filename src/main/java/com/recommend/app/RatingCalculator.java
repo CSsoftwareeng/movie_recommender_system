@@ -120,8 +120,7 @@ public class RatingCalculator {
     }
   }
 
-  public void calcResult(int limit) {
-    calcAverageHash(limit);
+  public void calcResult() {
     String moviename = "";
     String moviegenre = "";
     String movielink = "";
