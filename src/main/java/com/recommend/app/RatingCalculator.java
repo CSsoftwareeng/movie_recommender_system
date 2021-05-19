@@ -55,6 +55,7 @@ public class RatingCalculator {
   HashMap<Integer, Rating> map = new HashMap<>();
   LinkedHashMap<Integer, Rating> result = new LinkedHashMap<>();
   List<String> names;
+  List<String> genres;
   List<Integer> ID;
   List moviesResult = new ArrayList<Movie>();
 
@@ -118,11 +119,13 @@ public class RatingCalculator {
 
   public void calcResult(MovieList movies) {
     String moviename = "";
+    String moviegenre = "";
     String movielink = "";
     int i = 0;
     ID = new ArrayList<>(result.keySet());
     movies.searchName(ID);
     names = movies.getMoviesName();
+    genres = movies.getMovieGenres();
 
     try {
       for (Integer key : result.keySet()) {
@@ -132,6 +135,7 @@ public class RatingCalculator {
         String data = "";
 
         moviename = names.get(i);
+        moviegenre = genres.get(i);
         i += 1;
 
         while ((data = bufReader.readLine()) != null) {
@@ -143,7 +147,7 @@ public class RatingCalculator {
         }
         Movie movie = new Movie(
           moviename,
-          "genre",
+          moviegenre,
           "(http://www.imdb.com/title/tt" + movielink + ")"
         );
         this.moviesResult.add(movie);
