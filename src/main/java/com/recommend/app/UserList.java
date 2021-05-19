@@ -149,4 +149,8 @@ public class UserList {
   public boolean isNotSimilar(int userid) {
     return notSimUsers.contains(userid);
   }
+
+  public boolean isFavorite(int userid) {
+    return favoriteUsers.contains(userid);
+  }
 }
