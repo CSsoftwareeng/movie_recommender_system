@@ -66,7 +66,7 @@ public class RatingCalculator {
     this.users = userList;
   }
 
-  void calcAverageHash(int limit) {
+  void rankUserBasedRating(int limit) {
     try {
       File usersFile = new File("./data/ratings.dat");
       FileReader reader = new FileReader(usersFile);
@@ -118,6 +118,10 @@ public class RatingCalculator {
         entry.getValue()
       ); else break;
     }
+  }
+
+  void rankGenreBasedRating(int limit) {
+    //TODO
   }
 
   public void calcResult() {
