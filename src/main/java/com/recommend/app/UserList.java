@@ -5,6 +5,7 @@ import java.io.*;
 import java.util.*;
 
 class AvgRating {
+
   int sum;
   int count;
   double average;
@@ -27,7 +28,7 @@ class AvgRating {
   }
 
   public void setAverage() {
-    this.average = (double) (this.sum)/(this.count);
+    this.average = (double) (this.sum) / (this.count);
   }
 }
 
@@ -114,11 +115,16 @@ public class UserList {
         String[] rating = line.split("::");
         if (users.containsKey(Integer.parseInt(rating[0]))) {
           if (usersAvg.containsKey(Integer.parseInt(rating[0]))) {
-            AvgRating temp = new AvgRating((usersAvg.get(Integer.parseInt(rating[0])).getSum() + Integer.parseInt(rating[2])), (usersAvg.get(Integer.parseInt(rating[0])).getCount()+1));
+            AvgRating temp = new AvgRating(
+              (
+                usersAvg.get(Integer.parseInt(rating[0])).getSum() +
+                Integer.parseInt(rating[2])
+              ),
+              (usersAvg.get(Integer.parseInt(rating[0])).getCount() + 1)
+            );
             temp.setAverage();
             usersAvg.replace(Integer.parseInt(rating[0]), temp);
-          }
-          else {
+          } else {
             AvgRating temp = new AvgRating(Integer.parseInt(rating[2]), 1);
             temp.setAverage();
             usersAvg.put(Integer.parseInt(rating[0]), temp);

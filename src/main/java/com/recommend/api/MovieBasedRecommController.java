@@ -19,10 +19,8 @@ public class MovieBasedRecommController {
       String title = requestParams.get("title");
       String limit_str = requestParams.get("limit");
       int limit = 10;
-      // Arguments arg = new Arguments(title, limit_str);
-      if(limit_str.length()!=0)
-        limit = Integer.parseInt(limit_str);
-      
+      if (limit_str.length() != 0) limit = Integer.parseInt(limit_str);
+
       MovieList movielist = new MovieList();
       UserList userlist = new UserList();
 

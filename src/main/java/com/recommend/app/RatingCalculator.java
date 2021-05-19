@@ -66,10 +66,8 @@ public class RatingCalculator {
     this.users = userList;
   }
 
-// matched를 기록함으로써 한번만 읽으려는 건 좋지만 matched를 활용하려면 matched에 따른 weghted sum을 얻어야 함.
   void rankUserBasedRating(int limit) {
     try {
-      
       File usersFile = new File("./data/ratings.dat");
       FileReader reader = new FileReader(usersFile);
       BufferedReader buffer = new BufferedReader(reader);
@@ -125,8 +123,7 @@ public class RatingCalculator {
   void rankGenreBasedRating(int limit) {
     List<String> favoriteGenres = movies.favoriteGenres;
     List<TreeSet<Integer>> similarMovies = new ArrayList<TreeSet<Integer>>();
-    for(int match = 1; match <= favoriteGenres.size(); match++)
-    {
+    for (int match = 1; match <= favoriteGenres.size(); match++) {
       similarMovies.add(movies.searchSimilarID(match, favoriteGenres));
     }
 
@@ -135,24 +132,22 @@ public class RatingCalculator {
       FileReader reader = new FileReader(usersFile);
       BufferedReader buffer = new BufferedReader(reader);
       String line;
-      
-      
+
       while ((line = buffer.readLine()) != null) {
         String[] rating = line.split("::");
         int user = Integer.parseInt(rating[0]);
         int movie = Integer.parseInt(rating[1]);
-        int match =0;
+        int match = 0;
 
-        for(int i = 0; i < similarMovies.size();i++) {
-          if(similarMovies.get(i).contains(movie))
-            match = i+1;
+        for (int i = 0; i < similarMovies.size(); i++) {
+          if (similarMovies.get(i).contains(movie)) match = i + 1;
         }
 
         if (users.isFavorite(user)) {
           if (map.containsKey(movie)) {
-              int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
-              int tcount = map.get(movie).getCount() + 1;
-              map.put(movie, new Rating(tsum, tcount, match));
+            int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
+            int tcount = map.get(movie).getCount() + 1;
+            map.put(movie, new Rating(tsum, tcount, match));
           } else {
             map.put(movie, new Rating(Integer.parseInt(rating[2]), 1, match));
           }
@@ -172,7 +167,6 @@ public class RatingCalculator {
         entry.getValue()
       ); else break;
     }
-
   }
 
   public void calcResult() {

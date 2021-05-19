@@ -16,6 +16,7 @@ public class MovieList {
   Integer favoriteMovieID;
 
   public MovieList() {}
+
   public MovieList(List<String> genres) {
     searchID(genres);
   }
@@ -89,9 +90,13 @@ public class MovieList {
   public List<String> getMoviesName() {
     return movieName;
   }
-  public List<String> getMovieGenres() {return movieGenres;}
 
-  public TreeSet<Integer> searchSimilarID(int match, List<String> genres) throws MovieNotExistError {
+  public List<String> getMovieGenres() {
+    return movieGenres;
+  }
+
+  public TreeSet<Integer> searchSimilarID(int match, List<String> genres)
+    throws MovieNotExistError {
     TreeSet<Integer> simMovies = new TreeSet<>();
     int genres_num = genres.size();
     try {
@@ -120,7 +125,7 @@ public class MovieList {
   }
 
   public void registerFavoriteMovie(String title) throws MovieNotExistError {
-      this.favoriteGenres = Tool.getMovieGenre(title);
-      this.favoriteMovieID = Tool.getMovieID(title);
+    this.favoriteGenres = Tool.getMovieGenre(title);
+    this.favoriteMovieID = Tool.getMovieID(title);
   }
 }
