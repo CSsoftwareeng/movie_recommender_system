@@ -55,7 +55,9 @@ public class RatingCalculator {
   HashMap<Integer, Rating> map = new HashMap<>();
   LinkedHashMap<Integer, Rating> result = new LinkedHashMap<>();
   List<String> names;
+  List<String> genres;
   List<Integer> ID;
+  List moviesResult = new ArrayList<Movie>();
 
   public RatingCalculator(MovieList movieList, UserList userList) {
     calcAverageHash(movieList, userList);
@@ -115,13 +117,16 @@ public class RatingCalculator {
     }
   }
 
-  public void showResult(MovieList movies) {
+  public void calcResult(MovieList movies) {
     String moviename = "";
+    String moviegenre = "";
     String movielink = "";
     int i = 0;
     ID = new ArrayList<>(result.keySet());
     movies.searchName(ID);
     names = movies.getMoviesName();
+    genres = movies.getMovieGenres();
+
     try {
       for (Integer key : result.keySet()) {
         File linkfile = new File("./data/links.dat");
@@ -130,6 +135,7 @@ public class RatingCalculator {
         String data = "";
 
         moviename = names.get(i);
+        moviegenre = genres.get(i);
         i += 1;
 
         while ((data = bufReader.readLine()) != null) {
@@ -139,15 +145,26 @@ public class RatingCalculator {
             break;
           }
         }
-        System.out.println(
-          moviename +
-          " (http://www.imdb.com/title/tt" +
-          movielink +
-          ")" +
-          " Rating : " +
-          result.get(key).getAverage()
+        Movie movie = new Movie(
+          moviename,
+          moviegenre,
+          "(http://www.imdb.com/title/tt" + movielink + ")"
         );
+        this.moviesResult.add(movie);
       }
     } catch (IOException e) {}
+  }
+
+  public void showResult(MovieList movies) {
+    Iterator<Movie> it = moviesResult.iterator();
+    while (it.hasNext()) {
+      System.out.println(
+        it.next().getTitle() + " " + it.next().getImdb() + " Rating : "
+      );
+    }
+  }
+
+  public List getMoviesResult() {
+    return this.moviesResult;
   }
 }
