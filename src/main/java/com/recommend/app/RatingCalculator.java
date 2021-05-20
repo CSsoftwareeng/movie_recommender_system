@@ -87,7 +87,7 @@ public class RatingCalculator {
         int movie = Integer.parseInt(rating[1]);
         int match = movies.countMathcedGenres(movie);
 
-        if (users.isFavorite(user) || !userfilter) {
+        if (!userfilter || users.isFavorite(user)) {
           if (map.containsKey(movie)) {
             int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
             int tcount = map.get(movie).getCount() + 1;
