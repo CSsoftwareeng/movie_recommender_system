@@ -121,11 +121,6 @@ public class RatingCalculator {
   }
 
   void rankGenreBasedRating(int limit) {
-    List<String> favoriteGenres = movies.favoriteGenres;
-    List<TreeSet<Integer>> similarMovies = new ArrayList<TreeSet<Integer>>();
-    for (int match = 1; match <= favoriteGenres.size(); match++) {
-      similarMovies.add(movies.searchSimilarID(match, favoriteGenres));
-    }
 
     try {
       File usersFile = new File("./data/ratings.dat");
@@ -137,11 +132,7 @@ public class RatingCalculator {
         String[] rating = line.split("::");
         int user = Integer.parseInt(rating[0]);
         int movie = Integer.parseInt(rating[1]);
-        int match = 0;
-
-        for (int i = 0; i < similarMovies.size(); i++) {
-          if (similarMovies.get(i).contains(movie)) match = i + 1;
-        }
+        int match = movies.countMathcedGenres(movie);
 
         if (users.isFavorite(user)) {
           if (map.containsKey(movie)) {
