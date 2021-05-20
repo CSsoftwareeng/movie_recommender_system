@@ -4,34 +4,6 @@ import com.recommend.utils.errors.UserNotExistError;
 import java.io.*;
 import java.util.*;
 
-class AvgRating {
-
-  int sum;
-  int count;
-  double average;
-
-  public AvgRating(int sum, int count) {
-    this.sum = sum;
-    this.count = count;
-  }
-
-  public int getSum() {
-    return this.sum;
-  }
-
-  public int getCount() {
-    return this.count;
-  }
-
-  public double getAverage() {
-    return this.average;
-  }
-
-  public void setAverage() {
-    this.average = (double) (this.sum) / (this.count);
-  }
-}
-
 public class UserList {
 
   TreeSet<Integer> matchedUsers = new TreeSet<Integer>();
