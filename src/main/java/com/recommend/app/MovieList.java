@@ -6,16 +6,19 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.lang.reflect.Array;
 
 public class MovieList {
 
   TreeSet<Integer> movies = new TreeSet<Integer>();
   List<String> movieName = new ArrayList<String>();
   List<String> movieGenres = new ArrayList<String>();
-  List<String> favoriteGenre = new ArrayList<String>();
+  List<String> favoriteGenres = new ArrayList<String>();
+  List<TreeSet<Integer>> similarMovies = new ArrayList<TreeSet<Integer>>();
   Integer favoriteMovieID;
 
   public MovieList() {}
+
   public MovieList(List<String> genres) {
     searchID(genres);
   }
@@ -89,12 +92,16 @@ public class MovieList {
   public List<String> getMoviesName() {
     return movieName;
   }
-  public List<String> getMovieGenres() {return movieGenres;} //
 
-  public TreeSet<Integer> searchSimilarID(int match, List<String> genres) throws MovieNotExistError {
-    TreeSet<Integer> simMovies = new TreeSet<>();
-    int genres_num = genres.size();
+  public List<String> getMovieGenres() {
+    return movieGenres;
+  }
+
+  public void searchSimilarID(List<String> genres) {
     try {
+      int genres_num = genres.size();
+      for(int i = 0; i<genres_num; i++)
+        similarMovies.add(new TreeSet<Integer>());
       File moviefile = new File("./data/movies.dat");
       FileReader fileReader = new FileReader(moviefile);
       BufferedReader bufReader = new BufferedReader(fileReader);
@@ -107,45 +114,30 @@ public class MovieList {
             count++;
           }
         }
-        if (count == match) {
-          simMovies.add(Integer.parseInt(temp[0]));
+        if(count > 0) {
+          similarMovies.get(count-1).add(Integer.parseInt(temp[0]));
         }
+        // if (count == match) {
+        //   simMovies.add(Integer.parseInt(temp[0]));
+        // }
       }
-      if (simMovies.isEmpty()) {
-        throw new MovieNotExistError(genres);
-      }
-    } catch (IOException e) {} catch (MovieNotExistError e) {}
-
-    return simMovies;
+    } catch (IOException e) {}
   }
 
-  public void searchFavoriteMovie(String name) throws MovieNotExistError {
-    boolean isFind = false;
-    String raw_name = null;
-    raw_name = name.trim().toLowerCase().replaceAll("\\p{Z}", "").replaceAll("\\p{Punct}", "");
-    try {
-      File moviefile = new File("./data/movies.dat");
-      FileReader fileReader = new FileReader(moviefile);
-      BufferedReader bufReader = new BufferedReader(fileReader);
-      String data = "";
-      while ((data = bufReader.readLine()) != null) {
-        String[] temp = data.split("::");
-        String raw_name2 = null;
-        String raw_name3 = null;
-        raw_name2 = temp[1].trim().toLowerCase().replaceAll("\\p{Z}", "").replaceAll("\\p{Punct}", "");
-        raw_name3 = raw_name2.substring(0, (raw_name2.length()-4));
-        if (raw_name.equals(raw_name2) || raw_name.equals(raw_name3)) {
-          isFind = true;
-          favoriteMovieID = Integer.parseInt(temp[0]);
-          String[] temp_genres = temp[2].split("\\|");
-          favoriteGenre.addAll(Arrays.asList(temp_genres));
-          break;
-        }
-      }
-      if (isFind) {
-        return;
-      }
-      throw new MovieNotExistError(name);
-    } catch (IOException e) {} catch (MovieNotExistError e) {}
+  public void registerFavoriteMovie(String title) throws MovieNotExistError {
+    this.favoriteGenres = Tool.getMovieGenre(title);
+    this.favoriteMovieID = Tool.getMovieID(title);
+    searchSimilarID(favoriteGenres);
   }
+
+  public int countMathcedGenres(int movieID) {
+    int match = 0;
+    for(int i = 0; i < favoriteGenres.size(); i++) {
+      if(similarMovies.get(i).contains(movieID))
+        match = i+1;
+    }
+    return match;
+  }
+
+
 }

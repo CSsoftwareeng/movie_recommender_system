@@ -9,27 +9,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UsersBasedRecommController {
+public class MovieBasedRecommController {
 
-  @GetMapping("/users/recommendations")
-  public List<Movie> userBasedAPI(
-    @RequestBody Map<String, String> requestParams
+  @GetMapping("/movies/recommendations")
+  public List<Movie> movieBasedAPI(
+    @RequestBody Map<String, Object> requestParams
   ) {
     try {
-      String gender = requestParams.get("gender");
-      String age = requestParams.get("age");
-      String occupation = requestParams.get("occupation");
-      String genre = requestParams.get("genre");
-      Arguments arg = new Arguments(gender, age, occupation, genre);
-      MovieList movielist = new MovieList(arg.getGenres());
+      String title = (String)requestParams.get("title");
+      Integer limit = (Integer)requestParams.get("limit");
+      if (limit == null) limit = 10;
+
+      MovieList movielist = new MovieList();
       UserList userlist = new UserList();
-      userlist.searchSimilarUser(
-        arg.getGender(),
-        arg.getAge(),
-        arg.getOccupation()
-      );
+
+      movielist.registerFavoriteMovie(title);
+      userlist.searchFavoriteUsers(title);
+
       RatingCalculator rating = new RatingCalculator(movielist, userlist);
-      rating.rankUserBasedRating(10);
+      rating.rankGenreBasedRating(limit, true);
+      if(rating.numMoviesResult() < limit)
+        rating.rankGenreBasedRating(limit, false);
       rating.calcResult();
       return rating.getMoviesResult();
     } catch (MovieNotExistError e) {} catch (ArgNotExistError e) {} catch (

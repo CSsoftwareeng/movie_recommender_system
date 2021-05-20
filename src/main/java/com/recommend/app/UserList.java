@@ -4,33 +4,6 @@ import com.recommend.utils.errors.UserNotExistError;
 import java.io.*;
 import java.util.*;
 
-class AvgRating {
-  int sum;
-  int count;
-  double average;
-
-  public AvgRating(int sum, int count) {
-    this.sum = sum;
-    this.count = count;
-  }
-
-  public int getSum() {
-    return this.sum;
-  }
-
-  public int getCount() {
-    return this.count;
-  }
-
-  public double getAverage() {
-    return this.average;
-  }
-
-  public void setAverage() {
-    this.average = (double) (this.sum)/(this.count);
-  }
-}
-
 public class UserList {
 
   TreeSet<Integer> matchedUsers = new TreeSet<Integer>();
@@ -89,9 +62,10 @@ public class UserList {
     } catch (IOException e) {}
   }
 
-  void searchFavoriteUsers(int MovieID) {
+  void searchFavoriteUsers(String title) {
     HashMap<Integer, Integer> users = new HashMap<Integer, Integer>();
     HashMap<Integer, AvgRating> usersAvg = new HashMap<Integer, AvgRating>();
+    int MovieID = Tool.getMovieID(title);
     try {
       File ratingFile = new File("./data/ratings.dat");
       FileReader reader = new FileReader(ratingFile);
@@ -113,11 +87,16 @@ public class UserList {
         String[] rating = line.split("::");
         if (users.containsKey(Integer.parseInt(rating[0]))) {
           if (usersAvg.containsKey(Integer.parseInt(rating[0]))) {
-            AvgRating temp = new AvgRating((usersAvg.get(Integer.parseInt(rating[0])).getSum() + Integer.parseInt(rating[2])), (usersAvg.get(Integer.parseInt(rating[0])).getCount()+1));
+            AvgRating temp = new AvgRating(
+              (
+                usersAvg.get(Integer.parseInt(rating[0])).getSum() +
+                Integer.parseInt(rating[2])
+              ),
+              (usersAvg.get(Integer.parseInt(rating[0])).getCount() + 1)
+            );
             temp.setAverage();
             usersAvg.replace(Integer.parseInt(rating[0]), temp);
-          }
-          else {
+          } else {
             AvgRating temp = new AvgRating(Integer.parseInt(rating[2]), 1);
             temp.setAverage();
             usersAvg.put(Integer.parseInt(rating[0]), temp);
@@ -147,5 +126,9 @@ public class UserList {
 
   public boolean isNotSimilar(int userid) {
     return notSimUsers.contains(userid);
+  }
+
+  public boolean isFavorite(int userid) {
+    return favoriteUsers.contains(userid);
   }
 }
