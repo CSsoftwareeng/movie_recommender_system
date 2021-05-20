@@ -28,7 +28,9 @@ public class MovieBasedRecommController {
       userlist.searchFavoriteUsers(title);
 
       RatingCalculator rating = new RatingCalculator(movielist, userlist);
-      rating.rankGenreBasedRating(limit);
+      rating.rankGenreBasedRating(limit, true);
+      if(rating.numMoviesResult() < limit)
+        rating.rankGenreBasedRating(limit, false);
       rating.calcResult();
       return rating.getMoviesResult();
     } catch (MovieNotExistError e) {} catch (ArgNotExistError e) {} catch (
