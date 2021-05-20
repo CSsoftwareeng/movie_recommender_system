@@ -13,13 +13,12 @@ public class MovieBasedRecommController {
 
   @GetMapping("/movies/recommendations")
   public List<Movie> movieBasedAPI(
-    @RequestBody Map<String, String> requestParams
+    @RequestBody Map<String, Object> requestParams
   ) {
     try {
-      String title = requestParams.get("title");
-      String limit_str = requestParams.get("limit");
-      int limit = 10;
-      if (limit_str != null) limit = Integer.parseInt(limit_str);
+      String title = (String)requestParams.get("title");
+      Integer limit = (Integer)requestParams.get("limit");
+      if (limit == null) limit = 10;
 
       MovieList movielist = new MovieList();
       UserList userlist = new UserList();
