@@ -73,7 +73,7 @@ public class RatingCalculator {
     }
   }
 
-  void rankGenreBasedRating(int limit) {
+  void rankGenreBasedRating(int limit, boolean userfilter) {
 
     try {
       File usersFile = new File("./data/ratings.dat");
@@ -87,7 +87,7 @@ public class RatingCalculator {
         int movie = Integer.parseInt(rating[1]);
         int match = movies.countMathcedGenres(movie);
 
-        if (users.isFavorite(user)) {
+        if (users.isFavorite(user) || !userfilter) {
           if (map.containsKey(movie)) {
             int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
             int tcount = map.get(movie).getCount() + 1;
@@ -98,6 +98,12 @@ public class RatingCalculator {
         }
       }
       map.remove(movies.favoriteMovieID);
+      if(!userfilter) {
+        List<Integer> keys = new ArrayList<>(result.keySet());
+        for (Integer key : keys) {
+          map.remove(key);
+        }
+      }
     } catch (IOException e) {}
     
 
@@ -164,5 +170,9 @@ public class RatingCalculator {
 
   public List getMoviesResult() {
     return this.moviesResult;
+  }
+
+  public int numMoviesResult() {
+    return this.result.size();
   }
 }
