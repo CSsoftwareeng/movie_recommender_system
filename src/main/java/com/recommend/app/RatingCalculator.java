@@ -156,7 +156,7 @@ public class RatingCalculator {
       }
     } catch (IOException e) {}
   }
-  
+
   public List getMoviesResult() {
     return this.moviesResult;
   }
