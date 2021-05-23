@@ -26,8 +26,8 @@ public class UsersBasedRecommController {
       String gender = requestParams.get("gender");
       String age = requestParams.get("age");
       String occupation = requestParams.get("occupation");
-      String genre = requestParams.get("genre");
-      Arguments arg = new Arguments(gender, age, occupation, genre);
+      String genres = requestParams.get("genres");
+      Arguments arg = new Arguments(gender, age, occupation, genres);
       MovieList movielist = new MovieList(arg.getGenres());
       UserList userlist = new UserList();
       userlist.searchSimilarUser(
