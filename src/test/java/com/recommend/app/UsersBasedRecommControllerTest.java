@@ -6,147 +6,177 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.springframework.http.MediaType;
 import org.junit.jupiter.api.Test;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 public class UsersBasedRecommControllerTest {
 
-	@Autowired
-	private MockMvc mvc;
+  @Autowired
+  private MockMvc mvc;
 
-	@Test
-	public void validRequest() throws Exception {
+  @Test
+  public void validRequest() throws Exception {
+    String json =
+      "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
 
-		String json = "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
+    mvc
+      .perform(
+        get("/users/recommendations")
+          .content(json)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andExpect(status().isOk());
+  }
 
-		mvc.perform(get("/users/recommendations")
-			.content(json)
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isOk());
-	}
+  @Test
+  public void validRequest_full_conditioned() throws Exception {
+    String json =
+      "{\"gender\" : \"F\", \"age\" : \"30\", \"occupation\" : \"artist\", \"genre\" : \"Romance|comedy\"}";
 
-	@Test
-	public void validRequest_full_conditioned() throws Exception {
+    mvc
+      .perform(
+        get("/users/recommendations")
+          .content(json)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andExpect(status().isOk());
+  }
 
-		String json = "{\"gender\" : \"F\", \"age\" : \"30\", \"occupation\" : \"artist\", \"genre\" : \"Romance|comedy\"}";
+  @Test
+  public void validRequestWoGenres() throws Exception {
+    String json = "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\"}";
 
-		mvc.perform(get("/users/recommendations")
-			.content(json)
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isOk());
-	}
+    mvc
+      .perform(
+        get("/users/recommendations")
+          .content(json)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andExpect(status().isOk());
+  }
 
-	@Test
-	public void validRequestWoGenres() throws Exception {
+  @Test
+  public void TooFewArguments() throws Exception {
+    String json = "{\"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
 
-		String json = "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\"}";
+    mvc
+      .perform(
+        get("/users/recommendations")
+          .content(json)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andExpect(status().isBadRequest())
+      .andExpect(status().reason(containsString("ArgCntError")));
+  }
 
-		mvc.perform(get("/users/recommendations")
-			.content(json)
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isOk());
-	}
+  @Test
+  public void TooManyArguments() throws Exception {
+    String json =
+      "{\"gender\" : \"\", \"age\" : \"-1\", \"agasde\" : \"-1\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
 
-	@Test
-	public void TooFewArguments() throws Exception {
+    mvc
+      .perform(
+        get("/users/recommendations")
+          .content(json)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andExpect(status().isBadRequest())
+      .andExpect(status().reason(containsString("ArgCntError")));
+  }
 
-		String json = "{\"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
+  @Test
+  public void invalidAge() throws Exception {
+    String json =
+      "{\"gender\" : \"\", \"age\" : \"-1\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
 
-		mvc.perform(get("/users/recommendations")
-			.content(json)
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isBadRequest())
-			.andExpect(status().reason(containsString("ArgCntError")));
-	}
+    mvc
+      .perform(
+        get("/users/recommendations")
+          .content(json)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andExpect(status().isBadRequest())
+      .andExpect(status().reason(containsString("age")));
+  }
 
-	@Test
-	public void TooManyArguments() throws Exception {
+  @Test
+  public void invalidGender() throws Exception {
+    String json =
+      "{\"gender\" : \"Q\", \"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
 
-		String json = "{\"gender\" : \"\", \"age\" : \"-1\", \"agasde\" : \"-1\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
+    mvc
+      .perform(
+        get("/users/recommendations")
+          .content(json)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andExpect(status().isBadRequest())
+      .andExpect(status().reason(containsString("gender")));
+  }
 
-		mvc.perform(get("/users/recommendations")
-			.content(json)
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isBadRequest())
-			.andExpect(status().reason(containsString("ArgCntError")));
-	}
+  @Test
+  public void invalidOccupation() throws Exception {
+    String json =
+      "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"Q\", \"genre\" : \"Romance|comedy\"}";
 
-	@Test
-	public void invalidAge() throws Exception {
+    mvc
+      .perform(
+        get("/users/recommendations")
+          .content(json)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andExpect(status().isBadRequest())
+      .andExpect(status().reason(containsString("occupation")));
+  }
 
-		String json = "{\"gender\" : \"\", \"age\" : \"-1\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
+  @Test
+  public void missingAge() throws Exception {
+    String json =
+      "{\"gender\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
 
-		mvc.perform(get("/users/recommendations")
-			.content(json)
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isBadRequest())
-			.andExpect(status().reason(containsString("age")));
-	}
+    mvc
+      .perform(
+        get("/users/recommendations")
+          .content(json)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andExpect(status().isBadRequest())
+      .andExpect(status().reason(containsString("'age' is missing")));
+  }
 
-	@Test
-	public void invalidGender() throws Exception {
+  @Test
+  public void missingGender() throws Exception {
+    String json =
+      "{\"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
 
-		String json = "{\"gender\" : \"Q\", \"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
+    mvc
+      .perform(
+        get("/users/recommendations")
+          .content(json)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andExpect(status().isBadRequest())
+      .andExpect(status().reason(containsString("'gender' is missing")));
+  }
 
-		mvc.perform(get("/users/recommendations")
-			.content(json)
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isBadRequest())
-			.andExpect(status().reason(containsString("gender")));
-	}
+  @Test
+  public void missingOccupation() throws Exception {
+    String json =
+      "{\"gender\" : \"\", \"age\" : \"\", \"genre\" : \"Romance|comedy\"}";
 
-	@Test
-	public void invalidOccupation() throws Exception {
-
-		String json = "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"Q\", \"genre\" : \"Romance|comedy\"}";
-
-		mvc.perform(get("/users/recommendations")
-			.content(json)
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isBadRequest())
-			.andExpect(status().reason(containsString("occupation")));
-	}
-
-	@Test
-	public void missingAge() throws Exception {
-
-		String json = "{\"gender\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
-
-		mvc.perform(get("/users/recommendations")
-			.content(json)
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isBadRequest())
-			.andExpect(status().reason(containsString("'age' is missing")));
-	}
-
-	@Test
-	public void missingGender() throws Exception {
-
-		String json = "{\"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
-
-		mvc.perform(get("/users/recommendations")
-			.content(json)
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isBadRequest())
-			.andExpect(status().reason(containsString("'gender' is missing")));
-	}
-
-	@Test
-	public void missingOccupation() throws Exception {
-
-		String json = "{\"gender\" : \"\", \"age\" : \"\", \"genre\" : \"Romance|comedy\"}";
-
-		mvc.perform(get("/users/recommendations")
-			.content(json)
-			.contentType(MediaType.APPLICATION_JSON))
-			.andExpect(status().isBadRequest())
-			.andExpect(status().reason(containsString("'occupation' is missing")));
-	}
+    mvc
+      .perform(
+        get("/users/recommendations")
+          .content(json)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andExpect(status().isBadRequest())
+      .andExpect(status().reason(containsString("'occupation' is missing")));
+  }
 }

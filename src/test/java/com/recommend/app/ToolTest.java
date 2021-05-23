@@ -9,25 +9,25 @@ public class ToolTest {
 
   @Test(expected = MovieNotExistError.class)
   public void testgetMovieGenre_exception() {
-      Tool.getMovieGenre("NOT EXIST MOVIE TITLE");
+    Tool.getMovieGenre("NOT EXIST MOVIE TITLE");
   }
 
   @Test
   public void testgetMovieGenre() {
-      List<String> Genres = new ArrayList<String>();
-      Genres.add("Animation");
-      Genres.add("Children's");
-      Genres.add("Comedy");
-      Assert.assertEquals(Tool.getMovieGenre("Toy Story (1995)"), Genres);
+    List<String> Genres = new ArrayList<String>();
+    Genres.add("Animation");
+    Genres.add("Children's");
+    Genres.add("Comedy");
+    Assert.assertEquals(Tool.getMovieGenre("Toy Story (1995)"), Genres);
   }
 
   @Test(expected = MovieNotExistError.class)
   public void testgetMovieID_exception() {
-      Tool.getMovieID("NOT EXIST MOVIE TITLE");
+    Tool.getMovieID("NOT EXIST MOVIE TITLE");
   }
 
   @Test
   public void testgetMovieID() {
-      Assert.assertEquals(Tool.getMovieID("Toy Story (1995)"), 1);
+    Assert.assertEquals(Tool.getMovieID("Toy Story (1995)"), 1);
   }
 }
