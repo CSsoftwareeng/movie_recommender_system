@@ -19,15 +19,28 @@ public class UsersBasedRecommController {
     @RequestBody Map<String, String> requestParams
   ) {
     try {
-      if (
-        requestParams.size() <= 2 || requestParams.size() > 4
-      ) throw new ArgCntError((Integer) requestParams.size());
-
       String gender = requestParams.get("gender");
       String age = requestParams.get("age");
       String occupation = requestParams.get("occupation");
       String genres = requestParams.get("genres");
-      Arguments arg = new Arguments(gender, age, occupation, genres);
+      
+      if (
+        requestParams.size() <= 2 || requestParams.size() > 4
+      ) throw new ArgCntError((Integer) requestParams.size());
+        
+      if (gender == null)
+        throw new ArgMissingError("gender");
+      else if(age == null)
+        throw new ArgMissingError("age");
+      else if(occupation == null)
+        throw new ArgMissingError("occupation");
+
+      Arguments arg;
+      if (genres == null)
+        arg = new Arguments(gender, age, occupation);
+      else
+        arg = new Arguments(gender, age, occupation, genres);
+      
       MovieList movielist = new MovieList(arg.getGenres());
       UserList userlist = new UserList();
       userlist.searchSimilarUser(
@@ -44,6 +57,8 @@ public class UsersBasedRecommController {
     } catch (ArgNotExistError e) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
     } catch (ArgCntError e) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+    } catch (ArgMissingError e) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
     }
   }

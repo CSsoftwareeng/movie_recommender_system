@@ -42,8 +42,6 @@ public class MovieBasedRecommController {
       return rating.getMoviesResult();
     } catch (MovieNotExistError e) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
-    } catch (ArgNotExistError e) {
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
     } catch (ArgCntError e) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
     }
