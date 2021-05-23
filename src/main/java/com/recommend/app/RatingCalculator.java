@@ -156,16 +156,7 @@ public class RatingCalculator {
       }
     } catch (IOException e) {}
   }
-
-  public void showResult(MovieList movies) {
-    Iterator<Movie> it = moviesResult.iterator();
-    while (it.hasNext()) {
-      System.out.println(
-        it.next().getTitle() + " " + it.next().getImdb() + " Rating : "
-      );
-    }
-  }
-
+  
   public List getMoviesResult() {
     return this.moviesResult;
   }
