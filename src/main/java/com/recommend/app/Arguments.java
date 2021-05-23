@@ -132,9 +132,7 @@ public class Arguments {
   }
 
   void parseAge() throws ArgNotExistError {
-    if (this.age == null) return; 
-    else if(this.age.equals("")) return;
-    else {
+    if (this.age.equals("")) return; else {
       int ageToNum = Integer.parseInt(this.age);
       if (ageToNum >= 0 && ageToNum < 18) this.age = "1"; else if (
         ageToNum >= 18 && ageToNum <= 24

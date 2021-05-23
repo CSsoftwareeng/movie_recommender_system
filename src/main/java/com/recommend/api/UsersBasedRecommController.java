@@ -23,24 +23,22 @@ public class UsersBasedRecommController {
       String age = requestParams.get("age");
       String occupation = requestParams.get("occupation");
       String genres = requestParams.get("genres");
-      
+
       if (
         requestParams.size() <= 2 || requestParams.size() > 4
       ) throw new ArgCntError((Integer) requestParams.size());
-        
-      if (gender == null)
-        throw new ArgMissingError("gender");
-      else if(age == null)
-        throw new ArgMissingError("age");
-      else if(occupation == null)
-        throw new ArgMissingError("occupation");
+
+      if (gender == null) throw new ArgMissingError("gender"); else if (
+        age == null
+      ) throw new ArgMissingError("age"); else if (
+        occupation == null
+      ) throw new ArgMissingError("occupation");
 
       Arguments arg;
-      if (genres == null)
-        arg = new Arguments(gender, age, occupation);
-      else
-        arg = new Arguments(gender, age, occupation, genres);
-      
+      if (genres == null) arg =
+        new Arguments(gender, age, occupation); else arg =
+        new Arguments(gender, age, occupation, genres);
+
       MovieList movielist = new MovieList(arg.getGenres());
       UserList userlist = new UserList();
       userlist.searchSimilarUser(
