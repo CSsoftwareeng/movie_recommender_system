@@ -118,9 +118,6 @@ public class MovieList {
         if (count > 0) {
           similarMovies.get(count - 1).add(Integer.parseInt(temp[0]));
         }
-        // if (count == match) {
-        //   simMovies.add(Integer.parseInt(temp[0]));
-        // }
       }
     } catch (IOException e) {}
   }
