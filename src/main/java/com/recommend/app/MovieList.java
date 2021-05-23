@@ -124,7 +124,7 @@ public class MovieList {
     } catch (IOException e) {}
   }
 
-  public void registerFavoriteMovie(String title) throws MovieNotExistError {
+  public void registerFavoriteMovie(String title) {
     this.favoriteGenres = Tool.getMovieGenre(title);
     this.favoriteMovieID = Tool.getMovieID(title);
     searchSimilarID(favoriteGenres);

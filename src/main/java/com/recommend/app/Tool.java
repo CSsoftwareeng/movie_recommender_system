@@ -45,7 +45,7 @@ public class Tool {
       if (!isFind) {
         throw new MovieNotExistError(name);
       }
-    } catch (IOException e) {} catch (MovieNotExistError e) {}
+    } catch (IOException e) {}
     return Genres;
   }
 
@@ -83,7 +83,7 @@ public class Tool {
       if (!isFind) {
         throw new MovieNotExistError(name);
       }
-    } catch (IOException e) {} catch (MovieNotExistError e) {}
+    } catch (IOException e) {}
     return favoriteMovieID;
   }
 }
