@@ -74,7 +74,6 @@ public class RatingCalculator {
   }
 
   void rankGenreBasedRating(int limit, boolean userfilter) {
-
     try {
       File usersFile = new File("./data/ratings.dat");
       FileReader reader = new FileReader(usersFile);
@@ -98,14 +97,13 @@ public class RatingCalculator {
         }
       }
       map.remove(movies.favoriteMovieID);
-      if(!userfilter) {
+      if (!userfilter) {
         List<Integer> keys = new ArrayList<>(result.keySet());
         for (Integer key : keys) {
           map.remove(key);
         }
       }
     } catch (IOException e) {}
-    
 
     List<Map.Entry<Integer, Rating>> entries = new LinkedList<>(map.entrySet());
     Collections.sort(
