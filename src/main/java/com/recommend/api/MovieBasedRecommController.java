@@ -19,10 +19,11 @@ public class MovieBasedRecommController {
     @RequestBody Map<String, Object> requestParams
   ) {
     try {
-      if (requestParams.size() > 2) throw new ArgCntError(
-        (Integer) requestParams.size()
-      );
+      if (
+        requestParams.size() == 0 || requestParams.size() > 2
+      ) throw new ArgCntError((Integer) requestParams.size());
       String title = (String) requestParams.get("title");
+      if (title == null) throw new ArgMissingError("title");
       Integer limit = (Integer) requestParams.get("limit");
       if (limit == null) limit = 10;
 
@@ -43,6 +44,8 @@ public class MovieBasedRecommController {
     } catch (MovieNotExistError e) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
     } catch (ArgCntError e) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+    } catch (ArgMissingError e) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
     }
   }
