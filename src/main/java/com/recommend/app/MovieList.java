@@ -5,8 +5,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
 import java.lang.reflect.Array;
+import java.util.*;
 
 public class MovieList {
 
@@ -100,8 +100,9 @@ public class MovieList {
   public void searchSimilarID(List<String> genres) {
     try {
       int genres_num = genres.size();
-      for(int i = 0; i<genres_num; i++)
-        similarMovies.add(new TreeSet<Integer>());
+      for (int i = 0; i < genres_num; i++) similarMovies.add(
+        new TreeSet<Integer>()
+      );
       File moviefile = new File("./data/movies.dat");
       FileReader fileReader = new FileReader(moviefile);
       BufferedReader bufReader = new BufferedReader(fileReader);
@@ -114,8 +115,8 @@ public class MovieList {
             count++;
           }
         }
-        if(count > 0) {
-          similarMovies.get(count-1).add(Integer.parseInt(temp[0]));
+        if (count > 0) {
+          similarMovies.get(count - 1).add(Integer.parseInt(temp[0]));
         }
         // if (count == match) {
         //   simMovies.add(Integer.parseInt(temp[0]));
@@ -132,12 +133,9 @@ public class MovieList {
 
   public int countMathcedGenres(int movieID) {
     int match = 0;
-    for(int i = 0; i < favoriteGenres.size(); i++) {
-      if(similarMovies.get(i).contains(movieID))
-        match = i+1;
+    for (int i = 0; i < favoriteGenres.size(); i++) {
+      if (similarMovies.get(i).contains(movieID)) match = i + 1;
     }
     return match;
   }
-
-
 }
