@@ -5,8 +5,8 @@
 
 FROM ubuntu:20.04
 
-RUN apt-get update && apt-get install -y openssh-server
-RUN apt-get -y install git gcc g++ python3 vim python3-pip curl
+RUN apt-get update && apt-get install -y openssh-server curl
+RUN apt-get -y install git gcc g++ python3 vim python3-pip
 RUN pip3 install essential_generators
 
 RUN apt-get install -y openjdk-11-jdk
