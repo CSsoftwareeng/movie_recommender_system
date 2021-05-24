@@ -148,11 +148,11 @@ sed -i 's/\r$//' run.sh
 
 With a vaild input, the output of this program is a list of [limit] moives like:
 
-```
+```json
 {
-  “title”: “xxx”,
-  “genres”: “xxx”,
-  “imdb”: “https://www.imdb.com/title/ttXXXXXXX”
+  "title": "xxx",
+  "genres": "xxx",
+  "imdb": "https://www.imdb.com/title/ttXXXXXXX"
 }
 ```
 
