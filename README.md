@@ -10,7 +10,7 @@ The program calculates the average movie rating of users who are similar to you 
 
 ### Recommend movies given a movie title
 
-The program calculates the average movie rating of similiar movies and recommends movies in the highest order(These processes are executed in rankGenreBasedRating method in RatingCalculator.class). The program only uses data from users who rated a given movie above the average rating of each user(These processes are executed in searchFavoriteUsers method in UserList.class). And movies that match the genre of the given movie are recommended. Similar to recommending movies based on given user data, if the limit is not met, the number of matching genres is reduced by 1(These processes are executed in searchSimilarID method in MovieList.class).
+The program calculates the average movie rating of similar movies and recommends movies in the highest order(These processes are executed in rankGenreBasedRating method in RatingCalculator.class). The program only uses data from users who rated a given movie above the average rating of each user(These processes are executed in searchFavoriteUsers method in UserList.class). And movies that match the genre of the given movie are recommended. Similar to recommending movies based on given user data, if the limit is not met, the number of matching genres is reduced by 1(These processes are executed in searchSimilarID method in MovieList.class).
 
 ---
 
@@ -27,7 +27,7 @@ docker run -it --name container cse364-ubuntu20.04/movie_recommender_os
 
 ## Getting Started
 
-Clone and change directory to this repository, then start spring-boot aplication:
+Clone and change directory to this repository, then start spring-boot application:
 
 ```sh
 git clone https://github.com/CSsoftwareeng/movie_recommender_system.git
@@ -99,9 +99,9 @@ This is an argument style guide when you request **GET** with **/users/recommend
 **[genres]**
 
 - Enter the movie genres you want with double quotes -> Ex : "Documentary"
-- You can put multiple genres seperated with '|' -> Ex : "Adventure|Comedy"
+- You can put multiple genres separated with '|' -> Ex : "Adventure|Comedy"
 - Output is a list of recommended movies that belong to at least one selected categories.
-- If you pass through an genres as an empty string "", the program doesn't take genres into account when selecting a list of recommended movies.
+- If you pass through an genre as an empty string "", the program doesn't take genres into account when selecting a list of recommended movies.
 - Genres can be chosen from the following choices:<br/>
 
 |    Action     | Adventure  |  Animation  | Children's  |   Comedy    |   Crime    | Documentary  |  Drama  |   Fantasy   |
@@ -155,13 +155,13 @@ This is an argument style guide when you request **GET** with **/movies/recommen
 
 ---
 
-### **For user convenience, follwing cases are acceptable as arguments:**
+### **For user convenience, following cases are acceptable as arguments:**
 
       1. Case-insensitive
       2. Fixing a spacing error
       3. In case that '-' is omitted or replaced by spacing
 
-For example, both cases shown below will yield same outputs.
+For example, both cases shown below will yield the same outputs.
 
 ```json
 {
@@ -225,7 +225,7 @@ curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:applic
 }
 ```
 
-### 3. the movie title that is given is does not exist.
+### 3. the movie title that is given does not exist.
 
 - input
 
@@ -245,7 +245,7 @@ curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:applic
 }
 ```
 
-### 4. the invlid arguments are put as specified in **User Guide**.
+### 4. the invalid arguments are put as specified in **User Guide**.
 
 ```sh
 curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "F", "age": "15", "occupation":"NOT_EXISTING_JOB"}'|json_pp
@@ -265,7 +265,7 @@ curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:applica
 
 ---
 
-With a vaild input, the output of this program is a list of 10 or [limit] moives like:
+With a valid input, the output of this program is a list of 10 or [limit] moives like:
 
 ```json
 {
