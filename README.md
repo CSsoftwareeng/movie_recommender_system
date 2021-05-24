@@ -145,7 +145,5 @@ Sample2:<br/>
 
 ------------------------------------------
 ## Authors
--김형규: develops Userlist class and refactoring Error Classes<br/>
--문지헌: write README<br/>
--차준형: develops Arguments class and MainClass<br/>
--홍다빈: develops Movielist class and 
+
+-김형규: developed movie-based REST controller and wrote test codes<br/> -문지헌: write README<br/> -차준형: developed user-based REST controller and refactored error handlers<br/> -홍다빈: developed movie-based recommend system algorithms.
