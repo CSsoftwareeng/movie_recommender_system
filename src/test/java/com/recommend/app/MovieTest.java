@@ -7,7 +7,7 @@ import org.junit.Test;
 public class MovieTest {
 
   @Test
-  public void testConstruction() {
+  public void testConstructor() {
     Movie movie = new Movie("title", "genres", "imdb");
     Assert.assertEquals("title", movie.getTitle());
     Assert.assertEquals("genres", movie.getGenres());

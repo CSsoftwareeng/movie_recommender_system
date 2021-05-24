@@ -7,7 +7,7 @@ import org.junit.Test;
 public class AvgRatingTest {
 
   @Test
-  public void testMethod() {
+  public void testMethods() {
     AvgRating rating = new AvgRating(10, 5);
     Assert.assertEquals(10, rating.getSum());
     Assert.assertEquals(5, rating.getCount());

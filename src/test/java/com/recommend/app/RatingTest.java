@@ -7,19 +7,19 @@ import org.junit.Test;
 public class RatingTest {
 
   @Test
-  public void testgetSum() {
+  public void testGetSum() {
     Rating rating = new Rating(10, 5, 2);
     Assert.assertEquals(rating.getSum(), 10);
   }
 
   @Test
-  public void testgetCount() {
+  public void testGetCount() {
     Rating rating = new Rating(10, 5, 2);
     Assert.assertEquals(rating.getCount(), 5);
   }
 
   @Test
-  public void testgetAverage() {
+  public void testGetAverage() {
     Rating rating = new Rating(10, 5, 2);
     int exp = (int) 2.0;
     int act = (int) rating.getAverage();
@@ -27,13 +27,13 @@ public class RatingTest {
   }
 
   @Test
-  public void testgetMatch() {
+  public void testGetMatch() {
     Rating rating = new Rating(10, 5, 2);
     Assert.assertEquals(rating.getMatch(), 2);
   }
 
   @Test
-  public void testcompareto() {
+  public void testCompareTo() {
     Rating rating1 = new Rating(10, 2, 2);
     Rating rating2 = new Rating(10, 5, 3);
     Rating rating3 = new Rating(10, 2, 3);

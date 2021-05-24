@@ -95,7 +95,7 @@ public class MovieListTest {
   }
 
   @Test
-  public void testsearchSimilarID() {
+  public void testSearchSimilarID() {
     MovieList movie = new MovieList();
     List<String> genres = new ArrayList<String>();
     genres.add("Romance");
@@ -106,7 +106,7 @@ public class MovieListTest {
   }
 
   @Test
-  public void testregisterFavoriteMovie() {
+  public void testRegisterFavoriteMovie() {
     MovieList movie = new MovieList();
     movie.registerFavoriteMovie("Toy Story (1995)");
 
