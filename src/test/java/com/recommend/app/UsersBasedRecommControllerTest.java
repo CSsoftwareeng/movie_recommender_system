@@ -4,6 +4,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,7 @@ public class UsersBasedRecommControllerTest {
   private MockMvc mvc;
 
   @Test
-  public void validRequest() throws Exception {
+  public void testValidRequest() throws Exception {
     String json =
       "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
 
@@ -31,11 +32,12 @@ public class UsersBasedRecommControllerTest {
           .content(json)
           .contentType(MediaType.APPLICATION_JSON)
       )
-      .andExpect(status().isOk());
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$.length()").value(10));
   }
 
   @Test
-  public void validRequest_full_conditioned() throws Exception {
+  public void testValidRequestWithFullConditions() throws Exception {
     String json =
       "{\"gender\" : \"F\", \"age\" : \"30\", \"occupation\" : \"artist\", \"genre\" : \"Romance|comedy\"}";
 
@@ -45,11 +47,12 @@ public class UsersBasedRecommControllerTest {
           .content(json)
           .contentType(MediaType.APPLICATION_JSON)
       )
-      .andExpect(status().isOk());
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$.length()").value(10));
   }
 
   @Test
-  public void validRequestWoGenres() throws Exception {
+  public void testValidRequestWoGenres() throws Exception {
     String json = "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\"}";
 
     mvc
@@ -58,11 +61,12 @@ public class UsersBasedRecommControllerTest {
           .content(json)
           .contentType(MediaType.APPLICATION_JSON)
       )
-      .andExpect(status().isOk());
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$.length()").value(10));
   }
 
   @Test
-  public void TooFewArguments() throws Exception {
+  public void testTooFewArguments() throws Exception {
     String json = "{\"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
 
     mvc
@@ -76,9 +80,9 @@ public class UsersBasedRecommControllerTest {
   }
 
   @Test
-  public void TooManyArguments() throws Exception {
+  public void testTooManyArguments() throws Exception {
     String json =
-      "{\"gender\" : \"\", \"age\" : \"-1\", \"agasde\" : \"-1\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
+      "{ \"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\", \"DUMMY_FILED\" : \"DUMMY_STRING\"}";
 
     mvc
       .perform(
@@ -91,7 +95,7 @@ public class UsersBasedRecommControllerTest {
   }
 
   @Test
-  public void invalidAge() throws Exception {
+  public void testInvalidAge() throws Exception {
     String json =
       "{\"gender\" : \"\", \"age\" : \"-1\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
 
@@ -106,7 +110,7 @@ public class UsersBasedRecommControllerTest {
   }
 
   @Test
-  public void invalidGender() throws Exception {
+  public void testInvalidGender() throws Exception {
     String json =
       "{\"gender\" : \"Q\", \"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
 
@@ -121,7 +125,7 @@ public class UsersBasedRecommControllerTest {
   }
 
   @Test
-  public void invalidOccupation() throws Exception {
+  public void testInvalidOccupation() throws Exception {
     String json =
       "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"Q\", \"genre\" : \"Romance|comedy\"}";
 
@@ -136,44 +140,36 @@ public class UsersBasedRecommControllerTest {
   }
 
   @Test
-  public void missingAge() throws Exception {
-    String json =
+  public void testMissingArgument() throws Exception {
+    String jsonMissingAge =
       "{\"gender\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
-
-    mvc
-      .perform(
-        get("/users/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
-      )
-      .andExpect(status().isBadRequest())
-      .andExpect(status().reason(containsString("'age' is missing")));
-  }
-
-  @Test
-  public void missingGender() throws Exception {
-    String json =
+    String jsonMissingGender =
       "{\"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
-
-    mvc
-      .perform(
-        get("/users/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
-      )
-      .andExpect(status().isBadRequest())
-      .andExpect(status().reason(containsString("'gender' is missing")));
-  }
-
-  @Test
-  public void missingOccupation() throws Exception {
-    String json =
+    String jsonMissingOccupation =
       "{\"gender\" : \"\", \"age\" : \"\", \"genre\" : \"Romance|comedy\"}";
 
     mvc
       .perform(
         get("/users/recommendations")
-          .content(json)
+          .content(jsonMissingAge)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andExpect(status().isBadRequest())
+      .andExpect(status().reason(containsString("'age' is missing")));
+
+    mvc
+      .perform(
+        get("/users/recommendations")
+          .content(jsonMissingGender)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andExpect(status().isBadRequest())
+      .andExpect(status().reason(containsString("'gender' is missing")));
+
+    mvc
+      .perform(
+        get("/users/recommendations")
+          .content(jsonMissingOccupation)
           .contentType(MediaType.APPLICATION_JSON)
       )
       .andExpect(status().isBadRequest())

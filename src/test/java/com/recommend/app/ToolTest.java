@@ -8,12 +8,12 @@ import org.junit.Test;
 public class ToolTest {
 
   @Test(expected = MovieNotExistError.class)
-  public void testgetMovieGenre_exception() {
-    Tool.getMovieGenre("NOT EXIST MOVIE TITLE");
+  public void testGetMovieGenreNotExistMovie() {
+    Tool.getMovieGenre("NOT_EXIST_MOVIE_TITLE");
   }
 
   @Test
-  public void testgetMovieGenre() {
+  public void testGetMovieGenre() {
     List<String> Genres = new ArrayList<String>();
     Genres.add("Animation");
     Genres.add("Children's");
@@ -22,12 +22,14 @@ public class ToolTest {
   }
 
   @Test(expected = MovieNotExistError.class)
-  public void testgetMovieID_exception() {
-    Tool.getMovieID("NOT EXIST MOVIE TITLE");
+  public void testGetMovieIdNotExistMovie() {
+    Tool.getMovieID("NOT_EXIST_MOVIE_TITLE");
   }
 
   @Test
   public void testgetMovieID() {
     Assert.assertEquals(Tool.getMovieID("Toy Story (1995)"), 1);
+    Assert.assertEquals(Tool.getMovieID("American President, The (1995)"), 11);
+    Assert.assertEquals(Tool.getMovieID("Instinct (1999)"), 2676);
   }
 }

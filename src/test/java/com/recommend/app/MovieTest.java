@@ -13,5 +13,4 @@ public class MovieTest {
     Assert.assertEquals("genres", movie.getGenres());
     Assert.assertEquals("imdb", movie.getImdb());
   }
-
 }

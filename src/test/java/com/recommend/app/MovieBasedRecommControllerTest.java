@@ -4,14 +4,17 @@ import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -21,7 +24,7 @@ public class MovieBasedRecommControllerTest {
   private MockMvc mvc;
 
   @Test
-  public void validRequest() throws Exception {
+  public void testValidRequest() throws Exception {
     String json = "{\"title\" : \"Toy Story (1995)\", \"limit\" : 20}";
 
     mvc
@@ -30,24 +33,40 @@ public class MovieBasedRecommControllerTest {
           .content(json)
           .contentType(MediaType.APPLICATION_JSON)
       )
-      .andExpect(status().isOk());
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$.length()").value(20));
   }
 
   @Test
-  public void validRequestwoYear() throws Exception {
-    String json = "{\"title\" : \"Toy Story\", \"limit\" : 20}";
+  public void testValidRequestWoYear() throws Exception {
+    String jsonWithYear = "{\"title\" : \"Toy Story (1995)\", \"limit\" : 20}";
+    String jsonWoYear = "{\"title\" : \"Toy Story\", \"limit\" : 20}";
 
-    mvc
+    MvcResult resultWithYear = mvc
       .perform(
         get("/movies/recommendations")
-          .content(json)
+          .content(jsonWithYear)
           .contentType(MediaType.APPLICATION_JSON)
       )
-      .andExpect(status().isOk());
+      .andReturn();
+
+    String contentWithYear = resultWithYear.getResponse().getContentAsString();
+
+    MvcResult resultWoYear = mvc
+      .perform(
+        get("/movies/recommendations")
+          .content(jsonWoYear)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andReturn();
+
+    String contentWoYear = resultWoYear.getResponse().getContentAsString();
+
+    Assert.assertEquals(contentWithYear, contentWoYear);
   }
 
   @Test
-  public void validRequestwExtremeLimit() throws Exception {
+  public void testValidRequestWithExtremeLimit() throws Exception {
     String json = "{\"title\" : \"Toy Story (1995)\", \"limit\" : 4000}";
 
     mvc
@@ -60,7 +79,7 @@ public class MovieBasedRecommControllerTest {
   }
 
   @Test
-  public void validRequestwoLimit() throws Exception {
+  public void testValidRequestWoLimit() throws Exception {
     String json = "{\"title\" : \"Toy Story (1995)\"}";
 
     mvc
@@ -69,11 +88,12 @@ public class MovieBasedRecommControllerTest {
           .content(json)
           .contentType(MediaType.APPLICATION_JSON)
       )
-      .andExpect(status().isOk());
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$.length()").value(10));
   }
 
   @Test
-  public void TooFewArguments() throws Exception {
+  public void testTooFewArguments() throws Exception {
     String json = "{}";
 
     mvc
@@ -87,8 +107,8 @@ public class MovieBasedRecommControllerTest {
   }
 
   @Test
-  public void invalidTitle() throws Exception {
-    String json = "{\"title\" : \"To Story (1995)\", \"limit\" : 20}";
+  public void testInvalidTitle() throws Exception {
+    String json = "{\"title\" : \"INVALID_STRING\", \"limit\" : 20}";
 
     mvc
       .perform(
@@ -101,7 +121,7 @@ public class MovieBasedRecommControllerTest {
   }
 
   @Test
-  public void missingTitle() throws Exception {
+  public void testMissingTitle() throws Exception {
     String json = "{\"limit\" : 20}";
 
     mvc
@@ -114,67 +134,3 @@ public class MovieBasedRecommControllerTest {
       .andExpect(status().reason(containsString("ArgMissingError")));
   }
 }
-// 	@Test
-// 	public void TooManyArguments() throws Exception {
-// 		String json = "{\"gender\" : \"\", \"age\" : \"-1\", \"agasde\" : \"-1\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
-// 		mvc.perform(get("/users/recommendations")
-// 			.content(json)
-// 			.contentType(MediaType.APPLICATION_JSON))
-// 			.andExpect(status().isBadRequest())
-// 			.andExpect(status().reason(containsString("ArgCntError")));
-// 	}
-// 	@Test
-// 	public void invalidAge() throws Exception {
-// 		String json = "{\"gender\" : \"\", \"age\" : \"-1\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
-// 		mvc.perform(get("/users/recommendations")
-// 			.content(json)
-// 			.contentType(MediaType.APPLICATION_JSON))
-// 			.andExpect(status().isBadRequest())
-// 			.andExpect(status().reason(containsString("age")));
-// 	}
-// 	@Test
-// 	public void invalidGender() throws Exception {
-// 		String json = "{\"gender\" : \"Q\", \"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
-// 		mvc.perform(get("/users/recommendations")
-// 			.content(json)
-// 			.contentType(MediaType.APPLICATION_JSON))
-// 			.andExpect(status().isBadRequest())
-// 			.andExpect(status().reason(containsString("gender")));
-// 	}
-// 	@Test
-// 	public void invalidOccupation() throws Exception {
-// 		String json = "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"Q\", \"genre\" : \"Romance|comedy\"}";
-// 		mvc.perform(get("/users/recommendations")
-// 			.content(json)
-// 			.contentType(MediaType.APPLICATION_JSON))
-// 			.andExpect(status().isBadRequest())
-// 			.andExpect(status().reason(containsString("occupation")));
-// 	}
-// 	@Test
-// 	public void missingAge() throws Exception {
-// 		String json = "{\"gender\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
-// 		mvc.perform(get("/users/recommendations")
-// 			.content(json)
-// 			.contentType(MediaType.APPLICATION_JSON))
-// 			.andExpect(status().isBadRequest())
-// 			.andExpect(status().reason(containsString("'age' is missing")));
-// 	}
-// 	@Test
-// 	public void missingGender() throws Exception {
-// 		String json = "{\"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
-// 		mvc.perform(get("/users/recommendations")
-// 			.content(json)
-// 			.contentType(MediaType.APPLICATION_JSON))
-// 			.andExpect(status().isBadRequest())
-// 			.andExpect(status().reason(containsString("'gender' is missing")));
-// 	}
-// 	@Test
-// 	public void missingOccupation() throws Exception {
-// 		String json = "{\"gender\" : \"\", \"age\" : \"\", \"genre\" : \"Romance|comedy\"}";
-// 		mvc.perform(get("/users/recommendations")
-// 			.content(json)
-// 			.contentType(MediaType.APPLICATION_JSON))
-// 			.andExpect(status().isBadRequest())
-// 			.andExpect(status().reason(containsString("'occupation' is missing")));
-// 	}
-// }
