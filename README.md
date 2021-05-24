@@ -11,27 +11,31 @@ Also, the program calculates the average movie rating of users who are similar t
 ------------------------------------------
 ## Building Docker Image
 This program will be executed on the Ubuntu20:04. Building docker image, the docker file will install 'openjdk-11-jdk' and 'maven' on the Ubuntu. Then 'run.sh' file will be migrated to the docker container.
-```
+
+```sh
 docker build -t cse364-ubuntu20.04/movie_recommender_os .
 docker run -it --name container cse364-ubuntu20.04/movie_recommender_os
 ```
 ------------------------------------------
 ## Getting Started
 Clone and change directory to this repository, then start spring-boot aplication:
-```
+
+```sh
 git clone https://github.com/CSsoftwareeng/movie_recommender_system.git
 cd movie_recommender_system
 mvn spring-boot:run
 ```
 Now, you can start this program with arguments:
-```
+
+```sh
 curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d ‘{“title”: [title], “limit”: [limit]}’
 curl -X GET http://localhost:8080/users/recommendations -H ‘Content-type:application/json’ -d ‘{“gender”: [gender], “age”: [age], “occupation”: [occupation], “genre”: [genres]}’
 ```
 
 
 Examples:
-```
+
+```sh
 curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d ‘{“title”: “Toy Story (1995)”, “limit”: 20}’
 curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d ‘{“title”: “Toy Story (1995)”}’
 curl -X GET http://localhost:8080/users/recommendations -H ‘Content-type:application/json’ -d ‘{“gender”: “F”, “age”: “25”, “occupation”: “Grad student”, “genre”: “Action|War”}’
@@ -42,7 +46,8 @@ curl -X GET http://localhost:8080/users/recommendations -H ‘Content-type:appli
 Note:
 If you compile with run.sh script file in container on top of local Windows machine,<br/>
 you may need to replace 'new line character' properly with below command.
-```
+
+```sh
 sed -i 's/\r$//' run.sh
 ```
 ------------------------------------------
