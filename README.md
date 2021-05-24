@@ -52,8 +52,8 @@ Examples:
 ```sh
 curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender" : "", "age" : "", "occupation" : "", "genre" : "Romance|comedy"}' |json_pp
 curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "M", "age": "", "occupation": "retired", "genre": ""}' |json_pp
-curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d ‘{"title": "Toy Story (1995)", "limit": 20}’ |json_pp
-curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d ‘{"title": "Toy Story (1995)"}’ |json_pp
+curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d '{"title": "Toy Story (1995)", "limit": 20}' |json_pp
+curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d '{"title": "Toy Story (1995)"}' |json_pp
 ```
 
 Note:
@@ -190,7 +190,7 @@ For example, both cases shown below will yield same outputs.
 - input
 
 ```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "F", "age": "15"}'
+curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "F", "age": "15"}'|json_pp
 ```
 
 - output
@@ -210,7 +210,7 @@ curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:applica
 - input
 
 ```sh
-curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"movie_name": "Toy Story", "limit": 15}'
+curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"movie_name": "Toy Story", "limit": 15}'|json_pp
 ```
 
 - output
@@ -230,7 +230,7 @@ curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:applic
 - input
 
 ```sh
-curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": "NOT_EXISTING_MOVIE", "limit": 15}'
+curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": "NOT_EXISTING_MOVIE", "limit": 15}'|json_pp
 ```
 
 - output
@@ -248,7 +248,7 @@ curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:applic
 ### 4. the invlid arguments are put as specified in **User Guide**.
 
 ```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "F", "age": "15", "occupation":"NOT_EXISTING_JOB"}'
+curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "F", "age": "15", "occupation":"NOT_EXISTING_JOB"}'|json_pp
 ```
 
 - output
