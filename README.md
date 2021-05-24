@@ -36,17 +36,17 @@ mvn spring-boot:run
 Now, you can start this program with arguments:
 
 ```sh
-curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d ‘{“title”: [title], “limit”: [limit]}’
-curl -X GET http://localhost:8080/users/recommendations -H ‘Content-type:application/json’ -d ‘{“gender”: [gender], “age”: [age], “occupation”: [occupation], “genre”: [genres]}’
+curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": [title], "limi”": [limit]}'
+curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": [gender], "ag”": [age], "occupation": [occupation], "genre": [genres]}'
 ```
 
 Examples:
 
 ```sh
-curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d ‘{“title”: “Toy Story (1995)”, “limit”: 20}’
-curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d ‘{“title”: “Toy Story (1995)”}’
-curl -X GET http://localhost:8080/users/recommendations -H ‘Content-type:application/json’ -d ‘{“gender”: “F”, “age”: “25”, “occupation”: “Grad student”, “genre”: “Action|War”}’
-curl -X GET http://localhost:8080/users/recommendations -H ‘Content-type:application/json’ -d ‘{“gender”: “M”, “age”: “”, “occupation”: “retired”, “genres”: “”}’
+curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": "Toy Story (1995)", "limit": 20}'
+curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": "Toy Story (1995)"}'
+curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "F", "age": "25", "occupation": "Grad student", "genre": "Action|War"}'
+curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "M", "age": "", "occupation": "retired", "genres": ""}'
 
 ```
 
@@ -106,7 +106,7 @@ sed -i 's/\r$//' run.sh
 
 **[title]**
 
-- Enter the title with double quotes -> Ex : “Toy Story (1995)”
+- Enter the title with double quotes -> Ex : "Toy Story (1995)"
 - Only one title is allowed.
 - If you find movies based on movie title, you must enter movie title.
 - Although the results are well provided even if the year is not written, it is recommended to write the year with title for accurate results.
