@@ -279,62 +279,63 @@ Sample for Recommend Top 10 movies given user data:<br/>
 -Input:
 
 ```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender" : "", "age" : "", "occupation" : "", "genre" : "Romance|comedy"}' |json_pp
+curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender" : "", "age" : "", "occupation" : "", "genres" : "Romance|comedy"}' | json_pp
 ```
 
 -Output:
 
-```sh
-{
-    "genres" : "Documentary",
-    "imdb" : "(http://www.imdb.com/title/tt0113147)",
-    "title" : "Gate of Heavenly Peace, The (1995)"
- },
- {
-    "genres" : "Drama",
-    "imdb" : "(http://www.imdb.com/title/tt0114354)",
-    "title" : "Schlafes Bruder (Brother of Sleep) (1995)"
- },
- {
-    "genres" : "Comedy",
-    "imdb" : "(http://www.imdb.com/title/tt0119139)",
-    "title" : "Follow the Bitch (1998)"
- },
- {
-    "genres" : "Adventure",
-    "imdb" : "(http://www.imdb.com/title/tt0047630)",
-    "title" : "Ulysses (Ulisse) (1954)"
- },
- {
-    "genres" : "Comedy",
-    "imdb" : "(http://www.imdb.com/title/tt0062281)",
-    "title" : "Smashing Time (1967)"
- },
- {
-    "genres" : "Horror",
-    "imdb" : "(http://www.imdb.com/title/tt0069754)",
-    "title" : "Baby, The (1973)"
- },
- {
-    "genres" : "Drama",
-    "imdb" : "(http://www.imdb.com/title/tt0028282)",
-    "title" : "Song of Freedom (1936)"
- },
- {
-    "genres" : "Comedy|Drama|Western",
-    "imdb" : "(http://www.imdb.com/title/tt0070481)",
-    "title" : "One Little Indian (1973)"
- },
- {
-    "genres" : "Crime",
-    "imdb" : "(http://www.imdb.com/title/tt0039589)",
-    "title" : "Lured (1947)"
- },
- {
-    "genres" : "Documentary",
-    "imdb" : "(http://www.imdb.com/title/tt0168515)",
-    "title" : "Bittersweet Motel (2000)"
- }
+```json
+[
+  {
+    "genres": "Comedy",
+    "imdb": "(http://www.imdb.com/title/tt0062281)",
+    "title": "Smashing Time (1967)"
+  },
+  {
+    "genres": "Comedy|Drama|Western",
+    "imdb": "(http://www.imdb.com/title/tt0070481)",
+    "title": "One Little Indian (1973)"
+  },
+  {
+    "genres": "Comedy",
+    "imdb": "(http://www.imdb.com/title/tt0119139)",
+    "title": "Follow the Bitch (1998)"
+  },
+  {
+    "genres": "Animation|Comedy|Thriller",
+    "imdb": "(http://www.imdb.com/title/tt0112691)",
+    "title": "Close Shave, A (1995)"
+  },
+  {
+    "genres": "Animation|Comedy",
+    "imdb": "(http://www.imdb.com/title/tt0108598)",
+    "title": "Wrong Trousers, The (1993)"
+  },
+  {
+    "genres": "Drama|Romance",
+    "imdb": "(http://www.imdb.com/title/tt0209322)",
+    "title": "Skipped Parts (2000)"
+  },
+  {
+    "genres": "Drama|Romance|War",
+    "imdb": "(http://www.imdb.com/title/tt0034583)",
+    "title": "Casablanca (1942)"
+  },
+  {
+    "genres": "Comedy|Drama|Western",
+    "imdb": "(http://www.imdb.com/title/tt0055630)",
+    "title": "Yojimbo (1961)"
+  },
+  {
+    "genres": "Comedy|Drama|Romance",
+    "imdb": "(http://www.imdb.com/title/tt0021749)",
+    "title": "City Lights (1931)"
+  },
+  {
+    "genres": "Comedy",
+    "imdb": "(http://www.imdb.com/title/tt0017925)",
+    "title": "General, The (1927)"
+  }
 ]
 ```
 
@@ -342,37 +343,39 @@ Sample for Recommend movies given a movie title:<br/>
 -Input:
 
 ```sh
-curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d ‘{"title": "Toy Story (1995)", "limit": 5}’ |json_pp
+curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": "Toy Story (1995)", "limit": 5}' |json_pp
 ```
 
 -Output:
 
-```sh
-{
-    "genres" : "Animation|Children's|Comedy",
-    "imdb" : "(http://www.imdb.com/title/tt0120363)",
-    "title" : "Toy Story 2 (1999)"
- },
- {
-    "genres" : "Animation|Children's|Comedy",
-    "imdb" : "(http://www.imdb.com/title/tt0120623)",
-    "title" : "Bug's Life, A (1998)"
- },
- {
-    "genres" : "Animation|Children's|Comedy",
-    "imdb" : "(http://www.imdb.com/title/tt0120630)",
-    "title" : "Chicken Run (2000)"
- },
- {
-    "genres" : "Animation|Children's|Comedy|Musical",
-    "imdb" : "(http://www.imdb.com/title/tt0827990)",
-    "title" : "Aladdin (1992)"
- },
- {
-    "genres" : "Animation|Children's|Comedy|Musical",
-    "imdb" : "(http://www.imdb.com/title/tt0061852)",
-    "title" : "Jungle Book, The (1967)"
- }
+```json
+[
+  {
+    "genres": "Animation|Children's|Comedy",
+    "imdb": "(http://www.imdb.com/title/tt0120363)",
+    "title": "Toy Story 2 (1999)"
+  },
+  {
+    "genres": "Animation|Children's|Comedy",
+    "imdb": "(http://www.imdb.com/title/tt0120623)",
+    "title": "Bug's Life, A (1998)"
+  },
+  {
+    "genres": "Animation|Children's|Comedy",
+    "imdb": "(http://www.imdb.com/title/tt0120630)",
+    "title": "Chicken Run (2000)"
+  },
+  {
+    "genres": "Animation|Children's|Comedy|Musical",
+    "imdb": "(http://www.imdb.com/title/tt0827990)",
+    "title": "Aladdin (1992)"
+  },
+  {
+    "genres": "Animation|Children's|Comedy|Musical",
+    "imdb": "(http://www.imdb.com/title/tt0061852)",
+    "title": "Jungle Book, The (1967)"
+  }
+]
 ```
 
 ---
