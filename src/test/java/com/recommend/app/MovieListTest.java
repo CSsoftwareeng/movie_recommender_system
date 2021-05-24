@@ -93,4 +93,24 @@ public class MovieListTest {
     movie.searchName(ids);
     Assert.assertEquals("testBufferSearch", expected, movie.getMoviesName());
   }
+
+  @Test
+  public void testSearchSimilarID() {
+    MovieList movie = new MovieList();
+    List<String> genres = new ArrayList<String>();
+    genres.add("Romance");
+    genres.add("Comedy");
+
+    movie.searchSimilarID(genres);
+    Assert.assertEquals(2, movie.similarMovies.size());
+  }
+
+  @Test
+  public void testRegisterFavoriteMovie() {
+    MovieList movie = new MovieList();
+    movie.registerFavoriteMovie("Toy Story (1995)");
+
+    Assert.assertEquals(3, movie.similarMovies.size());
+    Assert.assertEquals(3, movie.countMathcedGenres(1));
+  }
 }
