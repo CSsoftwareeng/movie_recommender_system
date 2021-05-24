@@ -1,6 +1,6 @@
 # Movie Recommender System
 
-The movie platform system supports a great multitude of movies, so it is not easy to choose which movie to watch. At this point, if you can see movies which has similar traits to your favorite movie or if you can see a list of movies that are similar to your favorite movies, you can choose a movie more easily. This program will show a list of recommended movies based on your traits or your favorite movie.
+The movie platform system supports a great multitude of movies, so it is not easy to choose which movie to watch. At this point, if you can see which movies other users with similar traits are most satisfied with or if you can see a list of movies that are similar to your favorite movies, you can choose a movie more easily. This program will show a list of recommended movies based on your traits or your favorite movie.
 
 ## Algorithm
 
