@@ -205,12 +205,12 @@ curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:applica
 }
 ```
 
-### 2. the name of fields is wrong.
+### 2. the necessary arguments are missing.
 
 - input
 
 ```sh
-curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"movie_name": "Toy Story", "limit": 15}'|json_pp
+curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"limit": 15}'|json_pp
 ```
 
 - output
@@ -219,6 +219,24 @@ curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:applic
 {
   "error": "Bad Request",
   "message": "[ERROR : ArgMissingError] The argument 'title' is missing.",
+  "path": "/movies/recommendations",
+  "status": 400,
+  "timestamp": "2021-05-24T16:12:18.195+00:00"
+}
+```
+
+- input
+
+```sh
+curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "F", "occupation":"artist", "genres":"Romance"}'|json_pp
+```
+
+- output
+
+```json
+{
+  "error": "Bad Request",
+  "message": "[ERROR : ArgMissingError] The argument 'age' is missing.",
   "path": "/movies/recommendations",
   "status": 400,
   "timestamp": "2021-05-24T16:12:18.195+00:00"
@@ -260,6 +278,44 @@ curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:applica
   "path": "/users/recommendations",
   "status": 400,
   "timestamp": "2021-05-24T16:22:23.370+00:00"
+}
+```
+
+### 5. the name of fields is wrong.
+
+- input
+
+```sh
+curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "M", "age": "", "occupation": "retired", "INVALID_FIELD": ""}' |json_pp
+```
+
+- output
+
+```json
+{
+   "error" : "Bad Request",
+   "message" : "[ERROR : WrongArgError] There is unknown argument. [Valid arguments : gender, age, occupation, genres(optional)]",
+   "path" : "/users/recommendations",
+   "status" : 400,
+   "timestamp" : "2021-05-25T06:25:38.771+00:00"
+}
+```
+
+- input
+
+```sh
+curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": "Toy Story", "INVALID_FIELD": ""}' |json_pp
+```
+
+- output
+
+```json
+{
+   "error" : "Bad Request",
+   "message" : "[ERROR : WrongArgError] There is unknown argument. [Valid arguments : title, limit(optional)]",
+   "path" : "/movies/recommendations",
+   "status" : 400,
+   "timestamp" : "2021-05-25T06:30:37.902+00:00"
 }
 ```
 
