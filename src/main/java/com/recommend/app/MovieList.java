@@ -5,12 +5,19 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class MovieList {
 
   TreeSet<Integer> movies = new TreeSet<Integer>();
   List<String> movieName = new ArrayList<String>();
+  List<String> movieGenres = new ArrayList<String>();
+  List<String> favoriteGenres = new ArrayList<String>();
+  List<TreeSet<Integer>> similarMovies = new ArrayList<TreeSet<Integer>>();
+  Integer favoriteMovieID;
+
+  public MovieList() {}
 
   public MovieList(List<String> genres) {
     searchID(genres);
@@ -55,6 +62,7 @@ public class MovieList {
     try {
       Integer[] ids = new Integer[ID.size()];
       String[] names = new String[ID.size()];
+      String[] genres = new String[ID.size()];
       File moviefile = new File("./data/movies.dat");
       FileReader fileReader = new FileReader(moviefile);
       BufferedReader bufReader = new BufferedReader(fileReader);
@@ -67,6 +75,7 @@ public class MovieList {
         if (ID.contains(Integer.parseInt(temp[0]))) {
           ids[i] = Integer.parseInt(temp[0]);
           names[i] = temp[1];
+          genres[i] = temp[2];
           i++;
         }
       }
@@ -74,6 +83,7 @@ public class MovieList {
         for (int j = 0; j < ID.size(); j++) {
           int index = Arrays.asList(ids).indexOf(ID.get(j));
           movieName.add(names[index]);
+          movieGenres.add(genres[index]);
         }
       }
     } catch (IOException e) {}
@@ -81,5 +91,48 @@ public class MovieList {
 
   public List<String> getMoviesName() {
     return movieName;
+  }
+
+  public List<String> getMovieGenres() {
+    return movieGenres;
+  }
+
+  public void searchSimilarID(List<String> genres) {
+    try {
+      int genres_num = genres.size();
+      for (int i = 0; i < genres_num; i++) similarMovies.add(
+        new TreeSet<Integer>()
+      );
+      File moviefile = new File("./data/movies.dat");
+      FileReader fileReader = new FileReader(moviefile);
+      BufferedReader bufReader = new BufferedReader(fileReader);
+      String data = "";
+      while ((data = bufReader.readLine()) != null) {
+        int count = 0;
+        String[] temp = data.split("::");
+        for (int i = 0; i < genres_num; i++) {
+          if (temp[2].contains(genres.get(i))) {
+            count++;
+          }
+        }
+        if (count > 0) {
+          similarMovies.get(count - 1).add(Integer.parseInt(temp[0]));
+        }
+      }
+    } catch (IOException e) {}
+  }
+
+  public void registerFavoriteMovie(String title) {
+    this.favoriteGenres = Tool.getMovieGenre(title);
+    this.favoriteMovieID = Tool.getMovieID(title);
+    searchSimilarID(favoriteGenres);
+  }
+
+  public int countMathcedGenres(int movieID) {
+    int match = 0;
+    for (int i = 0; i < favoriteGenres.size(); i++) {
+      if (similarMovies.get(i).contains(movieID)) match = i + 1;
+    }
+    return match;
   }
 }

@@ -13,7 +13,7 @@ public class UserListTest {
   }
 
   @Test
-  public void testsearchMatchedUser() {
+  public void testSearchMatchedUser() {
     UserList userlist = new UserList();
     userlist.searchMatchedUser(17);
     Assert.assertEquals(userlist.matchedUsers.size(), 502);
@@ -23,7 +23,7 @@ public class UserListTest {
   }
 
   @Test
-  public void testsearchSimilarUser() {
+  public void testSearchSimilarUser() {
     UserList userlist = new UserList();
     userlist.searchSimilarUser("F", "25", "4");
     Assert.assertEquals(userlist.matchedUsers.size(), 59);
@@ -36,7 +36,7 @@ public class UserListTest {
   }
 
   @Test
-  public void testisMatched() {
+  public void testIsMatched() {
     UserList userlist = new UserList();
     userlist.searchSimilarUser("F", "25", "4");
     Assert.assertTrue(userlist.isMatched(219));
@@ -44,7 +44,7 @@ public class UserListTest {
   }
 
   @Test
-  public void testisSimilar() {
+  public void testIsSimilar() {
     UserList userlist = new UserList();
     userlist.searchSimilarUser("F", "25", "4");
     Assert.assertTrue(userlist.isSimilar(11));
@@ -52,7 +52,7 @@ public class UserListTest {
   }
 
   @Test
-  public void testisLessSimilar() {
+  public void testIsLessSimilar() {
     UserList userlist = new UserList();
     userlist.searchSimilarUser("F", "25", "4");
     Assert.assertTrue(userlist.isLessSimilar(1));
@@ -60,7 +60,7 @@ public class UserListTest {
   }
 
   @Test
-  public void testisNotSimilar() {
+  public void testIsNotSimilar() {
     UserList userlist = new UserList();
     userlist.searchSimilarUser("F", "25", "4");
     Assert.assertTrue(userlist.isNotSimilar(2));

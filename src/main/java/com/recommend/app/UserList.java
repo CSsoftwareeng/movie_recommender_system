@@ -10,6 +10,7 @@ public class UserList {
   TreeSet<Integer> mostSimUsers = new TreeSet<Integer>();
   TreeSet<Integer> lessSimUsers = new TreeSet<Integer>();
   TreeSet<Integer> notSimUsers = new TreeSet<Integer>();
+  TreeSet<Integer> favoriteUsers = new TreeSet<Integer>();
 
   void searchMatchedUser(int occupation) throws UserNotExistError {
     try {
@@ -61,6 +62,56 @@ public class UserList {
     } catch (IOException e) {}
   }
 
+  void searchFavoriteUsers(String title) {
+    HashMap<Integer, Integer> users = new HashMap<Integer, Integer>();
+    HashMap<Integer, AvgRating> usersAvg = new HashMap<Integer, AvgRating>();
+    int MovieID = Tool.getMovieID(title);
+    try {
+      File ratingFile = new File("./data/ratings.dat");
+      FileReader reader = new FileReader(ratingFile);
+      BufferedReader buffer = new BufferedReader(reader);
+      String line;
+      while ((line = buffer.readLine()) != null) {
+        String[] rating = line.split("::");
+        if (Integer.parseInt(rating[1]) == MovieID) {
+          users.put(Integer.parseInt(rating[0]), Integer.parseInt(rating[2]));
+        }
+      }
+    } catch (IOException e) {}
+    try {
+      File ratingFile = new File("./data/ratings.dat");
+      FileReader reader = new FileReader(ratingFile);
+      BufferedReader buffer = new BufferedReader(reader);
+      String line;
+      while ((line = buffer.readLine()) != null) {
+        String[] rating = line.split("::");
+        if (users.containsKey(Integer.parseInt(rating[0]))) {
+          if (usersAvg.containsKey(Integer.parseInt(rating[0]))) {
+            AvgRating temp = new AvgRating(
+              (
+                usersAvg.get(Integer.parseInt(rating[0])).getSum() +
+                Integer.parseInt(rating[2])
+              ),
+              (usersAvg.get(Integer.parseInt(rating[0])).getCount() + 1)
+            );
+            temp.setAverage();
+            usersAvg.replace(Integer.parseInt(rating[0]), temp);
+          } else {
+            AvgRating temp = new AvgRating(Integer.parseInt(rating[2]), 1);
+            temp.setAverage();
+            usersAvg.put(Integer.parseInt(rating[0]), temp);
+          }
+        }
+      }
+
+      for (Integer key : users.keySet()) {
+        if (users.get(key) >= usersAvg.get(key).getAverage()) {
+          favoriteUsers.add(key);
+        }
+      }
+    } catch (IOException e) {}
+  }
+
   public boolean isMatched(int userid) {
     return matchedUsers.contains(userid);
   }
@@ -75,5 +126,9 @@ public class UserList {
 
   public boolean isNotSimilar(int userid) {
     return notSimUsers.contains(userid);
+  }
+
+  public boolean isFavorite(int userid) {
+    return favoriteUsers.contains(userid);
   }
 }
