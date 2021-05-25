@@ -38,7 +38,7 @@ mvn spring-boot:run
 Opening another console, now you can use **API** via **curl** with proper arguments:
 
 ```sh
-curl -X GET http://localhost:8080/users/recommendations -H ‘Content-type:application/json’ -d ‘{"gender": [gender], "age": [age], "occupation": [occupation], "genre": [genres]}’ |json_pp
+curl -X GET http://localhost:8080/users/recommendations -H ‘Content-type:application/json’ -d ‘{"gender": [gender], "age": [age], "occupation": [occupation], "genres": [genres]}’ |json_pp
 ```
 
 Also, you can start this program(Recommend movies given a movie title and a number of movies to show) with arguments:
@@ -50,8 +50,8 @@ curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:appl
 Examples:
 
 ```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender" : "", "age" : "", "occupation" : "", "genre" : "Romance|comedy"}' |json_pp
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "M", "age": "", "occupation": "retired", "genre": ""}' |json_pp
+curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender" : "", "age" : "", "occupation" : "", "genres" : "Romance|comedy"}' |json_pp
+curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "M", "age": "", "occupation": "retired", "genres": ""}' |json_pp
 curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d '{"title": "Toy Story (1995)", "limit": 20}' |json_pp
 curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d '{"title": "Toy Story (1995)"}' |json_pp
 ```
