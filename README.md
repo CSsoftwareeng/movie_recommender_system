@@ -134,7 +134,8 @@ This is an argument style guide when you request **GET** with **/movies/recommen
 
 **[limit]**
 
-- Enter the limit number in integer type
+- Enter the limit number in integer type.
+- Limit should be positive integer.
 - Only one limit is allowed.
 - If you don't specify the **limit** field, the **limit** will set to 10 as a default.
 
@@ -265,6 +266,8 @@ curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:applic
 
 ### 4. the invalid arguments are put as specified in **User Guide**.
 
+- input
+
 ```sh
 curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "F", "age": "15", "occupation":"NOT_EXISTING_JOB"}'|json_pp
 ```
@@ -278,6 +281,25 @@ curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:applica
   "path": "/users/recommendations",
   "status": 400,
   "timestamp": "2021-05-24T16:22:23.370+00:00"
+}
+```
+
+
+- input
+
+```sh
+curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": "Toy Story", "limit": -3}' |json_pp
+```
+
+- output
+
+```json
+{
+   "error" : "Bad Request",
+   "message" : "[ERROR : WrongArgError] limit size should be greater than 0.",
+   "path" : "/movies/recommendations",
+   "status" : 400,
+   "timestamp" : "2021-05-25T10:13:48.445+00:00"
 }
 ```
 
