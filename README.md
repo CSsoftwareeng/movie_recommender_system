@@ -39,6 +39,7 @@ Opening another console, now you can use **API** via **curl** with proper argume
 
 ```sh
 curl -X GET http://localhost:8080/users/recommendations -H ‘Content-type:application/json’ -d ‘{"gender": [gender], "age": [age], "occupation": [occupation], "genres": [genres]}’ |json_pp
+curl -X GET http://localhost:8080/users/recommendations -H ‘Content-type:application/json’ -d ‘{"gender": [gender], "age": [age], "occupation": [occupation]}’ |json_pp
 ```
 
 Also, you can start this program(Recommend movies given a movie title and a number of movies to show) with arguments:
@@ -102,6 +103,7 @@ This is an argument style guide when you request **GET** with **/users/recommend
 - You can put multiple genres separated with '|' -> Ex : "Adventure|Comedy"
 - Output is a list of recommended movies that belong to at least one selected categories.
 - If you pass through an genre as an empty string "", the program doesn't take genres into account when selecting a list of recommended movies.
+- For user convenience, the program treats it the same as an empty string if the "genres" field is not specified.
 - Genres can be chosen from the following choices:<br/>
 
 |    Action     | Adventure  |  Animation  | Children's  |   Comedy    |   Crime    | Documentary  |  Drama  |   Fantasy   |
