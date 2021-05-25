@@ -16,17 +16,17 @@ public class UsersBasedRecommController {
 
   @GetMapping("/users/recommendations")
   public List<Movie> userBasedAPI(
-    @RequestBody Map<String, String> requestParams
+    @RequestBody Map<String, String> requestBody
   ) {
     try {
-      String gender = requestParams.get("gender");
-      String age = requestParams.get("age");
-      String occupation = requestParams.get("occupation");
-      String genres = requestParams.get("genres");
+      String gender = requestBody.get("gender");
+      String age = requestBody.get("age");
+      String occupation = requestBody.get("occupation");
+      String genres = requestBody.get("genres");
 
       if (
-        requestParams.size() <= 2 || requestParams.size() > 4
-      ) throw new ArgCntError((Integer) requestParams.size());
+        requestBody.size() <= 2 || requestBody.size() > 4
+      ) throw new ArgCntError((Integer) requestBody.size());
 
       if (gender == null) throw new ArgMissingError("gender"); else if (
         age == null
@@ -35,9 +35,10 @@ public class UsersBasedRecommController {
       ) throw new ArgMissingError("occupation");
 
       Arguments arg;
-      if (genres == null) arg =
-        new Arguments(gender, age, occupation); else arg =
-        new Arguments(gender, age, occupation, genres);
+      if (genres == null) {
+        if (requestBody.size() == 4) throw new WrongArgError("user");
+        arg = new Arguments(gender, age, occupation);
+      } else arg = new Arguments(gender, age, occupation, genres);
 
       MovieList movielist = new MovieList(arg.getGenres());
       UserList userlist = new UserList();
@@ -57,6 +58,8 @@ public class UsersBasedRecommController {
     } catch (ArgCntError e) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
     } catch (ArgMissingError e) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+    } catch (WrongArgError e) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
     }
   }

@@ -121,6 +121,21 @@ public class MovieBasedRecommControllerTest {
   }
 
   @Test
+  public void testWrongArguments() throws Exception {
+    String json = "{\"title\" : \"INVALID_STRING\", \"INVALID_FILED\" : \"INVALID_STRING\"}";
+
+    mvc
+      .perform(
+        get("/movies/recommendations")
+          .content(json)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andExpect(status().isBadRequest())
+      .andExpect(status().reason(containsString("WrongArgError")))
+      .andExpect(status().reason(containsString("title, limit")));
+  }
+
+  @Test
   public void testMissingTitle() throws Exception {
     String json = "{\"limit\" : 20}";
 

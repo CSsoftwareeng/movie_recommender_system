@@ -24,7 +24,7 @@ public class UsersBasedRecommControllerTest {
   @Test
   public void testValidRequest() throws Exception {
     String json =
-      "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
+      "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\", \"genres\" : \"Romance|comedy\"}";
 
     mvc
       .perform(
@@ -39,7 +39,7 @@ public class UsersBasedRecommControllerTest {
   @Test
   public void testValidRequestWithFullConditions() throws Exception {
     String json =
-      "{\"gender\" : \"F\", \"age\" : \"30\", \"occupation\" : \"artist\", \"genre\" : \"Romance|comedy\"}";
+      "{\"gender\" : \"F\", \"age\" : \"30\", \"occupation\" : \"artist\", \"genres\" : \"Romance|comedy\"}";
 
     mvc
       .perform(
@@ -67,7 +67,7 @@ public class UsersBasedRecommControllerTest {
 
   @Test
   public void testTooFewArguments() throws Exception {
-    String json = "{\"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
+    String json = "{\"occupation\" : \"\", \"genres\" : \"Romance|comedy\"}";
 
     mvc
       .perform(
@@ -82,7 +82,7 @@ public class UsersBasedRecommControllerTest {
   @Test
   public void testTooManyArguments() throws Exception {
     String json =
-      "{ \"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\", \"DUMMY_FILED\" : \"DUMMY_STRING\"}";
+      "{ \"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\", \"genres\" : \"Romance|comedy\", \"DUMMY_FILED\" : \"DUMMY_STRING\"}";
 
     mvc
       .perform(
@@ -95,9 +95,25 @@ public class UsersBasedRecommControllerTest {
   }
 
   @Test
+  public void testWrongArguments() throws Exception {
+    String json =
+      "{ \"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\", \"INVALID_FILED\" : \"INVALID_STRING\"}";
+
+    mvc
+      .perform(
+        get("/users/recommendations")
+          .content(json)
+          .contentType(MediaType.APPLICATION_JSON)
+      )
+      .andExpect(status().isBadRequest())
+      .andExpect(status().reason(containsString("WrongArgError")))
+      .andExpect(status().reason(containsString("gender, age, occupation, genres")));;
+  }
+
+  @Test
   public void testInvalidAge() throws Exception {
     String json =
-      "{\"gender\" : \"\", \"age\" : \"-1\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
+      "{\"gender\" : \"\", \"age\" : \"-1\", \"occupation\" : \"\", \"genres\" : \"Romance|comedy\"}";
 
     mvc
       .perform(
@@ -112,7 +128,7 @@ public class UsersBasedRecommControllerTest {
   @Test
   public void testInvalidGender() throws Exception {
     String json =
-      "{\"gender\" : \"Q\", \"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
+      "{\"gender\" : \"Q\", \"age\" : \"\", \"occupation\" : \"\", \"genres\" : \"Romance|comedy\"}";
 
     mvc
       .perform(
@@ -127,7 +143,7 @@ public class UsersBasedRecommControllerTest {
   @Test
   public void testInvalidOccupation() throws Exception {
     String json =
-      "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"Q\", \"genre\" : \"Romance|comedy\"}";
+      "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"Q\", \"genres\" : \"Romance|comedy\"}";
 
     mvc
       .perform(
@@ -142,11 +158,11 @@ public class UsersBasedRecommControllerTest {
   @Test
   public void testMissingArgument() throws Exception {
     String jsonMissingAge =
-      "{\"gender\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
+      "{\"gender\" : \"\", \"occupation\" : \"\", \"genres\" : \"Romance|comedy\"}";
     String jsonMissingGender =
-      "{\"age\" : \"\", \"occupation\" : \"\", \"genre\" : \"Romance|comedy\"}";
+      "{\"age\" : \"\", \"occupation\" : \"\", \"genres\" : \"Romance|comedy\"}";
     String jsonMissingOccupation =
-      "{\"gender\" : \"\", \"age\" : \"\", \"genre\" : \"Romance|comedy\"}";
+      "{\"gender\" : \"\", \"age\" : \"\", \"genres\" : \"Romance|comedy\"}";
 
     mvc
       .perform(

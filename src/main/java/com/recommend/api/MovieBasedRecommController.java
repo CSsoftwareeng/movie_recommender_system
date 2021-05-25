@@ -16,16 +16,20 @@ public class MovieBasedRecommController {
 
   @GetMapping("/movies/recommendations")
   public List<Movie> movieBasedAPI(
-    @RequestBody Map<String, Object> requestParams
+    @RequestBody Map<String, Object> requestBody
   ) {
     try {
-      if (
-        requestParams.size() == 0 || requestParams.size() > 2
-      ) throw new ArgCntError((Integer) requestParams.size());
-      String title = (String) requestParams.get("title");
+      int bodysize = requestBody.size();
+      if (bodysize == 0 || bodysize > 2) throw new ArgCntError(
+        (Integer) bodysize
+      );
+      String title = (String) requestBody.get("title");
       if (title == null) throw new ArgMissingError("title");
-      Integer limit = (Integer) requestParams.get("limit");
-      if (limit == null) limit = 10;
+      Integer limit = (Integer) requestBody.get("limit");
+      if (limit == null) {
+        if (bodysize == 2) throw new WrongArgError("movie");
+        limit = 10;
+      }
 
       MovieList movielist = new MovieList();
       UserList userlist = new UserList();
@@ -46,6 +50,8 @@ public class MovieBasedRecommController {
     } catch (ArgCntError e) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
     } catch (ArgMissingError e) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+    } catch (WrongArgError e) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
     }
   }
