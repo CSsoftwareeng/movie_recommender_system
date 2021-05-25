@@ -15,8 +15,10 @@ public class WrongArgError extends IllegalArgumentException {
     System.out.println("[ERROR : WrongArgError]");
     if (type == "user") this.message =
       "[ERROR : WrongArgError] There is unknown argument. [Valid arguments : gender, age, occupation, genres(optional)]";
-    else this.message =
+    else if(type == "movie")
+    this.message =
       "[ERROR : WrongArgError] There is unknown argument. [Valid arguments : title, limit(optional)]";
+    else this.message = "[ERROR : WrongArgError] limit size should be greater than 0.";
   }
 
   public String getMessage() {

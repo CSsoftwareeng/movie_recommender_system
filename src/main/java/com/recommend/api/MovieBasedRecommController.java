@@ -25,10 +25,14 @@ public class MovieBasedRecommController {
       );
       String title = (String) requestBody.get("title");
       if (title == null) throw new ArgMissingError("title");
+
       Integer limit = (Integer) requestBody.get("limit");
       if (limit == null) {
         if (bodysize == 2) throw new WrongArgError("movie");
         limit = 10;
+      }
+      if (limit <= 0) {
+        throw new WrongArgError("limit");
       }
 
       MovieList movielist = new MovieList();
