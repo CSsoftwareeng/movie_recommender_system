@@ -7,6 +7,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface LinkRepository extends MongoRepository<Link, String> {
 
   public Link findByMovieid(int movieid);
-  public List findByLink(int link);
+  public List findByPoster(String poster);
 
 }
