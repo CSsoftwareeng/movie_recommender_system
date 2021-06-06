@@ -16,17 +16,17 @@ public class MovieBasedRecommController {
 
   @GetMapping("/movies/recommendations")
   public List<Movie> movieBasedAPI(
-    @RequestBody Map<String, Object> requestBody
+    @RequestParam Map<String, Object> requestParam
   ) {
     try {
-      int bodysize = requestBody.size();
+      int bodysize = requestParam.size();
       if (bodysize == 0 || bodysize > 2) throw new ArgCntError(
         (Integer) bodysize
       );
-      String title = (String) requestBody.get("title");
+      String title = (String) requestParam.get("title");
       if (title == null) throw new ArgMissingError("title");
 
-      Integer limit = (Integer) requestBody.get("limit");
+      Integer limit = (Integer) requestParam.get("limit");
       if (limit == null) {
         if (bodysize == 2) throw new WrongArgError("movie");
         limit = 10;
