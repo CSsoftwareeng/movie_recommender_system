@@ -2,7 +2,7 @@ package com.recommend.app;
 
 import org.springframework.data.annotation.Id;
 
-public class User {
+public class Users {
 
   @Id
   public String id;
@@ -13,9 +13,9 @@ public class User {
   public int occupation;
   public int zipcode;
 
-  public User() {}
+  public Users() {}
 
-  public User(int movieid, Sting gender, int age, int occupation, int zipcode) {
+  public Users(int movieid, String gender, int age, int occupation, int zipcode) {
     this.userid = userid;
     this.gender = gender;
     this.age = age;

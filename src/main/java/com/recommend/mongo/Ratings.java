@@ -2,7 +2,7 @@ package com.recommend.app;
 
 import org.springframework.data.annotation.Id;
 
-public class Rating {
+public class Ratings {
 
   @Id
   public String id;
@@ -12,9 +12,9 @@ public class Rating {
   public int rating;
   public int date;
 
-  public Rating() {}
+  public Ratings() {}
 
-  public Rating(int userid, int movieid, int rating, int date) {
+  public Ratings(int userid, int movieid, int rating, int date) {
     this.userid = userid;
     this.movieid = movieid;
     this.rating = rating;

@@ -2,7 +2,7 @@ package com.recommend.app;
 
 import org.springframework.data.annotation.Id;
 
-public class Movie {
+public class Movies {
 
   @Id
   public String id;
@@ -11,9 +11,9 @@ public class Movie {
   public String title;
   public String genre;
 
-  public Movie() {}
+  public Movies() {}
 
-  public Movie(int movieid, String title, String genre) {
+  public Movies(int movieid, String title, String genre) {
     this.movieid = movieid;
     this.title = title;
     this.genre = genre;
