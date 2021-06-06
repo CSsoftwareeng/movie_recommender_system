@@ -1,0 +1,18 @@
+.contents {
+  min-height: 40rem;
+}
+.result {
+  margin: 1rem 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 0.8rem 0.2rem;
+  width: 11rem;
+  height: 14rem;
+}
+.card-text {
+  color: black;
+}
