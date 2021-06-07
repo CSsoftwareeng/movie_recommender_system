@@ -144,7 +144,7 @@ public class RatingCalculator {
 
     for (int i = 0; i < sizeID; i++) {
       String link = "-";
-      String poster = "-";
+      String poster = "./img/default-image.jpg";
       Link linkDoc = linkRepository.findByMovieid(ID.get(i));
       Poster posterDoc = posterRepository.findByMovieid(ID.get(i));
       if (linkDoc != null)

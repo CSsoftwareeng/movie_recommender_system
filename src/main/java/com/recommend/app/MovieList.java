@@ -138,7 +138,7 @@ public class MovieList {
 
     for(Movie moviedata : allMovies) {
       String link = "-";
-      String poster = "-";
+      String poster = "./img/default-image.jpg";
       Link linkDoc = linkRepository.findByMovieid(moviedata.movieid);
       Poster posterDoc = posterRepository.findByMovieid(moviedata.movieid);
       if (linkDoc != null)
