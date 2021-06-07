@@ -1,6 +1,5 @@
 package com.recommend.app;
 
-import com.recommend.app.Movies;
 import com.recommend.utils.errors.*;
 import java.util.*;
 import org.springframework.http.HttpStatus;
@@ -17,7 +16,7 @@ public class MoviesController {
     @GetMapping("/movies")
     public List<Movie> moviesAPI(
     ) {
-        Movies movies = new Movies();
+        MovieList movies = new MovieList();
         movies.searchAllMovies();
         return movies.getMoviesResult();
     }
