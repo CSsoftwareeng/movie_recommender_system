@@ -1,10 +1,16 @@
 package com.recommend.app;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import com.recommend.utils.errors.UserNotExistError;
+import org.springframework.stereotype.Component;
 import java.io.*;
 import java.util.*;
 
+@Component
 public class UserList {
+  @Autowired
+  private UsersRepository usersRepository;
+  @Autowired
+  private RatingsRepository ratingsRepository;
 
   TreeSet<Integer> matchedUsers = new TreeSet<Integer>();
   TreeSet<Integer> mostSimUsers = new TreeSet<Integer>();
@@ -13,19 +19,14 @@ public class UserList {
   TreeSet<Integer> favoriteUsers = new TreeSet<Integer>();
 
   void searchMatchedUser(int occupation) throws UserNotExistError {
-    try {
-      File usersFile = new File("./data/users.dat");
-      FileReader reader = new FileReader(usersFile);
-      BufferedReader buffer = new BufferedReader(reader);
-      String line;
-      while ((line = buffer.readLine()) != null) {
-        String[] user = line.split("::");
-        if (Integer.parseInt(user[3]) == occupation) {
-          matchedUsers.add(Integer.parseInt(user[0]));
-        }
-      }
-      if (matchedUsers.isEmpty()) throw new UserNotExistError();
-    } catch (IOException e) {}
+    matchedUsers = new TreeSet<Integer>();
+    mostSimUsers = new TreeSet<Integer>();
+    lessSimUsers = new TreeSet<Integer>();
+    notSimUsers = new TreeSet<Integer>();
+    favoriteUsers = new TreeSet<Integer>();
+    List<Integer> temp = usersRepository.findUseridByOccupation(occupation);
+    matchedUsers = new TreeSet<Integer>(temp);
+    if (matchedUsers.isEmpty()) throw new UserNotExistError();
   }
 
   void searchSimilarUser(String gender, String age, String occupation) {
@@ -33,36 +34,44 @@ public class UserList {
     boolean ageEmpty = age.isEmpty();
     boolean occupationEmpty = occupation.isEmpty();
 
-    try {
-      File usersFile = new File("./data/users.dat");
-      FileReader reader = new FileReader(usersFile);
-      BufferedReader buffer = new BufferedReader(reader);
-      String line;
-      while ((line = buffer.readLine()) != null) {
-        String[] user = line.split("::");
-        int numMatched =
-          (genderEmpty || user[1].equals(gender) ? 1 : 0) +
-          (ageEmpty || user[2].equals(age) ? 1 : 0) +
-          (occupationEmpty || user[3].equals(occupation) ? 1 : 0);
-        switch (numMatched) {
-          case 1:
-            lessSimUsers.add(Integer.parseInt(user[0]));
-            continue;
-          case 2:
-            mostSimUsers.add(Integer.parseInt(user[0]));
-            continue;
-          case 3:
-            matchedUsers.add(Integer.parseInt(user[0]));
-            continue;
-          default:
-            notSimUsers.add(Integer.parseInt(user[0]));
-            continue;
-        }
+    matchedUsers = new TreeSet<Integer>();
+    mostSimUsers = new TreeSet<Integer>();
+    lessSimUsers = new TreeSet<Integer>();
+    notSimUsers = new TreeSet<Integer>();
+    favoriteUsers = new TreeSet<Integer>();
+    // System.out.println("gender: " + gender + "age: " + age + "occupation :" + occupation);
+
+    List<Users> temp = usersRepository.findAll();
+    for (Users user : temp) {
+      int numMatched =
+        (genderEmpty || user.gender.equals(gender) ? 1 : 0) +
+        (ageEmpty || user.age == Integer.parseInt(age) ? 1 : 0) +
+        (occupationEmpty || user.occupation == Integer.parseInt(occupation) ? 1 : 0);
+      int userid = user.userid;
+      switch (numMatched) {
+        case 1:
+          lessSimUsers.add(userid);
+          continue;
+        case 2:
+          mostSimUsers.add(userid);
+          continue;
+        case 3:
+          matchedUsers.add(userid);
+          continue;
+        default:
+          notSimUsers.add(userid);
+          continue;
       }
-    } catch (IOException e) {}
+    }
   }
 
   void searchFavoriteUsers(String title) {
+    matchedUsers = new TreeSet<Integer>();
+    mostSimUsers = new TreeSet<Integer>();
+    lessSimUsers = new TreeSet<Integer>();
+    notSimUsers = new TreeSet<Integer>();
+    favoriteUsers = new TreeSet<Integer>();
+
     HashMap<Integer, Integer> users = new HashMap<Integer, Integer>();
     HashMap<Integer, AvgRating> usersAvg = new HashMap<Integer, AvgRating>();
     int MovieID = Tool.getMovieID(title);
@@ -78,6 +87,7 @@ public class UserList {
         }
       }
     } catch (IOException e) {}
+
     try {
       File ratingFile = new File("./data/ratings.dat");
       FileReader reader = new FileReader(ratingFile);
