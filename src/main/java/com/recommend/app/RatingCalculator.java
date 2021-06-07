@@ -31,6 +31,7 @@ public class RatingCalculator {
 
   void rankUserBasedRating(int limit) {
     try {
+      map = new HashMap<>();
       result = new LinkedHashMap<>();
       File usersFile = new File("./data/ratings.dat");
       FileReader reader = new FileReader(usersFile);
@@ -86,6 +87,7 @@ public class RatingCalculator {
 
   void rankGenreBasedRating(int limit, boolean userfilter) {
     try {
+      map = new HashMap<>();
       result = new LinkedHashMap<>();
       File usersFile = new File("./data/ratings.dat");
       FileReader reader = new FileReader(usersFile);
@@ -141,15 +143,15 @@ public class RatingCalculator {
     int sizeID = ID.size();
 
     for (int i = 0; i < sizeID; i++) {
+      String link = "-";
+      String poster = "-";
       Link linkDoc = linkRepository.findByMovieid(ID.get(i));
-      String link;
-      String poster = posterRepository.findOneByMovieid(ID.get(i));
-      if (linkDoc == null)
-        link = "";
-      else
+      Poster posterDoc = posterRepository.findByMovieid(ID.get(i));
+      if (linkDoc != null)
         link = linkDoc.link;
-      if (poster == null)
-        poster = "";
+      if (posterDoc != null)
+        poster = posterDoc.poster;
+
 
       Movies movie = new Movies(
         names.get(i),
