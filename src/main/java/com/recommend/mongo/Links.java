@@ -8,11 +8,11 @@ public class Links {
   public String id;
 
   public int movieid;
-  public int link;
+  public String link;
 
   public Links() {}
 
-  public Links(int movieid, int link) {
+  public Links(int movieid, String link) {
     this.movieid = movieid;
     this.link = link;
   }
@@ -20,7 +20,7 @@ public class Links {
   @Override
   public String toString() {
     return String.format(
-        "Link[id=%s, movieid='%d', link='%d']",
+        "Link[id=%s, movieid='%d', link='%s']",
         id, movieid, link);
   }
 }

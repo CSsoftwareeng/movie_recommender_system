@@ -11,11 +11,11 @@ public class Users {
   public String gender;
   public int age;
   public int occupation;
-  public int zipcode;
+  public String zipcode;
 
   public Users() {}
 
-  public Users(int movieid, String gender, int age, int occupation, int zipcode) {
+  public Users(int movieid, String gender, int age, int occupation, String zipcode) {
     this.userid = userid;
     this.gender = gender;
     this.age = age;
@@ -26,7 +26,7 @@ public class Users {
   @Override
   public String toString() {
     return String.format(
-        "User[id=%s, userid='%d', gender='%d', age='%d', occupation='%d', zipcode='%d']",
+        "User[id=%s, userid='%d', gender='%d', age='%d', occupation='%d', zipcode='%s']",
         id, userid, gender, age, occupation, zipcode);
   }
 }
