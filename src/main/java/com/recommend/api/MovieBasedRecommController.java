@@ -10,12 +10,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 public class MovieBasedRecommController {
 
+  @Autowired
+  private MovieList movielist;
+  @Autowired
+  private UserList userlist;
+  @Autowired
+  private RatingCalculator rating;
+
   @GetMapping("/movies/recommendations")
-  public List<Movie> movieBasedAPI(
+  public List<Movies> movieBasedAPI(
     @RequestBody Map<String, Object> requestBody
   ) {
     try {
@@ -35,13 +43,10 @@ public class MovieBasedRecommController {
         throw new WrongArgError("limit");
       }
 
-      MovieList movielist = new MovieList();
-      UserList userlist = new UserList();
-
       movielist.registerFavoriteMovie(title);
       userlist.searchFavoriteUsers(title);
 
-      RatingCalculator rating = new RatingCalculator(movielist, userlist);
+      rating.setLists(movielist, userlist);
       rating.rankGenreBasedRating(limit, true);
       if (rating.numMoviesResult() < limit) rating.rankGenreBasedRating(
         limit,

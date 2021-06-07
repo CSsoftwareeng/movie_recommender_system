@@ -1,26 +1,37 @@
 package com.recommend.app;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import java.io.*;
 import java.util.*;
 
+@Component
 public class RatingCalculator {
+
+  @Autowired
+  private ReviewRepository reviewRepository;
+  @Autowired
+  private PosterRepository posterRepository;
+  @Autowired
+  private LinkRepository linkRepository;
 
   HashMap<Integer, Rating> map = new HashMap<>();
   LinkedHashMap<Integer, Rating> result = new LinkedHashMap<>();
   List<String> names;
   List<String> genres;
   List<Integer> ID;
-  List moviesResult = new ArrayList<Movie>();
+  List moviesResult = new ArrayList<Movies>();
   MovieList movies;
   UserList users;
 
-  public RatingCalculator(MovieList movieList, UserList userList) {
+  void setLists(MovieList movieList, UserList userList) {
     this.movies = movieList;
     this.users = userList;
   }
 
   void rankUserBasedRating(int limit) {
     try {
+      result = new LinkedHashMap<>();
       File usersFile = new File("./data/ratings.dat");
       FileReader reader = new FileReader(usersFile);
       BufferedReader buffer = new BufferedReader(reader);
@@ -75,6 +86,7 @@ public class RatingCalculator {
 
   void rankGenreBasedRating(int limit, boolean userfilter) {
     try {
+      result = new LinkedHashMap<>();
       File usersFile = new File("./data/ratings.dat");
       FileReader reader = new FileReader(usersFile);
       BufferedReader buffer = new BufferedReader(reader);
@@ -120,41 +132,35 @@ public class RatingCalculator {
   }
 
   public void calcResult() {
-    String moviename = "";
-    String moviegenre = "";
-    String movielink = "";
-    int i = 0;
+    moviesResult = new ArrayList<Movies>();
     ID = new ArrayList<>(result.keySet());
     movies.searchName(ID);
     names = movies.getMoviesName();
     genres = movies.getMovieGenres();
 
-    try {
-      for (Integer key : result.keySet()) {
-        File linkfile = new File("./data/links.dat");
-        FileReader fileReader = new FileReader(linkfile);
-        BufferedReader bufReader = new BufferedReader(fileReader);
-        String data = "";
+    int sizeID = ID.size();
 
-        moviename = names.get(i);
-        moviegenre = genres.get(i);
-        i += 1;
+    for (int i = 0; i < sizeID; i++) {
+      Link linkDoc = linkRepository.findByMovieid(ID.get(i));
+      String link;
+      String poster = posterRepository.findOneByMovieid(ID.get(i));
+      if (linkDoc == null)
+        link = "";
+      else
+        link = linkDoc.link;
+      if (poster == null)
+        poster = "";
 
-        while ((data = bufReader.readLine()) != null) {
-          String[] temp = data.split("::");
-          if (key == Integer.parseInt(temp[0])) {
-            movielink = temp[1];
-            break;
-          }
-        }
-        Movie movie = new Movie(
-          moviename,
-          moviegenre,
-          "(http://www.imdb.com/title/tt" + movielink + ")"
-        );
-        this.moviesResult.add(movie);
-      }
-    } catch (IOException e) {}
+      Movies movie = new Movies(
+        names.get(i),
+        genres.get(i),
+        "(http://www.imdb.com/title/tt" + link + ")",
+        poster
+      );
+
+      this.moviesResult.add(movie);
+
+    }
   }
 
   public List getMoviesResult() {

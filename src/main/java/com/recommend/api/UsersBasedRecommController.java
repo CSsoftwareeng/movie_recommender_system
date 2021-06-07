@@ -10,12 +10,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 public class UsersBasedRecommController {
 
+  @Autowired
+  private MovieList movielist;
+  @Autowired
+  private UserList userlist;
+  @Autowired
+  private RatingCalculator rating;
+
   @GetMapping("/users/recommendations")
-  public List<Movie> userBasedAPI(
+  public List<Movies> userBasedAPI(
     @RequestBody Map<String, String> requestBody
   ) {
     try {
@@ -40,14 +48,13 @@ public class UsersBasedRecommController {
         arg = new Arguments(gender, age, occupation);
       } else arg = new Arguments(gender, age, occupation, genres);
 
-      MovieList movielist = new MovieList(arg.getGenres());
-      UserList userlist = new UserList();
+      movielist.searchID(arg.getGenres());
       userlist.searchSimilarUser(
         arg.getGender(),
         arg.getAge(),
         arg.getOccupation()
       );
-      RatingCalculator rating = new RatingCalculator(movielist, userlist);
+      rating.setLists(movielist, userlist);
       rating.rankUserBasedRating(10);
       rating.calcResult();
       return rating.getMoviesResult();
