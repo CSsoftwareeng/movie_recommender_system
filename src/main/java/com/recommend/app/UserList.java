@@ -39,7 +39,6 @@ public class UserList {
     lessSimUsers = new TreeSet<Integer>();
     notSimUsers = new TreeSet<Integer>();
     favoriteUsers = new TreeSet<Integer>();
-    // System.out.println("gender: " + gender + "age: " + age + "occupation :" + occupation);
 
     List<User> temp = userRepository.findAll();
     for (User user : temp) {

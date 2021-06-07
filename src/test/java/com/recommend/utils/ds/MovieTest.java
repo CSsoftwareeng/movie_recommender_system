@@ -8,7 +8,7 @@ public class MovieTest {
 
   @Test
   public void testConstructor() {
-    Movie movie = new Movie("title", "genres", "imdb", "poster");
+    Movies movie = new Movies("title", "genres", "imdb", "poster");
     Assert.assertEquals("title", movie.getTitle());
     Assert.assertEquals("genres", movie.getGenres());
     Assert.assertEquals("imdb", movie.getImdb());

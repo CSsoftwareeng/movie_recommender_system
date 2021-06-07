@@ -20,7 +20,7 @@ public class RatingCalculator {
   List<String> names;
   List<String> genres;
   List<Integer> ID;
-  List moviesResult = new ArrayList<Movie>();
+  List moviesResult = new ArrayList<Movies>();
   MovieList movies;
   UserList users;
 
@@ -132,7 +132,7 @@ public class RatingCalculator {
   }
 
   public void calcResult() {
-    moviesResult = new ArrayList<Movie>();
+    moviesResult = new ArrayList<Movies>();
     ID = new ArrayList<>(result.keySet());
     movies.searchName(ID);
     names = movies.getMoviesName();
@@ -142,19 +142,24 @@ public class RatingCalculator {
 
     for (int i = 0; i < sizeID; i++) {
       Link linkDoc = linkRepository.findByMovieid(ID.get(i));
-      String link = linkDoc.link;
+      String link;
       String poster = posterRepository.findOneByMovieid(ID.get(i));
       if (linkDoc == null)
         link = "";
+      else
+        link = linkDoc.link;
       if (poster == null)
         poster = "";
-      Movie movie = new Movie(
+
+      Movies movie = new Movies(
         names.get(i),
         genres.get(i),
         "(http://www.imdb.com/title/tt" + link + ")",
         poster
       );
+
       this.moviesResult.add(movie);
+
     }
   }
 

@@ -1,6 +1,5 @@
 package com.recommend.app;
 
-import java.util.*;
 import org.springframework.data.annotation.Id;
 
 public class Movie {
@@ -11,8 +10,6 @@ public class Movie {
   public int movieid;
   public String title;
   public String genres;
-  public String imdb;
-  public String poster;
 
   public Movie() {}
 
@@ -22,38 +19,10 @@ public class Movie {
     this.genres = genres;
   }
 
-  public Movie(String title, String genres, String imdb, String poster) {
-    this.title = title;
-    this.genres = genres;
-    this.imdb = imdb;
-    this.poster = poster;
-
-  }
-
   @Override
   public String toString() {
     return String.format(
-        "Movie[id=%s, movieid='%d', title='%s', genre='%s']",
+        "Movie[id=%s, movieid='%d', title='%s', genres='%s']",
         id, movieid, title, genres);
-  }
-
-  public String getMovieid() {
-    return this.title;
-  }
-
-  public String getTitle() {
-    return this.title;
-  }
-
-  public String getGenres() {
-    return this.genres;
-  }
-
-  public String getImdb() {
-    return this.imdb;
-  }
-
-  public String getPoster() {
-    return this.poster;
   }
 }

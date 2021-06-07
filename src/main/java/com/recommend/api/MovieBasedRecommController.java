@@ -23,7 +23,7 @@ public class MovieBasedRecommController {
   private RatingCalculator rating;
 
   @GetMapping("/movies/recommendations")
-  public List<Movie> movieBasedAPI(
+  public List<Movies> movieBasedAPI(
     @RequestBody Map<String, Object> requestBody
   ) {
     try {
