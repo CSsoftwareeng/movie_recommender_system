@@ -25,7 +25,7 @@ ADD run.sh ./
 ADD mongod /etc/init.d
 RUN chmod 755 /etc/init.d/mongod
 RUN service mongod start
-RUN mongoimport --type csv -d recommender -c links --headerline --drop ./movie_recommender_system/resources/links.csv
+RUN mongoimport --type csv -d recommender -c links --headerline --columnsHaveTypes --drop ./movie_recommender_system/resources/links.csv
 RUN mongoimport --type csv -d recommender -c ratings --headerline --drop ./movie_recommender_system/resources/ratings.csv
 RUN mongoimport --type csv -d recommender -c movies --headerline --drop ./movie_recommender_system/resources/movies_corrected.csv
 RUN mongoimport --type csv -d recommender -c posters --headerline --drop ./movie_recommender_system/resources/movie_poster.csv
