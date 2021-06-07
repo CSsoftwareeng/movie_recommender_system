@@ -16,7 +16,7 @@ public class MovieBasedRecommController {
 
   @GetMapping("/movies/recommendations")
   public List<Movie> movieBasedAPI(
-    @RequestParam Map<String, Object> requestParam
+    @RequestParam Map<String, String> requestParam
   ) {
     try {
       int bodysize = requestParam.size();
@@ -26,7 +26,7 @@ public class MovieBasedRecommController {
       String title = (String) requestParam.get("title");
       if (title == null) throw new ArgMissingError("title");
 
-      Integer limit = (Integer) requestParam.get("limit");
+      Integer limit = Integer.parseInt(requestParam.get("limit")); 
       if (limit == null) {
         if (bodysize == 2) throw new WrongArgError("movie");
         limit = 10;
