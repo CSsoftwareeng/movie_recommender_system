@@ -13,6 +13,11 @@ import java.util.*;
 public class MovieList {
   @Autowired
   private MovieRepository movieRepository;
+  @Autowired
+  private PosterRepository posterRepository;
+  @Autowired
+  private LinkRepository linkRepository;
+
   TreeSet<Integer> movies = new TreeSet<Integer>();
   List<String> movieName = new ArrayList<String>();
   List<String> movieGenres = new ArrayList<String>();
@@ -128,39 +133,29 @@ public class MovieList {
   }
 
   public void searchAllMovies() {
-    try {
-      File moviefile = new File("./data/movies.dat");
-      FileReader fileReader = new FileReader(moviefile);
-      BufferedReader bufReader = new BufferedReader(fileReader);
-      String data = "";
-      while ((data = bufReader.readLine()) != null) {
-        String[] temp = data.split("::");
-        this.titles.put(Integer.parseInt(temp[0]), temp[1]);
-        this.genres.put(Integer.parseInt(temp[0]), temp[2]);
-      }
-    } catch (IOException e) {}
+    movies = new TreeSet<Integer>();
+    List<Movie> allMovies = movieRepository.findAll();
 
-    try {
-      File linkfile = new File("./data/links.dat");
-      FileReader fileReader = new FileReader(linkfile);
-      BufferedReader bufReader = new BufferedReader(fileReader);
-      String data = "";
-      while ((data = bufReader.readLine()) != null) {
-        String[] temp = data.split("::");
-        String movietitle = "";
-        String moviegenre = "";
-        String movielink = "";
-        movietitle = this.titles.get(Integer.parseInt(temp[0]));
-        moviegenre = this.genres.get(Integer.parseInt(temp[0]));
-        movielink = temp[1];
-        Movie movie = new Movie(
-                movietitle,
-                moviegenre,
-                "(http://www.imdb.com/title/tt" + movielink + ")"
-        );
-        this.moviesResult.add(movie);
-      }
-    } catch (IOException e) {}
+    for(Movie moviedata : allMovies) {
+      String link = "-";
+      String poster = "-";
+      Link linkDoc = linkRepository.findByMovieid(moviedata.movieid);
+      Poster posterDoc = posterRepository.findByMovieid(moviedata.movieid);
+      if (linkDoc != null)
+        link = linkDoc.link;
+      if (posterDoc != null)
+        poster = posterDoc.poster;
+
+
+      Movies movie = new Movies(
+              moviedata.title,
+              moviedata.genres,
+              "(http://www.imdb.com/title/tt" + link + ")",
+              poster
+
+      );
+      this.moviesResult.add(movie);
+    }
   }
 
   public List getMoviesResult() {
