@@ -31,7 +31,7 @@ public class MovieBasedRecommController {
       if (bodysize == 0 || bodysize > 2) throw new ArgCntError(
         (Integer) bodysize
       );
-      String title = (String) requestParam.get("title");
+      String title = param_title;
       if (title == null) throw new ArgMissingError("title");
 
       Integer limit = Integer.parseInt(requestParam.get("limit")); 
