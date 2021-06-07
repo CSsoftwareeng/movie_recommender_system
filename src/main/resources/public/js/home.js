@@ -80,7 +80,6 @@ $(document).ready(function () {
       $card_body.append($card_text);
       $card.append($card_body);
       $result.append($card);
-      console.log($card);
     }
     $(".contents").append($result);
   });

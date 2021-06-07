@@ -1,5 +1,4 @@
 function btn_user_click() {
-  console.log("user-based submit");
   var gender = $("#gender-selection").get(0).value;
   var age = $("#age-text-box").get(0).value;
   var occupation = $("#occupation-selection").get(0).value;
@@ -15,7 +14,6 @@ function btn_user_click() {
     occupation: occupation ? occupation : "",
     genres: genres ? genres : "",
   };
-  console.log(param);
   $(".result").remove();
   $result = $('<div class="result"></div>');
   $.ajax({
@@ -32,14 +30,12 @@ function btn_user_click() {
       $card_body.append($card_text);
       $card.append($card_body);
       $result.append($card);
-      console.log($card);
     }
     $(".contents").append($result);
   });
 }
 
 function add_genre_selection() {
-  console.log("add genre");
   var genre_options = [
     "Genre",
     "Action",
