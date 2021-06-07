@@ -9,11 +9,11 @@ import java.util.*;
 public class RatingCalculator {
 
   @Autowired
-  private RatingsRepository ratingsRepository;
+  private ReviewRepository reviewRepository;
   @Autowired
-  private PostersRepository postersRepository;
+  private PosterRepository posterRepository;
   @Autowired
-  private LinksRepository linksRepository;
+  private LinkRepository linkRepository;
 
   HashMap<Integer, Rating> map = new HashMap<>();
   LinkedHashMap<Integer, Rating> result = new LinkedHashMap<>();
@@ -141,9 +141,9 @@ public class RatingCalculator {
     int sizeID = ID.size();
 
     for (int i = 0; i < sizeID; i++) {
-      Links linkDoc = linksRepository.findByMovieid(ID.get(i));
+      Link linkDoc = linkRepository.findByMovieid(ID.get(i));
       String link = linkDoc.link;
-      String poster = postersRepository.findOneByMovieid(ID.get(i));
+      String poster = posterRepository.findOneByMovieid(ID.get(i));
       if (linkDoc == null)
         link = "";
       if (poster == null)

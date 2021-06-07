@@ -2,7 +2,7 @@ package com.recommend.app;
 
 import org.springframework.data.annotation.Id;
 
-public class Ratings {
+public class Review {
 
   @Id
   public String id;
@@ -12,9 +12,9 @@ public class Ratings {
   public int rating;
   public int date;
 
-  public Ratings() {}
+  public Review() {}
 
-  public Ratings(int userid, int movieid, int rating, int date) {
+  public Review(int userid, int movieid, int rating, int date) {
     this.userid = userid;
     this.movieid = movieid;
     this.rating = rating;
@@ -24,7 +24,7 @@ public class Ratings {
   @Override
   public String toString() {
     return String.format(
-        "Rating[id=%s, userid='%d', movieid='%d', rating='%d', date='%d']",
+        "Review[id=%s, userid='%d', movieid='%d', rating='%d', date='%d']",
         userid,movieid,rating,date);
   }
 }

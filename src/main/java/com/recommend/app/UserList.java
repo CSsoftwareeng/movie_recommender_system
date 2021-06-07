@@ -8,9 +8,9 @@ import java.util.*;
 @Component
 public class UserList {
   @Autowired
-  private UsersRepository usersRepository;
+  private UserRepository userRepository;
   @Autowired
-  private RatingsRepository ratingsRepository;
+  private ReviewRepository reviewRepository;
 
   TreeSet<Integer> matchedUsers = new TreeSet<Integer>();
   TreeSet<Integer> mostSimUsers = new TreeSet<Integer>();
@@ -24,7 +24,7 @@ public class UserList {
     lessSimUsers = new TreeSet<Integer>();
     notSimUsers = new TreeSet<Integer>();
     favoriteUsers = new TreeSet<Integer>();
-    List<Integer> temp = usersRepository.findUseridByOccupation(occupation);
+    List<Integer> temp = userRepository.findUseridByOccupation(occupation);
     matchedUsers = new TreeSet<Integer>(temp);
     if (matchedUsers.isEmpty()) throw new UserNotExistError();
   }
@@ -41,8 +41,8 @@ public class UserList {
     favoriteUsers = new TreeSet<Integer>();
     // System.out.println("gender: " + gender + "age: " + age + "occupation :" + occupation);
 
-    List<Users> temp = usersRepository.findAll();
-    for (Users user : temp) {
+    List<User> temp = userRepository.findAll();
+    for (User user : temp) {
       int numMatched =
         (genderEmpty || user.gender.equals(gender) ? 1 : 0) +
         (ageEmpty || user.age == Integer.parseInt(age) ? 1 : 0) +

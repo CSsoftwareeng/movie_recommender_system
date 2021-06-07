@@ -6,10 +6,10 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.Query;
 
-public interface LinksRepository extends MongoRepository<Links, String> {
+public interface LinkRepository extends MongoRepository<Link, String> {
 
-  public Links findByMovieid(int movieid);
+  public Link findByMovieid(int movieid);
 
   @Query(value = "{'movieid': {'$in' : ?0 } }", fields = "{'_id': 0}")
-  List<Links> findLinkByMovieidIn(List<Integer> movieids);
+  List<Link> findLinkByMovieidIn(List<Integer> movieids);
 }

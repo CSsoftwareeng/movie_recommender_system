@@ -12,7 +12,7 @@ import java.util.*;
 @Component
 public class MovieList {
   @Autowired
-  private MoviesRepository moviesRepository;
+  private MovieRepository movieRepository;
   TreeSet<Integer> movies = new TreeSet<Integer>();
   List<String> movieName = new ArrayList<String>();
   List<String> movieGenres = new ArrayList<String>();
@@ -32,7 +32,7 @@ public class MovieList {
     int genres_num = genres.size();
     List<Integer> temp;
     if (genres.isEmpty() || genres.contains("")) {
-        temp = moviesRepository.findAllMovieid();
+        temp = movieRepository.findAllMovieid();
         movies = new TreeSet<Integer>(temp);
     } else{
       String regex = "";
@@ -42,7 +42,7 @@ public class MovieList {
       if (regex.length() > 0) {
         regex = regex.substring(0, regex.length()-1);
       }
-      temp = moviesRepository.findMovieidByGenreRegex(regex);
+      temp = movieRepository.findMovieidByGenresRegex(regex);
       movies = new TreeSet<Integer>(temp);
     }
 
@@ -66,9 +66,9 @@ public class MovieList {
     
     for (Integer id: ID)
     {
-      Movies movie = moviesRepository.findByMovieid(id);
+      Movie movie = movieRepository.findByMovieid(id);
       movieName.add(movie.title);
-      movieGenres.add(movie.genre);
+      movieGenres.add(movie.genres);
     }
   }
 
@@ -95,12 +95,12 @@ public class MovieList {
       regex = regex.substring(0, regex.length()-1);
     }    
 
-    List<Movies> temp = moviesRepository.findByGenreRegex(regex);
+    List<Movie> temp = movieRepository.findByGenresRegex(regex);
     
-    for(Movies movie : temp) {
+    for(Movie movie : temp) {
       int count = 0;
       for (int i = 0; i < genres_num; i++) {
-        if (movie.genre.contains(genres.get(i))) {
+        if (movie.genres.contains(genres.get(i))) {
           count++;
         }
       }

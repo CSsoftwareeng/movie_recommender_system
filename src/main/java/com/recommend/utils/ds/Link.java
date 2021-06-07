@@ -2,7 +2,7 @@ package com.recommend.app;
 
 import org.springframework.data.annotation.Id;
 
-public class Links {
+public class Link {
 
   @Id
   public String id;
@@ -10,9 +10,9 @@ public class Links {
   public int movieid;
   public String link;
 
-  public Links() {}
+  public Link() {}
 
-  public Links(int movieid, String link) {
+  public Link(int movieid, String link) {
     this.movieid = movieid;
     this.link = link;
   }
