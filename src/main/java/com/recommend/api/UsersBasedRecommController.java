@@ -23,7 +23,7 @@ public class UsersBasedRecommController {
   private RatingCalculator rating;
 
   @GetMapping("/users/recommendations")
-  public List<Movie> userBasedAPI(
+  public List<Movies> userBasedAPI(
     @RequestParam Map<String, String> requestParam
   ) {
     try {

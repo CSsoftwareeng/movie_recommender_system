@@ -23,7 +23,7 @@ public class MovieBasedRecommController {
   private RatingCalculator rating;
 
   @GetMapping("/movies/recommendations")
-  public List<Movie> movieBasedAPI(
+  public List<Movies> movieBasedAPI(
     @RequestParam Map<String, String> requestParam
   ) {
     try {
@@ -31,7 +31,7 @@ public class MovieBasedRecommController {
       if (bodysize == 0 || bodysize > 2) throw new ArgCntError(
         (Integer) bodysize
       );
-      String title = (String) requestParam.get("title")
+      String title = (String) requestParam.get("title");
       if (title == null) throw new ArgMissingError("title");
 
       Integer limit = Integer.parseInt(requestParam.get("limit")); 
