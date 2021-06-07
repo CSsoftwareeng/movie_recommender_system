@@ -1,12 +1,10 @@
 function btn_movie_click() {
-  console.log("movie-based submit");
   var title = $("#title-text-box").get(0).value;
   var limit = $("#limit-text-box").get(0).value;
   var param = {
     title: title ? title : "",
     limit: limit ? limit : 10,
   };
-  console.log(param);
   $(".result").remove();
   $result = $('<div class="result"></div>');
   $.ajax({
@@ -23,7 +21,6 @@ function btn_movie_click() {
       $card_body.append($card_text);
       $card.append($card_body);
       $result.append($card);
-      console.log($card);
     }
     $(".contents").append($result);
   });
