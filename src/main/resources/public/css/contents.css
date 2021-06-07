@@ -11,8 +11,12 @@
 .card {
   margin: 0.8rem 0.2rem;
   width: 11rem;
-  height: 14rem;
+  height: 16rem;
 }
 .card-text {
   color: black;
+}
+
+.card-img {
+  height: 100%;
 }

@@ -20,12 +20,12 @@ function btn_movie_click() {
           '" target="_blank"></a>'
       );
       $card = $('<div class="card"></div>');
-      $card_text = $('<p class="card-text"></div>');
-      $card_text.html(data[i].title);
-      $card.append($card_text);
+      $card_img = $('<img class="card-img" src="' + data[i].poster + '"/>');
+      $card.append($card_img);
       $link.append($card);
       $result.append($link);
     }
+    console.log(data);
     $(".contents").append($result);
   });
 }
