@@ -25,11 +25,11 @@ ADD run.sh ./
 ADD mongod /etc/init.d
 RUN chmod 755 /etc/init.d/mongod
 RUN service mongod start
-RUN mongoimport --type csv -d recommender -c links --headerline --columnsHaveTypes --drop ./movie_recommender_system/resources/links.csv
-RUN mongoimport --type csv -d recommender -c ratings --headerline --drop ./movie_recommender_system/resources/ratings.csv
-RUN mongoimport --type csv -d recommender -c movies --headerline --drop ./movie_recommender_system/resources/movies_corrected.csv
-RUN mongoimport --type csv -d recommender -c posters --headerline --drop ./movie_recommender_system/resources/movie_poster.csv
-RUN mongoimport --type csv -d recommender -c users --headerline --drop ./movie_recommender_system/resources/users.csv
+RUN mongoimport --type csv -d recommender -c link --headerline --columnsHaveTypes --drop ./movie_recommender_system/resources/links.csv
+RUN mongoimport --type csv -d recommender -c review --headerline --drop ./movie_recommender_system/resources/ratings.csv
+RUN mongoimport --type csv -d recommender -c movie --headerline --drop ./movie_recommender_system/resources/movies_corrected.csv
+RUN mongoimport --type csv -d recommender -c poster --headerline --drop ./movie_recommender_system/resources/movie_poster.csv
+RUN mongoimport --type csv -d recommender -c user --headerline --drop ./movie_recommender_system/resources/users.csv
 
 RUN sed -i -e 's/\r$//' /root/project/run.sh
 
