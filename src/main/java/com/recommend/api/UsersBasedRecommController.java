@@ -23,18 +23,18 @@ public class UsersBasedRecommController {
   private RatingCalculator rating;
 
   @GetMapping("/users/recommendations")
-  public List<Movies> userBasedAPI(
-    @RequestBody Map<String, String> requestBody
+  public List<Movie> userBasedAPI(
+    @RequestParam Map<String, String> requestParam
   ) {
     try {
-      String gender = requestBody.get("gender");
-      String age = requestBody.get("age");
-      String occupation = requestBody.get("occupation");
-      String genres = requestBody.get("genres");
+      String gender = requestParam.get("gender");
+      String age = requestParam.get("age");
+      String occupation = requestParam.get("occupation");
+      String genres = requestParam.get("genres");
 
       if (
-        requestBody.size() <= 2 || requestBody.size() > 4
-      ) throw new ArgCntError((Integer) requestBody.size());
+        requestParam.size() <= 2 || requestParam.size() > 4
+      ) throw new ArgCntError((Integer) requestParam.size());
 
       if (gender == null) throw new ArgMissingError("gender"); else if (
         age == null
@@ -44,7 +44,7 @@ public class UsersBasedRecommController {
 
       Arguments arg;
       if (genres == null) {
-        if (requestBody.size() == 4) throw new WrongArgError("user");
+        if (requestParam.size() == 4) throw new WrongArgError("user");
         arg = new Arguments(gender, age, occupation);
       } else arg = new Arguments(gender, age, occupation, genres);
 
