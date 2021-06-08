@@ -9,14 +9,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 public class MoviesController {
 
+    @Autowired
+    MovieList movies;
+
     @GetMapping("/movies")
-    public List<Movie> moviesAPI(
+    public List<Movies> moviesAPI(
     ) {
-        MovieList movies = new MovieList();
         movies.searchAllMovies();
         return movies.getMoviesResult();
     }

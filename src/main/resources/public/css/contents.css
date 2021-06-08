@@ -1,0 +1,30 @@
+.contents {
+  min-height: 40rem;
+}
+.result {
+  margin: 1rem 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 0.8rem 0.2rem;
+  width: 11rem;
+  height: 16rem;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #a1b3cf;
+}
+.card-text {
+  margin: 0 auto;
+  color: black;
+  font-weight: bold;
+  line-height: 1.5rem;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.card-img {
+  height: 100%;
+}
