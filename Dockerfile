@@ -23,4 +23,3 @@ ADD mongod /etc/init.d
 RUN chmod 755 /etc/init.d/mongod
 
 RUN sed -i -e 's/\r$//' /root/project/run.sh
-RUN bash run.sh
