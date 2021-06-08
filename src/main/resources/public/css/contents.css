@@ -12,9 +12,16 @@
   margin: 0.8rem 0.2rem;
   width: 11rem;
   height: 16rem;
+  flex-direction: column;
+  justify-content: center;
 }
 .card-text {
+  margin: 0 auto;
   color: black;
+  font-weight: bold;
+  line-height: 1.5rem;
+  text-align: center;
+  word-break: keep-all;
 }
 
 .card-img {

@@ -20,7 +20,10 @@ function btn_movie_click() {
           '" target="_blank"></a>'
       );
       $card = $('<div class="card"></div>');
-      $card_img = $('<img class="card-img" src="' + data[i].poster + '"/>');
+      $card_img =
+        data[i].poster == "-"
+          ? $('<p class="card-text">' + data[i].title + "</p>")
+          : $('<img class="card-img" src="' + data[i].poster + '"/>');
       $card.append($card_img);
       $link.append($card);
       $result.append($link);
