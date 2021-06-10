@@ -5,8 +5,17 @@ function btn_movie_click() {
     title: title ? title : "",
     limit: limit ? limit : 10,
   };
-  $(".result").remove();
+  $(".contents").empty();
   $result = $('<div class="result"></div>');
+  $title_movie_based = $(
+    '<div class="title-movie-based"> Top ' +
+      (limit == "" ? 10 : limit) +
+      " Recommendations relavant with " +
+      '"' +
+      title +
+      '"' +
+      "</div>"
+  );
   $.ajax({
     contentType: "application/json; charset=utf-8",
     type: "GET",
@@ -29,6 +38,7 @@ function btn_movie_click() {
       $result.append($link);
     }
     console.log(data);
+    $(".contents").append($title_movie_based);
     $(".contents").append($result);
   });
 }

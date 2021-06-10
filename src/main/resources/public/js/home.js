@@ -65,29 +65,143 @@ $(document).ready(function () {
   config_select_options();
 
   var default_data = { gender: "", age: "", occupation: "", genres: "" };
-  $result = $('<div class="result"></div>');
+  $result_top_ten = $('<div class="result-top-ten"></div>');
+  $title_top_ten = $('<div class="title-top-ten">Top 10 Recommendation</div>');
   $.ajax({
     contentType: "application/json; charset=utf-8",
     type: "GET",
     data: default_data,
     url: "/users/recommendations",
-  }).then(function (data) {
-    for (var i = 0; i < Object.keys(data).length; i++) {
-      $link = $(
-        '<a href="' +
-          data[i].imdb.substring(1, data[i].imdb.length - 1) +
-          '" target="_blank"></a>'
-      );
-      $card = $('<div class="card"></div>');
-      $card_img =
-        data[i].poster == "-"
-          ? $('<p class="card-text">' + data[i].title + "</p>")
-          : $('<img class="card-img" src="' + data[i].poster + '"/>');
-      $card.append($card_img);
-      $link.append($card);
-      $result.append($link);
-    }
-    console.log(data);
-    $(".contents").append($result);
-  });
+  })
+    .then(function (data) {
+      for (var i = 0; i < Object.keys(data).length; i++) {
+        $link = $(
+          '<a href="' +
+            data[i].imdb.substring(1, data[i].imdb.length - 1) +
+            '" target="_blank"></a>'
+        );
+        $card = $('<div class="card"></div>');
+        $card_img =
+          data[i].poster == "-"
+            ? $('<p class="card-text">' + data[i].title + "</p>")
+            : $('<img class="card-img" src="' + data[i].poster + '"/>');
+        $card.append($card_img);
+        $link.append($card);
+        $result_top_ten.append($link);
+      }
+      console.log(data);
+      $(".contents").append($title_top_ten);
+      $(".contents").append($result_top_ten);
+    })
+    .then(function () {
+      var action_data = {
+        gender: "",
+        age: "",
+        occupation: "",
+        genres: "Action",
+      };
+      $result_action = $('<div class="result-action"></div>');
+      $title_action = $('<div class="title-action">Popular in Action</div>');
+      $.ajax({
+        contentType: "application/json; charset=utf-8",
+        type: "GET",
+        data: action_data,
+        url: "/users/recommendations",
+      })
+        .then(function (data) {
+          for (var i = 0; i < Object.keys(data).length; i++) {
+            $link = $(
+              '<a href="' +
+                data[i].imdb.substring(1, data[i].imdb.length - 1) +
+                '" target="_blank"></a>'
+            );
+            $card = $('<div class="card"></div>');
+            $card_img =
+              data[i].poster == "-"
+                ? $('<p class="card-text">' + data[i].title + "</p>")
+                : $('<img class="card-img" src="' + data[i].poster + '"/>');
+            $card.append($card_img);
+            $link.append($card);
+            $result_action.append($link);
+          }
+          console.log(data);
+          $(".contents").append($title_action);
+          $(".contents").append($result_action);
+        })
+        .then(function () {
+          var drama_data = {
+            gender: "",
+            age: "",
+            occupation: "",
+            genres: "Drama",
+          };
+          $result_drama = $('<div class="result-drama"></div>');
+          $title_drama = $('<div class="title-drama">Popular in Drama</div>');
+          $.ajax({
+            contentType: "application/json; charset=utf-8",
+            type: "GET",
+            data: drama_data,
+            url: "/users/recommendations",
+          })
+            .then(function (data) {
+              for (var i = 0; i < Object.keys(data).length; i++) {
+                $link = $(
+                  '<a href="' +
+                    data[i].imdb.substring(1, data[i].imdb.length - 1) +
+                    '" target="_blank"></a>'
+                );
+                $card = $('<div class="card"></div>');
+                $card_img =
+                  data[i].poster == "-"
+                    ? $('<p class="card-text">' + data[i].title + "</p>")
+                    : $('<img class="card-img" src="' + data[i].poster + '"/>');
+                $card.append($card_img);
+                $link.append($card);
+                $result_drama.append($link);
+              }
+              console.log(data);
+              $(".contents").append($title_drama);
+              $(".contents").append($result_drama);
+            })
+            .then(function () {
+              var animation_data = {
+                gender: "",
+                age: "",
+                occupation: "",
+                genres: "Animation",
+              };
+              $result_animation = $('<div class="result-animation"></div>');
+              $title_animation = $(
+                '<div class="title-animation">Popular in Animation</div>'
+              );
+              $.ajax({
+                contentType: "application/json; charset=utf-8",
+                type: "GET",
+                data: animation_data,
+                url: "/users/recommendations",
+              }).then(function (data) {
+                for (var i = 0; i < Object.keys(data).length; i++) {
+                  $link = $(
+                    '<a href="' +
+                      data[i].imdb.substring(1, data[i].imdb.length - 1) +
+                      '" target="_blank"></a>'
+                  );
+                  $card = $('<div class="card"></div>');
+                  $card_img =
+                    data[i].poster == "-"
+                      ? $('<p class="card-text">' + data[i].title + "</p>")
+                      : $(
+                          '<img class="card-img" src="' + data[i].poster + '"/>'
+                        );
+                  $card.append($card_img);
+                  $link.append($card);
+                  $result_animation.append($link);
+                }
+                console.log(data);
+                $(".contents").append($title_animation);
+                $(".contents").append($result_animation);
+              });
+            });
+        });
+    });
 });
