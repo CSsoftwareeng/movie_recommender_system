@@ -41,7 +41,6 @@
       <div class="movie-tab">
         <a href="./movietab.html"> Movie Based Recommender </a>
       </div>
-
     </div>
   </div>
   <div class="user-based-input">
@@ -56,9 +55,12 @@
       <div class="genre-selection-holder">
         <select name="genre" class="genre-selection"></select>
       </div>
-      <button class="btn btn-add-genre" onclick="add_genre_selection();">&#10010</button>
     </div>
-    <button class="btn btn-user-based" onclick="btn_user_click();">Search</button>
+    <div class="btn-group">
+      <button class="btn btn-add-genre" onclick="add_genre_selection();">&#10010</button>
+      <button class="btn btn-subt-genre" onclick="subt_genre_selection();">&#9866</button>
+      <button class="btn btn-user-based" onclick="btn_user_click();">Search</button>
+    </div>
   </div>
   <div class="contents"></div>
   <div class="footer">

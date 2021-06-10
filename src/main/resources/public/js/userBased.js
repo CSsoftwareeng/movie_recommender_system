@@ -74,3 +74,7 @@ function add_genre_selection() {
   }
   $(".genre-selection-holder").append($new_select);
 }
+
+function subt_genre_selection() {
+  $(".genre-selection").last().remove();
+}
