@@ -68,6 +68,21 @@ public class MovieList {
     return movies;
   }
 
+  public Movie getMovieFromTitle(String title)
+    throws MovieNotExistError {
+    String raw_title = null;
+    raw_title =
+      title
+        .trim()
+        .toLowerCase();
+    String regex = ".*"+raw_title+".*";
+    Movie movie = movieRepository.findOneByTitleRegex(regex);
+    if (movie == null) {
+      throw new MovieNotExistError(title);
+    }
+    return movie;
+  }
+
   public void searchName(List<Integer> ID) {
     movieName = new ArrayList<String>();
     movieGenres = new ArrayList<String>();
@@ -119,8 +134,9 @@ public class MovieList {
   }
 
   public void registerFavoriteMovie(String title) {
-    this.favoriteGenres = Tool.getMovieGenre(title);
-    this.favoriteMovieID = Tool.getMovieID(title);
+    Movie movie = getMovieFromTitle(title);
+    this.favoriteGenres = Arrays.asList(movie.genres.split("\\|"));
+    this.favoriteMovieID = movie.movieid;
     searchSimilarID(favoriteGenres);
   }
 

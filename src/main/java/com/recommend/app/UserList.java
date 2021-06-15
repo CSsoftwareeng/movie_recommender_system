@@ -64,15 +64,13 @@ public class UserList {
     }
   }
 
-  void searchFavoriteUsers(String title) {
+  void searchFavoriteUsers(int MovieID) {
 
     matchedUsers = new TreeSet<Integer>();
     mostSimUsers = new TreeSet<Integer>();
     lessSimUsers = new TreeSet<Integer>();
     notSimUsers = new TreeSet<Integer>();
     favoriteUsers = new TreeSet<Integer>();
-
-    int MovieID = Tool.getMovieID(title);
     
     List<Review> movieReviews = reviewRepository.findByMovieidOrderByUseridAsc(MovieID);
     List<Integer> users = new ArrayList<>();
