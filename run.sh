@@ -7,4 +7,5 @@ mongoimport --type csv -d recommender -c review --headerline --drop ./resources/
 mongoimport --type csv -d recommender -c movie --headerline --drop ./resources/movies_corrected.csv
 mongoimport --type csv -d recommender -c poster --headerline --drop ./resources/movie_poster.csv
 mongoimport --type csv -d recommender -c user --headerline --drop ./resources/users.csv
+mongoimport --type csv -d recommender -c cache --headerline --columnsHaveTypes --drop ./resources/cache.csv
 mvn spring-boot:run
