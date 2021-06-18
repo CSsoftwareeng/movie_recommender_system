@@ -114,7 +114,7 @@ public class MovieListTest {
 
   @Test
   public void testRegisterFavoriteMovie() {
-    movie.registerFavoriteMovie("Toy Story (1995)");
+    movie.registerFavoriteMovie("Toy Story");
 
     Assert.assertEquals(3, movie.similarMovies.size());
     Assert.assertEquals(3, movie.countMathcedGenres(1));
