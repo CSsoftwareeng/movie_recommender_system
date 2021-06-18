@@ -30,11 +30,6 @@ public class MovieList {
 
   public MovieList() {}
 
-  public MovieList(List<String> genres) {
-    searchID(genres);
-  }
-
-
   void searchID(List<String> genres) throws MovieNotExistError {
     movies = new TreeSet<Integer>();
     int genres_num = genres.size();
@@ -47,9 +42,7 @@ public class MovieList {
       for(String genre: genres)  {
         regex += genre + "|";
       }
-      if (regex.length() > 0) {
-        regex = regex.substring(0, regex.length()-1);
-      }
+      regex = regex.substring(0, regex.length()-1);
       temp = movieRepository.findMovieidByGenresRegex(regex);
       movies = new TreeSet<Integer>(temp);
     }
@@ -114,9 +107,7 @@ public class MovieList {
     for(String genre: genres)  {
       regex += genre + "|";
     }
-    if (regex.length() > 0) {
-      regex = regex.substring(0, regex.length()-1);
-    }    
+    regex = regex.substring(0, regex.length()-1);
 
     List<Movie> temp = movieRepository.findByGenresRegex(regex);
     
