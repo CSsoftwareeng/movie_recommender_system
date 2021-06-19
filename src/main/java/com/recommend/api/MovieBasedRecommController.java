@@ -33,11 +33,14 @@ public class MovieBasedRecommController {
       );
       String title = (String) requestParam.get("title");
       if (title == null) throw new ArgMissingError("title");
-
-      Integer limit = Integer.parseInt(requestParam.get("limit")); 
-      if (limit == null) {
+      
+      String limit_str = requestParam.get("limit");
+      Integer limit;
+      if (limit_str == null) {
         if (bodysize == 2) throw new WrongArgError("movie");
         limit = 10;
+      } else {
+        limit = Integer.parseInt(limit_str);
       }
       if (limit <= 0) {
         throw new WrongArgError("limit");

@@ -24,7 +24,7 @@ public class RatingCalculatorTest {
     genres.add("Romance");
 
     movielist.searchID(genres);
-    userlist.searchSimilarUser("F", "30", "2");
+    userlist.searchSimilarUser("F", "25", "2");
 
     rating.setLists(movielist, userlist);
     rating.rankUserBasedRating(10);
@@ -35,13 +35,27 @@ public class RatingCalculatorTest {
 
   @Test
   public void testrankGenreBasedRating() {
-    String title = "Toy Story (1995)";
+    String title = "Toy Story";
 
     movielist.registerFavoriteMovie(title);
     userlist.searchFavoriteUsers(movielist.favoriteMovieID);
 
     rating.setLists(movielist, userlist);
     rating.rankGenreBasedRating(20, true);
+    rating.calcResult();
+    Assert.assertEquals(20, rating.numMoviesResult());
+    Assert.assertEquals(20, rating.moviesResult.size());
+  }
+
+  @Test
+  public void testrankGenreBasedRatingWoUserFilter() {
+    String title = "Toy Story";
+
+    movielist.registerFavoriteMovie(title);
+    userlist.searchFavoriteUsers(movielist.favoriteMovieID);
+
+    rating.setLists(movielist, userlist);
+    rating.rankGenreBasedRating(20, false);
     rating.calcResult();
     Assert.assertEquals(20, rating.numMoviesResult());
     Assert.assertEquals(20, rating.moviesResult.size());
