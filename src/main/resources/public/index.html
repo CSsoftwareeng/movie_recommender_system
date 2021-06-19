@@ -11,11 +11,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
     crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./css/base.css?after">
-  <link rel="stylesheet" href="./css/header.css?after">
-  <link rel="stylesheet" href="./css/controller.css?after">
-  <link rel="stylesheet" href="./css/contents.css?after">
-  <link rel="stylesheet" href="./css/footer.css?after">
+  <link rel="stylesheet" href="./css/base.css?version=51">
+  <link rel="stylesheet" href="./css/header.css?version=51">
+  <link rel="stylesheet" href="./css/controller.css?version=51">
+  <link rel="stylesheet" href="./css/contents.css?version=51">
+  <link rel="stylesheet" href="./css/footer.css?version=51">
   <title>RecoMAX</title>
   <script type="text/javascript" src="./js/home.js"></script>
   <script type="text/javascript" src="./js/userBased.js"></script>
@@ -27,17 +27,20 @@
   </div>
   <div class="header">
     <div class="title">
-      RecoMAX
+      <div class="title-reco">
+        Reco
+      </div>
+      <div class="title-MAX">
+        MAX
+      </div>
     </div>
     <div class="nav-bar">
-
       <div class="user-tab">
         <a href="./index.html"> User Based Recommender </a>
       </div>
       <div class="movie-tab">
         <a href="./movietab.html"> Movie Based Recommender </a>
       </div>
-
     </div>
   </div>
   <div class="user-based-input">
@@ -52,9 +55,12 @@
       <div class="genre-selection-holder">
         <select name="genre" class="genre-selection"></select>
       </div>
-      <button class="btn btn-add-genre" onclick="add_genre_selection();">&#10010</button>
     </div>
-    <button class="btn btn-user-based" onclick="btn_user_click();">Search</button>
+    <div class="btn-group">
+      <button class="btn btn-add-genre" onclick="add_genre_selection();">&#10010</button>
+      <button class="btn btn-subt-genre" onclick="subt_genre_selection();">&#9866</button>
+      <button class="btn btn-user-based" onclick="btn_user_click();">Search</button>
+    </div>
   </div>
   <div class="contents"></div>
   <div class="footer">

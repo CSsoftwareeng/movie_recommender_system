@@ -14,8 +14,17 @@ function btn_user_click() {
     occupation: occupation ? occupation : "",
     genres: genres ? genres : "",
   };
-  $(".result").remove();
+  $(".contents").empty();
   $result = $('<div class="result"></div>');
+  $title_user_based = $(
+    '<div class="title-user-based"> Results from "' +
+      (gender != "" ? (gender == "F" ? "Female" : "Male") : "") +
+      (age != "" ? " " + age : "") +
+      (occupation != "" ? " " + occupation : "") +
+      (genres != "" ? " " + genres : "") +
+      '"' +
+      "</div>"
+  );
   $.ajax({
     contentType: "application/json; charset=utf-8",
     type: "GET",
@@ -38,6 +47,7 @@ function btn_user_click() {
       $result.append($link);
     }
     console.log(data);
+    $(".contents").append($title_user_based);
     $(".contents").append($result);
   });
 }
@@ -73,4 +83,8 @@ function add_genre_selection() {
     $new_select.append($option);
   }
   $(".genre-selection-holder").append($new_select);
+}
+
+function subt_genre_selection() {
+  $(".genre-selection").last().remove();
 }

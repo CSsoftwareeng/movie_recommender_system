@@ -8,9 +8,12 @@
 #gender-selection,
 #age-text-box,
 #title-text-box,
-#limit-text-box,
+#limit-text-box {
+  margin: 0 1rem;
+  width: 10%;
+}
 #occupation-selection {
-  margin: 0 2rem;
+  width: 15%;
 }
 #age-text-box::placeholder {
   background-color: #393e46;
@@ -29,6 +32,7 @@
 }
 
 .btn-add-genre,
+.btn-subt-genre,
 .btn-user-based {
   border: 4px solid;
   border-color: #47597e;

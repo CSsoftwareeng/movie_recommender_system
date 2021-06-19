@@ -1,11 +1,27 @@
 .contents {
   min-height: 40rem;
 }
-.result {
+
+.result,
+.result-top-ten,
+.result-action,
+.result-drama,
+.result-animation {
   margin: 1rem 2rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.title-top-ten,
+.title-action,
+.title-drama,
+.title-animation,
+.title-user-based,
+.title-movie-based {
+  margin: 4rem 0rem 1rem 2rem;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .card {

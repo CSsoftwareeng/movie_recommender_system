@@ -14,11 +14,18 @@
   font-size: 3rem;
   font-weight: bold;
   line-height: 8rem;
+  display: flex;
+  justify-content: start;
+}
+
+.title-MAX {
+  color: orangered;
 }
 
 .nav-bar {
   padding: 1rem 0 0 2rem;
   height: 4rem;
+  width: 100%;
   background-color: #47597e;
   display: flex;
   justify-content: flex-start;
