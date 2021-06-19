@@ -38,8 +38,6 @@ public class UsersBasedRecommControllerTest {
 
   @Test
   public void testValidRequestWithFullConditions() throws Exception {
-    // String json =
-    //   "{\"gender\" : \"F\", \"age\" : \"30\", \"occupation\" : \"artist\", \"genres\" : \"Romance|comedy\"}";
 
     mvc
       .perform(
