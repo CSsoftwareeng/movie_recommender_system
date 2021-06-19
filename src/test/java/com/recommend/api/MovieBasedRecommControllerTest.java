@@ -36,17 +36,17 @@ public class MovieBasedRecommControllerTest {
       .andExpect(jsonPath("$.length()").value(20));
   }
 
-  // @Test
-  // public void testValidRequestWithExtremeLimit() throws Exception {
+  @Test
+  public void testValidRequestWithExtremeLimit() throws Exception {
 
-  //   mvc
-  //     .perform(
-  //       get("/movies/recommendations")
-  //           .param("title", "Toy Story")
-  //           .param("limit", "4000")
-  //     )
-  //     .andExpect(status().isOk());
-  // }
+    mvc
+      .perform(
+        get("/movies/recommendations")
+            .param("title", "Toy Story")
+            .param("limit", "4000")
+      )
+      .andExpect(status().isOk());
+  }
 
   @Test
   public void testValidRequestWoLimit() throws Exception {
