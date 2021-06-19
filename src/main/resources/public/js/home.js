@@ -160,7 +160,7 @@ $(document).ready(function () {
               $.ajax({
                 contentType: "application/json; charset=utf-8",
                 type: "GET",
-                data: { type: "drama" },
+                data: { type: "animation" },
                 url: "/home",
               }).then(function (data) {
                 for (var i = 0; i < Object.keys(data).length; i++) {
