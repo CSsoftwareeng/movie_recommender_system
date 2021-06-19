@@ -64,61 +64,26 @@ public class UserList {
     }
   }
 
-  void searchFavoriteUsers(String title) {
+  void searchFavoriteUsers(int MovieID) {
+
     matchedUsers = new TreeSet<Integer>();
     mostSimUsers = new TreeSet<Integer>();
     lessSimUsers = new TreeSet<Integer>();
     notSimUsers = new TreeSet<Integer>();
     favoriteUsers = new TreeSet<Integer>();
+    
+    List<Review> movieReviews = reviewRepository.findByMovieidOrderByUseridAsc(MovieID);
+    List<Integer> users = new ArrayList<>();
+    for (Review movieReview : movieReviews) {
+      users.add(movieReview.userid);
+    }
+    List<Double> averageRatings = reviewRepository.findAverageRatingByUserid(users);
 
-    HashMap<Integer, Integer> users = new HashMap<Integer, Integer>();
-    HashMap<Integer, AvgRating> usersAvg = new HashMap<Integer, AvgRating>();
-    int MovieID = Tool.getMovieID(title);
-    try {
-      File ratingFile = new File("./data/ratings.dat");
-      FileReader reader = new FileReader(ratingFile);
-      BufferedReader buffer = new BufferedReader(reader);
-      String line;
-      while ((line = buffer.readLine()) != null) {
-        String[] rating = line.split("::");
-        if (Integer.parseInt(rating[1]) == MovieID) {
-          users.put(Integer.parseInt(rating[0]), Integer.parseInt(rating[2]));
-        }
-      }
-    } catch (IOException e) {}
-
-    try {
-      File ratingFile = new File("./data/ratings.dat");
-      FileReader reader = new FileReader(ratingFile);
-      BufferedReader buffer = new BufferedReader(reader);
-      String line;
-      while ((line = buffer.readLine()) != null) {
-        String[] rating = line.split("::");
-        if (users.containsKey(Integer.parseInt(rating[0]))) {
-          if (usersAvg.containsKey(Integer.parseInt(rating[0]))) {
-            AvgRating temp = new AvgRating(
-              (
-                usersAvg.get(Integer.parseInt(rating[0])).getSum() +
-                Integer.parseInt(rating[2])
-              ),
-              (usersAvg.get(Integer.parseInt(rating[0])).getCount() + 1)
-            );
-            temp.setAverage();
-            usersAvg.replace(Integer.parseInt(rating[0]), temp);
-          } else {
-            AvgRating temp = new AvgRating(Integer.parseInt(rating[2]), 1);
-            temp.setAverage();
-            usersAvg.put(Integer.parseInt(rating[0]), temp);
-          }
-        }
-      }
-
-      for (Integer key : users.keySet()) {
-        if (users.get(key) >= usersAvg.get(key).getAverage()) {
-          favoriteUsers.add(key);
-        }
-      }
-    } catch (IOException e) {}
+    int size = users.size();
+    for ( int i = 0; i < size; i++) {
+      if ( movieReviews.get(i).rating >= averageRatings.get(i) )
+        favoriteUsers.add(users.get(i));
+    }
   }
 
   public boolean isMatched(int userid) {

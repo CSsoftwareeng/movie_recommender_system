@@ -64,14 +64,15 @@ $(document).ready(function () {
   }
   config_select_options();
 
-  var default_data = { gender: "", age: "", occupation: "", genres: "" };
+  // var default_data = { gender: "", age: "", occupation: "", genres: "" };
   $result_top_ten = $('<div class="result-top-ten"></div>');
   $title_top_ten = $('<div class="title-top-ten">Top 10 Recommendation</div>');
   $.ajax({
     contentType: "application/json; charset=utf-8",
     type: "GET",
-    data: default_data,
-    url: "/users/recommendations",
+    data: { type: "top" },
+    url: "/home",
+    // url: "/users/recommendations",
   })
     .then(function (data) {
       for (var i = 0; i < Object.keys(data).length; i++) {
@@ -94,19 +95,13 @@ $(document).ready(function () {
       $(".contents").append($result_top_ten);
     })
     .then(function () {
-      var action_data = {
-        gender: "",
-        age: "",
-        occupation: "",
-        genres: "Action",
-      };
       $result_action = $('<div class="result-action"></div>');
       $title_action = $('<div class="title-action">Popular in Action</div>');
       $.ajax({
         contentType: "application/json; charset=utf-8",
         type: "GET",
-        data: action_data,
-        url: "/users/recommendations",
+        data: { type: "action" },
+        url: "/home",
       })
         .then(function (data) {
           for (var i = 0; i < Object.keys(data).length; i++) {
@@ -129,19 +124,13 @@ $(document).ready(function () {
           $(".contents").append($result_action);
         })
         .then(function () {
-          var drama_data = {
-            gender: "",
-            age: "",
-            occupation: "",
-            genres: "Drama",
-          };
           $result_drama = $('<div class="result-drama"></div>');
           $title_drama = $('<div class="title-drama">Popular in Drama</div>');
           $.ajax({
             contentType: "application/json; charset=utf-8",
             type: "GET",
-            data: drama_data,
-            url: "/users/recommendations",
+            data: { type: "drama" },
+            url: "/home",
           })
             .then(function (data) {
               for (var i = 0; i < Object.keys(data).length; i++) {
@@ -164,12 +153,6 @@ $(document).ready(function () {
               $(".contents").append($result_drama);
             })
             .then(function () {
-              var animation_data = {
-                gender: "",
-                age: "",
-                occupation: "",
-                genres: "Animation",
-              };
               $result_animation = $('<div class="result-animation"></div>');
               $title_animation = $(
                 '<div class="title-animation">Popular in Animation</div>'
@@ -177,8 +160,8 @@ $(document).ready(function () {
               $.ajax({
                 contentType: "application/json; charset=utf-8",
                 type: "GET",
-                data: animation_data,
-                url: "/users/recommendations",
+                data: { type: "animation" },
+                url: "/home",
               }).then(function (data) {
                 for (var i = 0; i < Object.keys(data).length; i++) {
                   $link = $(

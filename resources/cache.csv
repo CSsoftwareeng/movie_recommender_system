@@ -1,0 +1,41 @@
+type.string(), rank.int32(),title.string(), genres.string(), imdb.string(), poster.string()
+top,1,"Gate of Heavenly Peace, The (1995)",Documentary,"(http://www.imdb.com/title/tt0113147)",https://m.media-amazon.com/images/M/MV5BZmQ5ZmEwMDEtZTUxMi00NTQyLTgyNmEtODc4ZjIwZWI5YjY1XkEyXkFqcGdeQXVyNDc3MTk3Njg@..jpg
+top,2,"Schlafes Bruder (Brother of Sleep) (1995)",Drama,"(http://www.imdb.com/title/tt0114354)",https://m.media-amazon.com/images/M/MV5BMTQ5OTg5NTY4M15BMl5BanBnXkFtZTcwODA0MDUxMQ@@..jpg
+top,3,"Follow the Bitch (1998)",Comedy,"(http://www.imdb.com/title/tt0119139)",https://m.media-amazon.com/images/M/MV5BMTYxODE3Mzc4Ml5BMl5BanBnXkFtZTcwMTAwMjkwOA@@..jpg
+top,4,"Ulysses (Ulisse) (1954)",Adventure,"(http://www.imdb.com/title/tt0047630)",https://m.media-amazon.com/images/M/MV5BY2Q2YTk2MTktNzJjZC00MzI5LWFmN2EtMzQ0ODI1ZDIxNmM1XkEyXkFqcGdeQXVyNjc1NTYyMjg@..jpg
+top,5,"Smashing Time (1967)",Comedy,"(http://www.imdb.com/title/tt0062281)",https://m.media-amazon.com/images/M/MV5BNDlkOTJhNDktOWZiOS00N2I5LWE4ZDEtZjgxN2JlNTQzOGRmXkEyXkFqcGdeQXVyMTMxMTY0OTQ@..jpg
+top,6,"Baby, The (1973)",Horror,"(http://www.imdb.com/title/tt0069754)",https://m.media-amazon.com/images/M/MV5BMzdlMzc0ZDUtMDI0OS00NDk4LWE4YjQtYjk1YzRmZjFjMDAzXkEyXkFqcGdeQXVyODY0NzcxNw@@..jpg
+top,7,"Song of Freedom (1936)",Drama,"(http://www.imdb.com/title/tt0028282)",https://m.media-amazon.com/images/M/MV5BZTFlZDE5ZWMtOGU0YS00ZGQ2LTk5MmYtOWQ0YWE5MjE5YTU4XkEyXkFqcGdeQXVyMzg1ODEwNQ@@..jpg
+top,8,"One Little Indian (1973)",Comedy|Drama|Western,"(http://www.imdb.com/title/tt0070481)",https://m.media-amazon.com/images/M/MV5BMmMxMjhlYzYtNWFhZC00MGQyLTg1NmUtNDc1ZjE3ZjlhMzIxXkEyXkFqcGdeQXVyMTM3NzQ5NzQ@..jpg
+top,9,"Lured (1947)",Crime,"(http://www.imdb.com/title/tt0039589)",https://m.media-amazon.com/images/M/MV5BMmE5MmM1ZmEtM2JhMC00OTc1LThhNzItZWEyNWU5NzA2OWZlXkEyXkFqcGdeQXVyMDI2NDg0NQ@@..jpg
+top,10,"Bittersweet Motel (2000)",Documentary,"(http://www.imdb.com/title/tt0168515)",https://m.media-amazon.com/images/M/MV5BMTY1NTc0MDM2N15BMl5BanBnXkFtZTcwODc4MjMyMQ@@..jpg
+action,1,"Sanjuro (1962)",Action|Adventure,"(http://www.imdb.com/title/tt0056443)",https://m.media-amazon.com/images/M/MV5BZmY3MDlmODctYTY3Yi00NzYyLWIxNTUtYjVlZWZjMmMwZTBkXkEyXkFqcGdeQXVyMzAxNjg3MjQ@..jpg
+action,2,"Seven Samurai (The Magnificent Seven) (Shichinin no samurai) (1954)",Action|Drama,"(http://www.imdb.com/title/tt0047478)",https://m.media-amazon.com/images/M/MV5BNDE1NTUyOGQtMjNkNS00NjhlLWFjNGEtMWYzMTExZDc1M2M2XkEyXkFqcGdeQXVyMTMxODk2OTU@..jpg
+action,3,"Godfather, The (1972)",Action|Crime|Drama,"(http://www.imdb.com/title/tt0068646)",https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@..jpg
+action,4,"Raiders of the Lost Ark (1981)",Action|Adventure,"(http://www.imdb.com/title/tt0082971)",https://m.media-amazon.com/images/M/MV5BMjA0ODEzMTc1Nl5BMl5BanBnXkFtZTcwODM2MjAxNA@@..jpg
+action,5,"Star Wars: Episode IV - A New Hope (1977)",Action|Adventure|Fantasy|Sci-Fi,"(http://www.imdb.com/title/tt0076759)",https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@..jpg
+action,6,"Godfather: Part II, The (1974)",Action|Crime|Drama,"(http://www.imdb.com/title/tt0071562)",https://m.media-amazon.com/images/M/MV5BMWMwMGQzZTItY2JlNC00OWZiLWIyMDctNDk2ZDQ2YjRjMWQ0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@..jpg
+action,7,"Saving Private Ryan (1998)",Action|Drama|War,"(http://www.imdb.com/title/tt0120815)",https://m.media-amazon.com/images/M/MV5BZjhkMDM4MWItZTVjOC00ZDRhLThmYTAtM2I5NzBmNmNlMzI1XkEyXkFqcGdeQXVyNDYyMDk5MTU@..jpg
+action,8,"Matrix, The (1999)",Action|Sci-Fi|Thriller,"(http://www.imdb.com/title/tt0133093)",-
+action,9,"Princess Bride, The (1987)",Action|Adventure|Comedy|Romance,"(http://www.imdb.com/title/tt0093779",-
+action,10,"Boat, The (Das Boot) (1981)",Action|Drama|War,"(http://www.imdb.com/title/tt0082096)",https://m.media-amazon.com/images/M/MV5BNGRmOWY0MGUtNTVhMy00NzRlLTljNDAtNTBiNTRlODgxNmY2XkEyXkFqcGdeQXVyNjc1NTYyMjg@..jpg
+drama,1,"Schlafes Bruder (Brother of Sleep) (1995)",Drama,"(http://www.imdb.com/title/tt0114354)",https://m.media-amazon.com/images/M/MV5BMTQ5OTg5NTY4M15BMl5BanBnXkFtZTcwODA0MDUxMQ@@..jpg
+drama,2,"Song of Freedom (1936)",Drama,"(http://www.imdb.com/title/tt0028282)",https://m.media-amazon.com/images/M/MV5BZTFlZDE5ZWMtOGU0YS00ZGQ2LTk5MmYtOWQ0YWE5MjE5YTU4XkEyXkFqcGdeQXVyMzg1ODEwNQ@@..jpg
+drama,3,"One Little Indian (1973)",Comedy|Drama|Western,"(http://www.imdb.com/title/tt0070481)",https://m.media-amazon.com/images/M/MV5BMmMxMjhlYzYtNWFhZC00MGQyLTg1NmUtNDc1ZjE3ZjlhMzIxXkEyXkFqcGdeQXVyMTM3NzQ5NzQ@..jpg
+drama,4,"I Am Cuba (Soy Cuba/Ya Kuba) (1964)",Drama,"(http://www.imdb.com/title/tt0058604)",https://m.media-amazon.com/images/M/MV5BNmMxNmIxMWUtMGQ5MC00OTI3LWJhYmItYjgzNTVjYWNmZjcyXkEyXkFqcGdeQXVyNjMxMjkwMjI@..jpg
+drama,5,"Lamerica (1994)",Drama,"(http://www.imdb.com/title/tt0110299)",https://m.media-amazon.com/images/M/MV5BNjlmZmQ0ZGUtNTBjYy00ZTg3LWE1NmMtNDAyNDI2Zjc4ZDViXkEyXkFqcGdeQXVyMzIwNDY4NDI@..jpg
+drama,6,"Apple, The (Sib) (1998)",Drama,"(http://www.imdb.com/title/tt0156901)",https://m.media-amazon.com/images/M/MV5BZjE3ZTUzMWItMzUxYy00MjMxLWFkNmQtYzQ3ZTc5NjU1NzhmXkEyXkFqcGdeQXVyMjUwMzM0Mjc@..jpg
+drama,7,"Seven Samurai (The Magnificent Seven) (Shichinin no samurai) (1954)",Action|Drama,"(http://www.imdb.com/title/tt0047478)",https://m.media-amazon.com/images/M/MV5BNDE1NTUyOGQtMjNkNS00NjhlLWFjNGEtMWYzMTExZDc1M2M2XkEyXkFqcGdeQXVyMTMxODk2OTU@..jpg
+drama,8,"Shawshank Redemption, The (1994)",Drama,"(http://www.imdb.com/title/tt0111161)",https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@..jpg
+drama,9,"Godfather, The (1972)",Action|Crime|Drama,"(http://www.imdb.com/title/tt0068646)",https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@..jpg
+drama,10,"Schindler's List (1993)",Drama|War,"(http://www.imdb.com/title/tt0108052)",https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@..jpg
+animation,1,"Close Shave, A (1995)",Animation|Comedy|Thriller,"(http://www.imdb.com/title/tt0112691)",https://m.media-amazon.com/images/M/MV5BNzliZjhkODctMGJjOS00YWQ3LWEzMjgtYmZjNzMwMDYwYWNjXkEyXkFqcGdeQXVyNTAyODkwOQ@@..jpg
+animation,2,"Wrong Trousers, The (1993)",Animation|Comedy,"(http://www.imdb.com/title/tt0108598)",https://m.media-amazon.com/images/M/MV5BNDBmNGU4MTEtMmI2Mi00NjU1LTgxNTktMDQ1MDE0Y2MwMjYwXkEyXkFqcGdeQXVyNTAyODkwOQ@@..jpg
+animation,3,"Wallace & Gromit: The Best of Aardman Animation (1996)",Animation,"(http://www.imdb.com/title/tt0118114)",https://m.media-amazon.com/images/M/MV5BYWQ0MTJlYTYtNDU3ZS00ZmE4LWJjYTAtYzEzODAyZmM5ZjJhXkEyXkFqcGdeQXVyMTI4ODc2NDY@..jpg
+animation,4,"Grand Day Out, A (1992)",Animation|Comedy,"(http://www.imdb.com/title/tt0104361",-
+animation,5,"Creature Comforts (1990)",Animation|Comedy,"(http://www.imdb.com/title/tt0099317)",https://m.media-amazon.com/images/M/MV5BNGI3Y2RmZTAtZDE5NC00MTQ4LTg4OTQtZjMyZGFjZDg5Y2UyXkEyXkFqcGdeQXVyNTAyODkwOQ@@..jpg
+animation,6,"Toy Story 2 (1999)",Animation|Children's|Comedy,"(http://www.imdb.com/title/tt0120363)",https://m.media-amazon.com/images/M/MV5BMWM5ZDcxMTYtNTEyNS00MDRkLWI3YTItNThmMGExMWY4NDIwXkEyXkFqcGdeQXVyNjUwNzk3NDc@..jpg
+animation,7,"Princess Mononoke, The (Mononoke Hime) (1997)",Action|Adventure|Animation,"(http://www.imdb.com/title/tt0119698)",https://m.media-amazon.com/images/M/MV5BMTVlNWM4NTAtNDQxYi00YWU5LWIwM2MtZmVjYWFmODZiODE5XkEyXkFqcGdeQXVyNjU0OTQ0OTY@..jpg
+animation,8,"Toy Story (1995)",Animation|Children's|Comedy,"(http://www.imdb.com/title/tt0114709)",https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@..jpg
+animation,9,"Ghost in the Shell (Kokaku kidotai) (1995)",Animation|Sci-Fi,"(http://www.imdb.com/title/tt0113568)",https://m.media-amazon.com/images/M/MV5BYWRiYjQyOGItNzQ1Mi00MGI1LWE3NjItNTg1ZDQwNjUwNDM2XkEyXkFqcGdeQXVyNTAyODkwOQ@@..jpg
+animation,10,"Iron Giant, The (1999)",Animation|Children's,"(http://www.imdb.com/title/tt0129167)",https://m.media-amazon.com/images/M/MV5BMjIxNDU2Njk0OV5BMl5BanBnXkFtZTgwODc3Njc3NjE@..jpg

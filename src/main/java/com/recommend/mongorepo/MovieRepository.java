@@ -11,6 +11,10 @@ public interface MovieRepository extends MongoRepository<Movie, String> {
   public Movie findByMovieid(Integer movieid);
   public List<Movie> findByTitle(String title);
   public List<Movie> findByGenres(String genres);
+
+  @Aggregation({"{ '$match': {'title': {'$regex': ?0, '$options':'i'} } }","{ '$limit': 1}"})
+  Movie findOneByTitleRegex(String titleRegex);
+
   @Aggregation("{ '$project': { '_id' : '$movieid' } }")
   List<Integer> findAllMovieid();
   @Aggregation("{ '$match': {'genres': {'$regex': ?0} } }, { '$project': { '_id' : '$movieid' } }")

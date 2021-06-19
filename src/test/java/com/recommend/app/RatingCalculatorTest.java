@@ -38,7 +38,7 @@ public class RatingCalculatorTest {
     String title = "Toy Story (1995)";
 
     movielist.registerFavoriteMovie(title);
-    userlist.searchFavoriteUsers(title);
+    userlist.searchFavoriteUsers(movielist.favoriteMovieID);
 
     rating.setLists(movielist, userlist);
     rating.rankGenreBasedRating(20, true);

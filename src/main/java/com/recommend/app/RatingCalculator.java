@@ -30,46 +30,26 @@ public class RatingCalculator {
   }
 
   void rankUserBasedRating(int limit) {
-    try {
-      map = new HashMap<>();
-      result = new LinkedHashMap<>();
-      File usersFile = new File("./data/ratings.dat");
-      FileReader reader = new FileReader(usersFile);
-      BufferedReader buffer = new BufferedReader(reader);
-      String line;
-      int matched = 3;
-      while ((line = buffer.readLine()) != null) {
-        String[] rating = line.split("::");
-        int user = Integer.parseInt(rating[0]);
-        int movie = Integer.parseInt(rating[1]);
-        if (users.isMatched(user)) {
-          matched = 3;
-        } else if (users.isSimilar(user)) {
-          matched = 2;
-        } else if (users.isLessSimilar(user)) {
-          matched = 1;
-        } else {
-          matched = 0;
-        }
+    
+    List<Review> matchedUsersReviews = reviewRepository.findByUseridIn(users.matchedUsers);
 
-        if (movies.findID(movie)) {
-          if (map.containsKey(movie)) {
-            if (map.get(movie).getMatch() == matched) {
-              int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
-              int tcount = map.get(movie).getCount() + 1;
-              map.put(movie, new Rating(tsum, tcount, matched));
-            } else if (map.get(movie).getMatch() < matched) {
-              map.put(
-                movie,
-                new Rating(Integer.parseInt(rating[2]), 1, matched)
-              );
-            }
-          } else {
-            map.put(movie, new Rating(Integer.parseInt(rating[2]), 1, matched));
-          }
+    map = new HashMap<>();
+    result = new LinkedHashMap<>();
+
+    for (Review review : matchedUsersReviews) {
+      int movie = review.movieid;
+      int rating = review.rating;
+
+      if (movies.findID(movie)) {
+        if (map.containsKey(movie)) {
+          int tsum = map.get(movie).getSum() + rating;
+          int tcount = map.get(movie).getCount() + 1;
+          map.put(movie, new Rating(tsum, tcount, 3));
+        } else {
+          map.put(movie, new Rating(rating, 1, 3));
         }
       }
-    } catch (IOException e) {}
+    }
 
     List<Map.Entry<Integer, Rating>> entries = new LinkedList<>(map.entrySet());
     Collections.sort(
@@ -84,40 +64,40 @@ public class RatingCalculator {
       ); else break;
     }
   }
-
+  
   void rankGenreBasedRating(int limit, boolean userfilter) {
-    try {
-      map = new HashMap<>();
+    map = new HashMap<>();
+    if(userfilter)
       result = new LinkedHashMap<>();
-      File usersFile = new File("./data/ratings.dat");
-      FileReader reader = new FileReader(usersFile);
-      BufferedReader buffer = new BufferedReader(reader);
-      String line;
+    List<Review> reviews;
+    if (userfilter) {
+      reviews = reviewRepository.findByUseridIn(users.favoriteUsers);
+    } else {
+      reviews = reviewRepository.findAll();
+    }
 
-      while ((line = buffer.readLine()) != null) {
-        String[] rating = line.split("::");
-        int user = Integer.parseInt(rating[0]);
-        int movie = Integer.parseInt(rating[1]);
+    for (Review review : reviews) {
+      int user = review.userid;
+      int movie = review.movieid;
+      int rating = review.rating;
+      
+      if (map.containsKey(movie)) {
+        int match = map.get(movie).match;
+        int tsum = map.get(movie).getSum() + rating;
+        int tcount = map.get(movie).getCount() + 1;
+        map.put(movie, new Rating(tsum, tcount, match));
+      } else {
         int match = movies.countMathcedGenres(movie);
-
-        if (!userfilter || users.isFavorite(user)) {
-          if (map.containsKey(movie)) {
-            int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
-            int tcount = map.get(movie).getCount() + 1;
-            map.put(movie, new Rating(tsum, tcount, match));
-          } else {
-            map.put(movie, new Rating(Integer.parseInt(rating[2]), 1, match));
-          }
-        }
+        map.put(movie, new Rating(rating, 1, match));
       }
-      map.remove(movies.favoriteMovieID);
-      if (!userfilter) {
-        List<Integer> keys = new ArrayList<>(result.keySet());
-        for (Integer key : keys) {
-          map.remove(key);
-        }
+    }
+    map.remove(movies.favoriteMovieID);
+    if (!userfilter) {
+      List<Integer> keys = new ArrayList<>(result.keySet());
+      for (Integer key : keys) {
+        map.remove(key);
       }
-    } catch (IOException e) {}
+    }
 
     List<Map.Entry<Integer, Rating>> entries = new LinkedList<>(map.entrySet());
     Collections.sort(

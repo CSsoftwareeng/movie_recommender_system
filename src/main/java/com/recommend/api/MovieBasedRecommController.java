@@ -44,7 +44,7 @@ public class MovieBasedRecommController {
       }
 
       movielist.registerFavoriteMovie(title);
-      userlist.searchFavoriteUsers(title);
+      userlist.searchFavoriteUsers(movielist.favoriteMovieID);
 
       rating.setLists(movielist, userlist);
       rating.rankGenreBasedRating(limit, true);
