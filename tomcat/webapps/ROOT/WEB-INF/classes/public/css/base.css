@@ -1,0 +1,47 @@
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+a,
+p,
+img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: "Open Sans";
+  text-decoration: none;
+  color: #dbe6fd;
+}
+
+html,
+body {
+  font-size: 100%;
+  width: 100%;
+  min-height: 100%;
+  background-color: #393e46;
+}
+
+li,
+a,
+a:hover {
+  list-style: none;
+  color: #eeeeee;
+}
+
+select,
+input,
+input:focus {
+  margin: 0;
+  display: inline-block;
+  background-color: #393e46;
+  color: #eeeeee;
+  border: 4px solid;
+  border-color: #47597e;
+  border-radius: 0.5rem;
+}

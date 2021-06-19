@@ -1,0 +1,930 @@
+19-Jun-2021 18:57:19.041 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 18:57:19.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 18:57:19.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 18:57:19.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 18:57:19.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 18:57:19.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 18:57:19.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 18:57:19.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 18:57:19.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 18:57:19.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 18:57:19.044 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 18:57:19.044 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 18:57:19.044 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 18:57:19.044 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 18:57:19.044 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 18:57:19.044 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 18:57:19.045 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 18:57:19.045 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 18:57:19.045 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 18:57:19.045 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 18:57:19.045 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 18:57:19.045 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 18:57:19.045 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 18:57:19.045 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 18:57:19.067 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 18:57:19.073 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 18:57:19.076 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 18:57:19.077 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 18:57:19.077 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 226 ms
+19-Jun-2021 18:57:19.100 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 18:57:19.100 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 18:57:19.116 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war]
+19-Jun-2021 18:57:19.288 WARNING [localhost-startStop-1] org.apache.tomcat.util.descriptor.web.WebXml.setVersion Unknown version string [4.0]. Default version will be used.
+19-Jun-2021 18:57:19.943 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Jun-2021 18:57:19.988 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war] has finished in [873] ms
+19-Jun-2021 18:57:19.989 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 18:57:20.003 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [14] ms
+19-Jun-2021 18:57:20.003 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 18:57:20.073 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [70] ms
+19-Jun-2021 18:57:20.073 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 18:57:20.080 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [7] ms
+19-Jun-2021 18:57:20.081 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 18:57:20.090 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [9] ms
+19-Jun-2021 18:57:20.090 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/ROOT]
+19-Jun-2021 18:57:20.096 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/ROOT] has finished in [6] ms
+19-Jun-2021 18:57:20.099 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 18:57:20.104 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 18:57:20.105 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 1027 ms
+19-Jun-2021 18:59:24.859 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 18:59:24.911 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 18:59:24.962 INFO [Thread-4] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 18:59:24.987 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 18:59:24.988 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 18:59:24.989 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 18:59:24.990 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:06:40.671 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:06:40.673 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:06:40.673 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:06:40.673 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:06:40.673 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:06:40.673 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:06:40.673 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:06:40.673 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:06:40.673 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:06:40.673 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:06:40.673 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:06:40.674 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:06:40.674 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:06:40.674 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:06:40.674 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:06:40.674 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:06:40.675 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:06:40.675 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:06:40.675 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:06:40.675 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:06:40.675 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:06:40.675 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:06:40.675 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:06:40.675 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:06:40.694 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:06:40.707 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:06:40.709 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:06:40.710 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:06:40.710 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 235 ms
+19-Jun-2021 19:06:40.733 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:06:40.733 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:06:40.744 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war]
+19-Jun-2021 19:06:41.494 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Jun-2021 19:06:41.541 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war] has finished in [796] ms
+19-Jun-2021 19:06:41.542 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:06:41.555 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [14] ms
+19-Jun-2021 19:06:41.555 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:06:41.628 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [73] ms
+19-Jun-2021 19:06:41.628 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:06:41.635 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [7] ms
+19-Jun-2021 19:06:41.635 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:06:41.644 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [9] ms
+19-Jun-2021 19:06:41.644 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/ROOT]
+19-Jun-2021 19:06:41.650 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/ROOT] has finished in [6] ms
+19-Jun-2021 19:06:41.653 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:06:41.659 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:06:41.660 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 949 ms
+19-Jun-2021 19:09:51.294 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:09:51.347 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:09:51.397 INFO [Thread-4] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:09:51.423 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:09:51.425 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:09:51.426 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:09:51.427 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:11:36.967 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:11:36.969 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:11:36.969 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:11:36.969 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:11:36.969 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:11:36.969 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:11:36.969 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:11:36.969 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:11:36.969 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:11:36.969 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:11:36.969 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:11:36.970 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:11:36.970 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:11:36.970 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:11:36.971 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:11:36.971 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:11:36.971 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:11:36.971 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:11:36.971 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:11:36.971 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:11:36.971 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:11:36.971 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:11:36.971 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:11:36.971 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:11:36.994 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:11:36.999 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:11:37.002 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:11:37.003 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:11:37.003 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 223 ms
+19-Jun-2021 19:11:37.025 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:11:37.026 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:11:37.038 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war]
+19-Jun-2021 19:11:37.819 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Jun-2021 19:11:39.353 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war] has finished in [2,314] ms
+19-Jun-2021 19:11:39.354 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:11:39.367 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [13] ms
+19-Jun-2021 19:11:39.367 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:11:39.443 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [76] ms
+19-Jun-2021 19:11:39.444 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:11:39.451 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [7] ms
+19-Jun-2021 19:11:39.451 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:11:39.459 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [8] ms
+19-Jun-2021 19:11:39.459 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/ROOT]
+19-Jun-2021 19:11:39.468 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/ROOT] has finished in [9] ms
+19-Jun-2021 19:11:39.472 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:11:39.476 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:11:39.477 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2474 ms
+19-Jun-2021 19:13:49.360 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:13:49.412 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:13:49.462 INFO [Thread-5] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:13:49.499 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:13:49.500 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:13:49.502 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:13:49.502 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:13:51.359 WARNING [main] org.apache.tomcat.util.digester.SetPropertiesRule.begin [SetPropertiesRule]{Server/Service/Engine/Host/Context} Setting property 'reladable' to 'false' did not find a matching property.
+19-Jun-2021 19:13:51.369 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:13:51.370 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:13:51.370 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:13:51.370 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:13:51.370 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:13:51.370 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:13:51.370 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:13:51.370 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:13:51.370 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:13:51.370 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:13:51.370 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:13:51.371 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:13:51.371 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:13:51.371 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:13:51.371 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:13:51.371 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:13:51.371 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:13:51.371 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:13:51.371 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:13:51.371 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:13:51.371 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:13:51.371 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:13:51.371 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:13:51.371 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:13:51.392 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:13:51.398 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:13:51.400 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:13:51.401 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:13:51.401 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 237 ms
+19-Jun-2021 19:13:51.424 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:13:51.424 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:13:51.561 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war]
+19-Jun-2021 19:13:52.154 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Jun-2021 19:13:53.591 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war] has finished in [2,029] ms
+19-Jun-2021 19:13:53.591 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:13:53.607 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [15] ms
+19-Jun-2021 19:13:53.607 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:13:53.686 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [79] ms
+19-Jun-2021 19:13:53.686 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:13:53.695 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [9] ms
+19-Jun-2021 19:13:53.695 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:13:53.704 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [9] ms
+19-Jun-2021 19:13:53.708 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:13:53.714 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:13:53.715 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2313 ms
+19-Jun-2021 19:14:43.223 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:14:43.275 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:14:43.325 INFO [Thread-5] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:14:43.360 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:14:43.361 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:14:43.362 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:14:43.363 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:14:45.097 WARNING [main] org.apache.tomcat.util.digester.SetPropertiesRule.begin [SetPropertiesRule]{Server/Service/Engine/Host/Context} Setting property 'reladable' to 'false' did not find a matching property.
+19-Jun-2021 19:14:45.111 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:14:45.111 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:14:45.111 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:14:45.111 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:14:45.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:14:45.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:14:45.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:14:45.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:14:45.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:14:45.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:14:45.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:14:45.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:14:45.112 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:14:45.113 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:14:45.113 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:14:45.113 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:14:45.113 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:14:45.113 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:14:45.113 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:14:45.113 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:14:45.113 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:14:45.113 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:14:45.113 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:14:45.113 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:14:45.139 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:14:45.145 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:14:45.148 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:14:45.149 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:14:45.149 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 249 ms
+19-Jun-2021 19:14:45.172 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:14:45.172 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:14:45.321 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war]
+19-Jun-2021 19:14:45.921 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Jun-2021 19:14:47.454 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war] has finished in [2,132] ms
+19-Jun-2021 19:14:47.455 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:14:47.472 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [17] ms
+19-Jun-2021 19:14:47.473 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:14:47.558 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [85] ms
+19-Jun-2021 19:14:47.558 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:14:47.568 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [10] ms
+19-Jun-2021 19:14:47.569 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:14:47.582 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [12] ms
+19-Jun-2021 19:14:47.586 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:14:47.591 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:14:47.592 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2443 ms
+19-Jun-2021 19:15:10.079 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:15:10.131 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:15:10.181 INFO [Thread-5] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:15:10.211 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:15:10.212 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:15:10.213 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:15:10.214 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:15:11.508 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:15:11.509 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:15:11.510 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:15:11.510 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:15:11.510 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:15:11.510 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:15:11.510 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:15:11.510 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:15:11.510 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:15:11.510 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:15:11.510 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:15:11.511 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:15:11.511 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:15:11.511 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:15:11.511 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:15:11.511 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:15:11.511 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:15:11.511 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:15:11.511 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:15:11.511 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:15:11.511 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:15:11.511 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:15:11.512 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:15:11.512 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:15:11.532 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:15:11.538 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:15:11.540 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:15:11.541 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:15:11.541 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 235 ms
+19-Jun-2021 19:15:11.563 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:15:11.564 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:15:11.703 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war]
+19-Jun-2021 19:15:12.311 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Jun-2021 19:15:13.810 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war] has finished in [2,107] ms
+19-Jun-2021 19:15:13.811 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:15:13.825 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [15] ms
+19-Jun-2021 19:15:13.825 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:15:13.901 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [75] ms
+19-Jun-2021 19:15:13.901 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:15:13.909 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [8] ms
+19-Jun-2021 19:15:13.910 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:15:13.921 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [11] ms
+19-Jun-2021 19:15:13.926 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:15:13.931 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:15:13.933 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2391 ms
+19-Jun-2021 19:15:26.752 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:15:26.803 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:15:26.854 INFO [Thread-5] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:15:26.883 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:15:26.884 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:15:26.885 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:15:26.886 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:15:32.939 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:15:32.941 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:15:32.941 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:15:32.941 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:15:32.941 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:15:32.941 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:15:32.941 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:15:32.941 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:15:32.941 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:15:32.942 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:15:32.942 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:15:32.943 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:15:32.943 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:15:32.943 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:15:32.943 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:15:32.943 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:15:32.943 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:15:32.943 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:15:32.943 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:15:32.943 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:15:32.944 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:15:32.944 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:15:32.944 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:15:32.944 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:15:32.967 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:15:32.973 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:15:32.975 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:15:32.976 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:15:32.976 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 247 ms
+19-Jun-2021 19:15:33.001 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:15:33.001 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:15:33.154 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war]
+19-Jun-2021 19:15:33.774 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Jun-2021 19:15:35.227 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war] has finished in [2,072] ms
+19-Jun-2021 19:15:35.228 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:15:35.244 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [17] ms
+19-Jun-2021 19:15:35.244 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:15:35.322 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [78] ms
+19-Jun-2021 19:15:35.322 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:15:35.330 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [8] ms
+19-Jun-2021 19:15:35.331 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:15:35.342 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [10] ms
+19-Jun-2021 19:15:35.346 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:15:35.351 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:15:35.353 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2376 ms
+19-Jun-2021 19:20:26.914 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:20:26.965 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:20:27.016 INFO [Thread-5] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:20:27.044 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:20:27.045 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:20:27.046 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:20:27.047 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:20:28.502 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:20:28.504 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:20:28.504 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:20:28.504 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:20:28.504 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:20:28.504 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:20:28.504 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:20:28.504 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:20:28.504 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:20:28.504 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:20:28.505 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:20:28.505 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:20:28.506 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:20:28.506 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:20:28.506 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:20:28.506 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:20:28.506 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:20:28.506 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:20:28.506 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:20:28.506 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:20:28.506 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:20:28.506 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:20:28.506 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:20:28.507 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:20:28.528 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:20:28.533 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:20:28.537 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:20:28.538 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:20:28.538 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 244 ms
+19-Jun-2021 19:20:28.561 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:20:28.562 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:20:28.702 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war]
+19-Jun-2021 19:20:29.301 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Jun-2021 19:20:30.772 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war] has finished in [2,070] ms
+19-Jun-2021 19:20:30.773 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:20:30.791 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [18] ms
+19-Jun-2021 19:20:30.791 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:20:30.887 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [96] ms
+19-Jun-2021 19:20:30.887 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:20:30.897 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [10] ms
+19-Jun-2021 19:20:30.898 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:20:30.912 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [14] ms
+19-Jun-2021 19:20:30.916 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:20:30.921 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:20:30.924 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2385 ms
+19-Jun-2021 19:21:35.442 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:21:35.493 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:21:35.544 INFO [Thread-5] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:21:35.573 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:21:35.574 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:21:35.575 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:21:35.576 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:23:26.483 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:23:26.485 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:23:26.485 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:23:26.485 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:23:26.485 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:23:26.485 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:23:26.485 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:23:26.485 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:23:26.485 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:23:26.485 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:23:26.485 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:23:26.486 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:23:26.486 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:23:26.486 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:23:26.486 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:23:26.486 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:23:26.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:23:26.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:23:26.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:23:26.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:23:26.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:23:26.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:23:26.487 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:23:26.487 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:23:26.509 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:23:26.515 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:23:26.517 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:23:26.518 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:23:26.518 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 244 ms
+19-Jun-2021 19:23:26.542 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:23:26.542 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:23:26.691 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:23:26.706 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [16] ms
+19-Jun-2021 19:23:26.706 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:23:26.808 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [102] ms
+19-Jun-2021 19:23:26.808 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:23:26.817 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [9] ms
+19-Jun-2021 19:23:26.817 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:23:26.828 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [11] ms
+19-Jun-2021 19:23:26.830 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:23:26.834 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:23:26.835 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 316 ms
+19-Jun-2021 19:23:33.608 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:23:33.661 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:23:33.711 INFO [Thread-4] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:23:33.730 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:23:33.731 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:23:33.732 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:23:33.733 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:23:36.868 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:23:36.870 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:23:36.870 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:23:36.870 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:23:36.870 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:23:36.870 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:23:36.870 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:23:36.870 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:23:36.870 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:23:36.871 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:23:36.871 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:23:36.871 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:23:36.871 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:23:36.871 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:23:36.872 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:23:36.872 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:23:36.872 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:23:36.872 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:23:36.872 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:23:36.872 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:23:36.872 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:23:36.872 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:23:36.872 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:23:36.872 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:23:36.897 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:23:36.903 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:23:36.906 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:23:36.906 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:23:36.907 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 243 ms
+19-Jun-2021 19:23:36.931 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:23:36.931 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:23:37.084 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:23:37.104 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [20] ms
+19-Jun-2021 19:23:37.104 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:23:37.211 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [107] ms
+19-Jun-2021 19:23:37.211 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:23:37.220 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [9] ms
+19-Jun-2021 19:23:37.220 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:23:37.232 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [11] ms
+19-Jun-2021 19:23:37.234 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:23:37.238 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:23:37.240 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 333 ms
+19-Jun-2021 19:23:49.162 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:23:49.215 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:23:49.265 INFO [Thread-4] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:23:49.285 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:23:49.286 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:23:49.288 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:23:49.288 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:23:55.428 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:23:55.429 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:23:55.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:23:55.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:23:55.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:23:55.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:23:55.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:23:55.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:23:55.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:23:55.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:23:55.430 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:23:55.431 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:23:55.431 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:23:55.431 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:23:55.431 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:23:55.431 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:23:55.431 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:23:55.431 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:23:55.431 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:23:55.431 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:23:55.431 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:23:55.432 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:23:55.432 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:23:55.432 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:23:55.454 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:23:55.460 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:23:55.463 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:23:55.463 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:23:55.464 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 237 ms
+19-Jun-2021 19:23:55.487 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:23:55.487 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:23:55.645 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:23:55.665 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [20] ms
+19-Jun-2021 19:23:55.665 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:23:55.773 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [108] ms
+19-Jun-2021 19:23:55.773 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:23:55.784 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [11] ms
+19-Jun-2021 19:23:55.784 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:23:55.796 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [12] ms
+19-Jun-2021 19:23:55.798 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:23:55.803 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:23:55.804 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 339 ms
+19-Jun-2021 19:23:57.811 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:23:57.863 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:23:57.914 INFO [Thread-4] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:23:57.930 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:23:57.931 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:23:57.932 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:23:57.932 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:24:01.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:24:01.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:24:01.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:24:01.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:24:01.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:24:01.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:24:01.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:24:01.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:24:01.066 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:24:01.066 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:24:01.066 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:24:01.066 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:24:01.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:24:01.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:24:01.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:24:01.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:24:01.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:24:01.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:24:01.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:24:01.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:24:01.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:24:01.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:24:01.067 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:24:01.067 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:24:01.091 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:24:01.097 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:24:01.100 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:24:01.101 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:24:01.101 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 238 ms
+19-Jun-2021 19:24:01.125 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:24:01.125 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:24:01.269 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:24:01.285 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [16] ms
+19-Jun-2021 19:24:01.285 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:24:01.385 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [100] ms
+19-Jun-2021 19:24:01.385 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:24:01.395 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [10] ms
+19-Jun-2021 19:24:01.395 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:24:01.405 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [10] ms
+19-Jun-2021 19:24:01.407 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:24:01.412 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:24:01.414 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 312 ms
+19-Jun-2021 19:24:34.452 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:24:34.505 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:24:34.555 INFO [Thread-4] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:24:34.575 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:24:34.576 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:24:34.577 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:24:34.578 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:24:35.751 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:24:35.752 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:24:35.752 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:24:35.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:24:35.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:24:35.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:24:35.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:24:35.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:24:35.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:24:35.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:24:35.753 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:24:35.754 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:24:35.754 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:24:35.754 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:24:35.754 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:24:35.754 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:24:35.754 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:24:35.754 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:24:35.754 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:24:35.754 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:24:35.754 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:24:35.754 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:24:35.754 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:24:35.755 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:24:35.777 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:24:35.783 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:24:35.785 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:24:35.786 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:24:35.786 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 240 ms
+19-Jun-2021 19:24:35.809 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:24:35.809 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:24:35.948 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:24:35.963 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [15] ms
+19-Jun-2021 19:24:35.963 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:24:36.063 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [100] ms
+19-Jun-2021 19:24:36.063 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:24:36.072 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [9] ms
+19-Jun-2021 19:24:36.072 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:24:36.082 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [10] ms
+19-Jun-2021 19:24:36.084 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:24:36.089 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:24:36.090 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 303 ms
+19-Jun-2021 19:24:57.289 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:24:57.342 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:24:57.392 INFO [Thread-4] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:24:57.414 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:24:57.415 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:24:57.416 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:24:57.417 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:26:23.061 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:26:23.062 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:26:23.062 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:26:23.062 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:26:23.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:26:23.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:26:23.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:26:23.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:26:23.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:26:23.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:26:23.063 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:26:23.064 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:26:23.064 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:26:23.064 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:26:23.064 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:26:23.064 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:26:23.064 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:26:23.064 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:26:23.064 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:26:23.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:26:23.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:26:23.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:26:23.065 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:26:23.065 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:26:23.089 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:26:23.096 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:26:23.098 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:26:23.099 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:26:23.099 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 242 ms
+19-Jun-2021 19:26:23.126 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:26:23.126 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:26:23.271 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war]
+19-Jun-2021 19:26:23.918 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Jun-2021 19:26:25.315 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war] has finished in [2,043] ms
+19-Jun-2021 19:26:25.316 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:26:25.331 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [15] ms
+19-Jun-2021 19:26:25.332 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:26:25.411 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [79] ms
+19-Jun-2021 19:26:25.411 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:26:25.420 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [9] ms
+19-Jun-2021 19:26:25.421 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:26:25.433 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [11] ms
+19-Jun-2021 19:26:25.439 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:26:25.444 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:26:25.446 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2346 ms
+19-Jun-2021 19:26:38.450 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:26:38.501 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:26:38.552 INFO [Thread-5] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:26:38.583 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:26:38.584 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:26:38.585 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:26:38.586 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:26:55.286 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:26:55.288 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:26:55.288 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:26:55.288 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:26:55.288 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:26:55.288 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:26:55.288 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:26:55.288 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:26:55.288 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:26:55.289 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:26:55.289 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:26:55.289 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:26:55.289 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:26:55.290 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:26:55.290 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:26:55.290 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:26:55.290 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:26:55.290 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:26:55.290 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:26:55.290 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:26:55.290 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:26:55.290 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:26:55.290 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:26:55.290 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:26:55.310 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:26:55.316 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:26:55.318 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:26:55.319 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:26:55.319 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 233 ms
+19-Jun-2021 19:26:55.341 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:26:55.341 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:26:55.486 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:26:55.502 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [15] ms
+19-Jun-2021 19:26:55.502 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:26:55.602 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [99] ms
+19-Jun-2021 19:26:55.602 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:26:55.610 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [8] ms
+19-Jun-2021 19:26:55.610 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:26:55.620 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [10] ms
+19-Jun-2021 19:26:55.622 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:26:55.626 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:26:55.628 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 308 ms
+19-Jun-2021 19:26:59.997 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:27:00.049 INFO [Thread-4] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:27:00.100 INFO [Thread-4] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:27:00.117 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:27:00.119 INFO [Thread-4] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:27:00.120 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:27:00.121 INFO [Thread-4] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:27:11.199 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:27:11.200 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:27:11.200 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:27:11.200 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:27:11.200 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:27:11.201 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:27:11.201 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:27:11.201 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:27:11.201 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:27:11.201 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:27:11.201 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:27:11.202 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:27:11.202 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:27:11.202 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:27:11.202 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:27:11.202 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:27:11.202 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:27:11.202 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:27:11.202 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:27:11.202 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:27:11.203 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:27:11.203 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:27:11.203 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:27:11.203 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:27:11.224 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:27:11.230 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:27:11.233 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:27:11.233 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:27:11.234 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 254 ms
+19-Jun-2021 19:27:11.258 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:27:11.258 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:27:11.404 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war]
+19-Jun-2021 19:27:11.407 INFO [localhost-startStop-1] org.apache.catalina.startup.ExpandWar.expand An expanded directory [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX] was found with a last modified time that did not match the associated WAR. It will be deleted.
+19-Jun-2021 19:27:12.044 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Jun-2021 19:27:13.620 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war] has finished in [2,216] ms
+19-Jun-2021 19:27:13.621 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:27:13.639 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [18] ms
+19-Jun-2021 19:27:13.640 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:27:13.728 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [89] ms
+19-Jun-2021 19:27:13.728 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:27:13.736 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [8] ms
+19-Jun-2021 19:27:13.737 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:27:13.748 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [12] ms
+19-Jun-2021 19:27:13.751 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:27:13.755 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:27:13.756 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 2522 ms
+19-Jun-2021 19:28:14.867 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:28:14.918 INFO [Thread-5] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:28:14.969 INFO [Thread-5] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:28:15.005 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:28:15.006 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:28:15.007 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:28:15.008 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:28:17.039 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:28:17.041 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:28:17.041 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:28:17.041 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:28:17.041 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:28:17.041 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:28:17.042 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:28:17.042 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:28:17.042 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:28:17.042 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:28:17.042 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:28:17.042 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:28:17.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:28:17.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:28:17.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:28:17.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:28:17.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:28:17.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:28:17.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:28:17.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:28:17.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:28:17.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:28:17.043 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:28:17.043 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:28:17.066 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:28:17.072 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:28:17.074 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:28:17.075 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:28:17.075 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 238 ms
+19-Jun-2021 19:28:17.098 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:28:17.098 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:28:17.910 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Jun-2021 19:28:19.473 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war]
+19-Jun-2021 19:28:20.004 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Jun-2021 19:28:21.118 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war] has finished in [1,645] ms
+19-Jun-2021 19:28:21.119 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:28:21.135 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [16] ms
+19-Jun-2021 19:28:21.135 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:28:21.207 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [72] ms
+19-Jun-2021 19:28:21.207 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:28:21.214 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [7] ms
+19-Jun-2021 19:28:21.214 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:28:21.222 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [8] ms
+19-Jun-2021 19:28:21.225 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:28:21.229 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:28:21.230 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 4155 ms
+19-Jun-2021 19:30:21.308 INFO [Thread-6] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:30:21.360 INFO [Thread-6] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:30:21.410 INFO [Thread-6] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:30:21.450 INFO [Thread-6] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:30:21.451 INFO [Thread-6] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:30:21.453 INFO [Thread-6] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:30:21.454 INFO [Thread-6] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:32:51.003 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/8.5.30
+19-Jun-2021 19:32:51.005 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Apr 3 2018 20:04:09 UTC
+19-Jun-2021 19:32:51.005 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         8.5.30.0
+19-Jun-2021 19:32:51.005 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Linux
+19-Jun-2021 19:32:51.005 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            5.8.0-55-generic
+19-Jun-2021 19:32:51.005 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+19-Jun-2021 19:32:51.005 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             /usr/lib/jvm/java-11-openjdk-amd64
+19-Jun-2021 19:32:51.005 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           11.0.11+9-Ubuntu-0ubuntu2.20.04
+19-Jun-2021 19:32:51.005 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Ubuntu
+19-Jun-2021 19:32:51.005 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:32:51.006 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         /root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:32:51.006 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+19-Jun-2021 19:32:51.006 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+19-Jun-2021 19:32:51.006 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+19-Jun-2021 19:32:51.007 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=/root/project/movie_recommender_system/tomcat/conf/logging.properties
+19-Jun-2021 19:32:51.007 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+19-Jun-2021 19:32:51.007 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+19-Jun-2021 19:32:51.007 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.protocol.handler.pkgs=org.apache.catalina.webresources
+19-Jun-2021 19:32:51.007 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dorg.apache.catalina.security.SecurityListener.UMASK=0027
+19-Jun-2021 19:32:51.007 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dignore.endorsed.dirs=
+19-Jun-2021 19:32:51.007 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:32:51.007 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=/root/project/movie_recommender_system/tomcat
+19-Jun-2021 19:32:51.007 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=/root/project/movie_recommender_system/tomcat/temp
+19-Jun-2021 19:32:51.007 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib]
+19-Jun-2021 19:32:51.028 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:32:51.034 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:32:51.036 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:32:51.037 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+19-Jun-2021 19:32:51.037 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 240 ms
+19-Jun-2021 19:32:51.059 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+19-Jun-2021 19:32:51.059 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/8.5.30
+19-Jun-2021 19:32:51.771 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Jun-2021 19:32:53.269 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war]
+19-Jun-2021 19:32:53.762 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+19-Jun-2021 19:32:54.902 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive [/root/project/movie_recommender_system/tomcat/webapps/RECOMAX.war] has finished in [1,631] ms
+19-Jun-2021 19:32:54.902 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager]
+19-Jun-2021 19:32:54.917 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/host-manager] has finished in [14] ms
+19-Jun-2021 19:32:54.917 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples]
+19-Jun-2021 19:32:54.982 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/examples] has finished in [65] ms
+19-Jun-2021 19:32:54.982 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs]
+19-Jun-2021 19:32:54.989 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/docs] has finished in [7] ms
+19-Jun-2021 19:32:54.989 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager]
+19-Jun-2021 19:32:54.997 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [/root/project/movie_recommender_system/tomcat/webapps/manager] has finished in [8] ms
+19-Jun-2021 19:32:54.999 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:32:55.003 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:32:55.005 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 3967 ms
+19-Jun-2021 19:33:11.220 INFO [Thread-6] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:33:11.271 INFO [Thread-6] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:33:11.322 INFO [Thread-6] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+19-Jun-2021 19:33:11.365 INFO [Thread-6] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:33:11.368 INFO [Thread-6] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+19-Jun-2021 19:33:11.370 INFO [Thread-6] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+19-Jun-2021 19:33:11.370 INFO [Thread-6] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]

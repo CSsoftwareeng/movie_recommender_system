@@ -1,0 +1,43 @@
+.user-based-input,
+.movie-based-input {
+  display: flex;
+  justify-content: start;
+  margin: 1rem 1rem;
+}
+
+#gender-selection,
+#age-text-box,
+#title-text-box,
+#limit-text-box {
+  margin: 0 1rem;
+  width: 10%;
+}
+#occupation-selection {
+  width: 15%;
+}
+#age-text-box::placeholder {
+  background-color: #393e46;
+  color: #eeeeee;
+  color: #eeeeee;
+}
+
+.genre-selection-container {
+  margin: 0 1rem;
+}
+.genre-selection-holder {
+  display: inline-block;
+}
+.genre-selection {
+  margin: 0 0.1rem;
+}
+
+.btn-add-genre,
+.btn-subt-genre,
+.btn-user-based {
+  border: 4px solid;
+  border-color: #47597e;
+  border-radius: 0.5rem;
+  color: #eeeeee;
+  line-height: 1rem;
+  font-weight: bold;
+}
