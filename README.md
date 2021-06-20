@@ -30,7 +30,9 @@ The program calculates the average movie rating of users who are similar to you 
 
 The program calculates the average movie rating of similar movies and recommends movies in the highest order(These processes are executed in rankGenreBasedRating method in RatingCalculator.class). The program only uses data from users who rated a given movie above the average rating of each user(These processes are executed in searchFavoriteUsers method in UserList.class). And movies that match the genre of the given movie are recommended. Similar to recommending movies based on given user data, if the limit is not met, the number of matching genres is reduced by 1(These processes are executed in searchSimilarID method in MovieList.class).
 
----
+### Cache-based database
+
+If the number of calculation to perform both algorithms above, the loading time may be inefficiently increased. In particular, the list of 40 movies displayed on the main page is frequently called, but the computation speed is slow due to the small number of options to filter. To improve the performance of the service, we cached expected outcome values in the database in advance for certain frequently used and time consuming inputs. Cached data is managed by updating it every certain period of time or whenever a database is changed significantly.
 
 ## Building Docker Image
 
