@@ -49,55 +49,34 @@ If the number of calculation to perform both algorithms above, the loading time 
 
 ## Building Docker Image
 
-This program will be executed on the Ubuntu20:04. Building docker image, the docker file will install 'openjdk-11-jdk' and 'maven' on the Ubuntu. Then 'run.sh' file will be migrated to the docker container.
+This program will be executed on the Ubuntu20:04. Building docker image, the docker file will install 'openjdk-11-jdk' and 'maven' on the Ubuntu. Then required files will be migrated to the docker container.
 
 ```sh
 docker build -t cse364-ubuntu20.04/movie_recommender_os .
-docker run -it --name container cse364-ubuntu20.04/movie_recommender_os
+docker run -p 8080:8080 -it --name container cse364-ubuntu20.04/movie_recommender_os /bin/bash
 ```
+It forward the port 8080 for your local machine.
 
 ---
 
 ## Getting Started
-
-Clone and change directory to this repository, then start spring-boot application:
-
-```sh
-git clone https://github.com/CSsoftwareeng/movie_recommender_system.git
-cd movie_recommender_system
-mvn spring-boot:run
-```
-
-Opening another console, now you can use **API** via **curl** with proper arguments:
+Once you enter in docker container, you can deploy the RECOMAX with tomcat.
+You can do the process via executing 'war.sh' file. It sets a mongodb and execute 'catalina.sh'.
 
 ```sh
-curl -X GET http://localhost:8080/users/recommendations -H ‘Content-type:application/json’ -d ‘{"gender": [gender], "age": [age], "occupation": [occupation], "genres": [genres]}’ |json_pp
-curl -X GET http://localhost:8080/users/recommendations -H ‘Content-type:application/json’ -d ‘{"gender": [gender], "age": [age], "occupation": [occupation]}’ |json_pp
+bash ./war.sh
 ```
 
-Also, you can start this program(Recommend movies given a movie title and a number of movies to show) with arguments:
-
+Meanwhile, if you want to execute standalone spring web application with jar file, you can execute 'run.sh' file. It will clone this repository and build the application with mvn.
 ```sh
-curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d ‘{"title": [title], "limit": [limit]}’ |json_pp
+bash ./run.sh
 ```
 
-Examples:
-
+Once you execute one of them, you can access the website through web browser in your local machine.
 ```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender" : "", "age" : "", "occupation" : "", "genres" : "Romance|comedy"}' |json_pp
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "M", "age": "", "occupation": "retired", "genres": ""}' |json_pp
-curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d '{"title": "Toy Story (1995)", "limit": 20}' |json_pp
-curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d '{"title": "Toy Story (1995)"}' |json_pp
+war.sh - http://localhost:8080/RECOMAX
+run.sh - http://localhost:8080
 ```
-
-Note:
-If you compile with run.sh script file in container on top of local Windows machine,<br/>
-you may need to replace 'new line character' properly with below command.
-
-```sh
-sed -i 's/\r$//' run.sh
-```
-
 ---
 
 ## User Guide
