@@ -1,6 +1,37 @@
-# Movie Recommender System
+# RecoMAX
+![image](https://user-images.githubusercontent.com/41867381/122676871-d6d1fa00-d21a-11eb-90dd-80fd60cf8602.png)
 
-The movie platform system supports a great multitude of movies, so it is not easy to choose which movie to watch. At this point, if you can see which movies other users with similar traits are most satisfied with or if you can see a list of movies that are similar to your favorite movies, you can choose a movie more easily. This program will show a list of recommended movies based on your traits or your favorite movie.
+The movie platform system supports a great multitude of movies, so it is not easy to choose which movie to watch. Using RecoMAX, you can see which movies other users with similar traits are most satisfied with or a list of movies that are similar to your favorite movies. RecoMAX will show a poster of recommended movies based on your traits or your favorite movie.
+
+## Features
+
+### User Based Recommender
+
+RecoMax provides powerful user customized movie recommend system. This function is shown up as a default when you first access RecoMAX page. When you choose your gender, age, occupation, and genres, then you will receive up to 10 lists of movies that best match your taste.
+
+![image](https://user-images.githubusercontent.com/41867381/122676915-01bc4e00-d21b-11eb-9534-d9038f9243f6.png)
+
+
+### Movie Basaed Recommender
+
+If you know the title of the movie that impressed you, RecoMAX recommends similar movies that you might like. You can access this function by clicking tab on the navigation bar. Enter the title of the movie and the number of movies to be recommended to create a recommendation lists.
+
+![image](https://user-images.githubusercontent.com/41867381/122676938-17317800-d21b-11eb-846e-b0549ff321cb.png)
+
+
+### Convenient User Interface for Option Selection
+
+You can easily access two different kinds of recommender system just by clicking the tab menu. And the drop-down selection boxes make it easier for users to input various and reliable user inputs. In particular, the 'genre' option of a user based recommender can be conveniently entered in multiple numbers depending on your preference.
+
+![image](https://user-images.githubusercontent.com/41867381/122676971-38926400-d21b-11eb-8657-b266f22b3056.png)
+
+
+### Intuitive Poster Preview Display
+
+The list of recommendations is provided with thumbnail of movie posters. If there is no movie poster data, the title is displayed as a thumbnail. The first page of RecoMAX shows the 40 best-rated films in the entire genre, action genre, drama genre, and animation genre.
+
+![image](https://user-images.githubusercontent.com/41867381/122676990-4c3dca80-d21b-11eb-95d9-a30fd4f74eaf.png)
+
 
 ## Algorithm
 
@@ -12,85 +43,58 @@ The program calculates the average movie rating of users who are similar to you 
 
 The program calculates the average movie rating of similar movies and recommends movies in the highest order(These processes are executed in rankGenreBasedRating method in RatingCalculator.class). The program only uses data from users who rated a given movie above the average rating of each user(These processes are executed in searchFavoriteUsers method in UserList.class). And movies that match the genre of the given movie are recommended. Similar to recommending movies based on given user data, if the limit is not met, the number of matching genres is reduced by 1(These processes are executed in searchSimilarID method in MovieList.class).
 
----
+### Cache-based database
+
+If the number of calculation to perform both algorithms above, the loading time may be inefficiently increased. In particular, the list of 40 movies displayed on the main page is frequently called, but the computation speed is slow due to the small number of options to filter. To improve the performance of the service, we cached expected outcome values in the database in advance for certain frequently used and time consuming inputs. Cached data is managed by updating it every certain period of time or whenever a database is changed significantly.
 
 ## Building Docker Image
 
-This program will be executed on the Ubuntu20:04. Building docker image, the docker file will install 'openjdk-11-jdk' and 'maven' on the Ubuntu. Then 'run.sh' file will be migrated to the docker container.
+This program will be executed on the Ubuntu20:04. Building docker image, the docker file will install 'openjdk-11-jdk' and 'maven' on the Ubuntu. Then required files will be migrated to the docker container.
 
 ```sh
 docker build -t cse364-ubuntu20.04/movie_recommender_os .
-docker run -it --name container cse364-ubuntu20.04/movie_recommender_os
+docker run -p 8080:8080 -it --name container cse364-ubuntu20.04/movie_recommender_os /bin/bash
 ```
+It forward the port 8080 for your local machine.
 
 ---
 
 ## Getting Started
-
-Clone and change directory to this repository, then start spring-boot application:
-
-```sh
-git clone https://github.com/CSsoftwareeng/movie_recommender_system.git
-cd movie_recommender_system
-mvn spring-boot:run
-```
-
-Opening another console, now you can use **API** via **curl** with proper arguments:
+Once you enter in docker container, you can deploy the RECOMAX with tomcat.
+You can do the process via executing 'war.sh' file. It sets a mongodb and execute 'catalina.sh'.
 
 ```sh
-curl -X GET http://localhost:8080/users/recommendations -H ‘Content-type:application/json’ -d ‘{"gender": [gender], "age": [age], "occupation": [occupation], "genres": [genres]}’ |json_pp
-curl -X GET http://localhost:8080/users/recommendations -H ‘Content-type:application/json’ -d ‘{"gender": [gender], "age": [age], "occupation": [occupation]}’ |json_pp
+bash ./war.sh
 ```
 
-Also, you can start this program(Recommend movies given a movie title and a number of movies to show) with arguments:
-
+Meanwhile, if you want to execute standalone spring web application with jar file, you can execute 'run.sh' file. It will clone this repository and build the application with mvn.
 ```sh
-curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d ‘{"title": [title], "limit": [limit]}’ |json_pp
+bash ./run.sh
 ```
 
-Examples:
-
+Once you execute one of them, you can access the website through web browser in your local machine.
 ```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender" : "", "age" : "", "occupation" : "", "genres" : "Romance|comedy"}' |json_pp
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "M", "age": "", "occupation": "retired", "genres": ""}' |json_pp
-curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d '{"title": "Toy Story (1995)", "limit": 20}' |json_pp
-curl -X GET http://localhost:8080/movies/recommendations -H ‘Content-type:application/json’ -d '{"title": "Toy Story (1995)"}' |json_pp
+war.sh - http://localhost:8080/RECOMAX
+run.sh - http://localhost:8080
 ```
-
-Note:
-If you compile with run.sh script file in container on top of local Windows machine,<br/>
-you may need to replace 'new line character' properly with below command.
-
-```sh
-sed -i 's/\r$//' run.sh
-```
-
 ---
 
 ## User Guide
 
-When you pass arguments to body parameter, you should take care followings.
+Under the RecoMAX logo you can find User Based Recommender and Movie Based Recommender tabs, and click to use each function.
 
 ### **User-Based Recommend System**
 
-This is an argument style guide when you request **GET** with **/users/recommendandations**.
+This is the first page of a User Based Recommender.
+![userbased_main](https://user-images.githubusercontent.com/80080164/122674945-38419b00-d212-11eb-999e-2ddcf3d18baf.PNG)
+You can select your gender, age, occupation and your favorite movie genres. Please enter your age, and select your gender, occupation and genre through the drop down box. If you want to specify multiple genres, you can add them by clicking the "+" icon. If you specify gender, age, occupation, and genre and click the "Search" icon, you can see posters for the top 10 recommended movies based on your information. Gender, occupation, and genre can be selected from the following list.
 
 **[gender]**
 
-- Enter the gender with double quotes -> Ex : "F" or "M"
-- If gender is passed through as an empty string "", the program doesn't take gender into account when selecting a list of recommended movies.
-
-**[age]**
-
-- Enter the age with double quotes -> EX: "22"
-- If age is passed through as an empty string "", the program doesn't take age into account when selecting a list of recommended movies.
+Female
+Male
 
 **[occupation]**
-
-- Enter the occupation with double quotes -> Ex : "educator"
-- Only one occupation is allowed.
-- If you pass through an occupation as an empty string "", the program doesn't take occupation into account when selecting a list of recommended movies.
-- Occupation can be chosen from the following choices:<br/>
 
 |      other      |   academic    |     educator      |     artist     |   clerical    |      admin       |    college    |  grad student  | customer service |  doctor   |
 | :-------------: | :-----------: | :---------------: | :------------: | :-----------: | :--------------: | :-----------: | :------------: | :--------------: | :-------: |
@@ -99,363 +103,35 @@ This is an argument style guide when you request **GET** with **/users/recommend
 
 **[genres]**
 
-- Enter the movie genres you want with double quotes -> Ex : "Documentary"
-- You can put multiple genres separated with '|' -> Ex : "Adventure|Comedy"
-- Output is a list of recommended movies that belong to at least one selected categories.
-- If you pass through an genre as an empty string "", the program doesn't take genres into account when selecting a list of recommended movies.
-- For user convenience, the program treats it the same as an empty string if the "genres" field is not specified.
-- Genres can be chosen from the following choices:<br/>
-
 |    Action     | Adventure  |  Animation  | Children's  |   Comedy    |   Crime    | Documentary  |  Drama  |   Fantasy   |
 | :-----------: | :--------: | :---------: | :---------: | :---------: | :--------: | :----------: | :-----: | :---------: |
 | **Film-Noir** | **Horror** | **Musical** | **Mystery** | **Romance** | **Sci-Fi** | **Thriller** | **War** | **Western** |
 
-**Body Parameter Examples :**
+#### Example
 
-```json
-{
-  "gender": "F",
-  "age": "25",
-  "occupation": "educator",
-  "genres": "Adventure|Comedy"
-}
-```
+The following is examples of a User Based Recommender.
+![userbased_sample_example3](https://user-images.githubusercontent.com/80080164/122675354-f74a8600-d213-11eb-9cef-518d3f8baa72.PNG)
+![userbased_sample_example2](https://user-images.githubusercontent.com/80080164/122675689-8c9a4a00-d215-11eb-93aa-59a5540ed9a1.PNG)
 
 ---
 
 ### **Movie Based Recommend System**
 
-This is an argument style guide when you request **GET** with **/movies/recommendandations**.
+This is the first page of a Movie Based Recommender.
+![moviebased_main](https://user-images.githubusercontent.com/80080164/122675529-d33b7480-d214-11eb-9deb-d252a3097fc1.PNG)
+Please enter the title of your favorite movie and the number of movies you want to recommend. You can check the list of recommended movies by clicking the "Search" icon.<br/>
 
-**[title]**
-
-- Enter the full title including year
-- Only one title is allowed.
-- If you find movies based on movie title, you must enter movie title.
+**Note for the title**
+- Case-insensitive
+- Spaces must be followed.
 - Although the results are provided even if the year is not written, it is recommended to write the year with title for accurate results.
+- No results are provided for invalid movie titles.
 
-**[limit]**
+#### Example
 
-- Enter the limit number in integer type.
-- Limit should be positive integer.
-- Only one limit is allowed.
-- If you don't specify the **limit** field, the **limit** will set to 10 as a default.
-
-**Body Parameter Examples :**
-
-```json
-{
-  "title": "Toy Story (1995)"
-}
-```
-
-```json
-{
-  "title": "Toy Story",
-  "limit": 15
-}
-```
-
----
-
-### **For user convenience, following cases are acceptable as arguments:**
-
-      1. Case-insensitive
-      2. Fixing a spacing error
-      3. In case that '-' is omitted or replaced by spacing
-
-For example, both cases shown below will yield the same outputs.
-
-```json
-{
-  "gender": "F",
-  "age": "25",
-  "occupation": "self-employed",
-  "genres": "Sci-Fi|Action"
-}
-```
-
-```json
-{
-  "gender": "f",
-  "age": "25",
-  "occupation": "SELF EMPLOYED",
-  "genres": "sci FI| a c t i o n"
-}
-```
-
----
-
-**The API will return response code without expected results if:**
-
-### 1. the number of arguments is less than 3 when you request **/users/recomendations**.
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "F", "age": "15"}'|json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Bad Request",
-  "message": "[ERROR : ArgCntError] 2 is invalid number of arguments.",
-  "path": "/users/recommendations",
-  "status": 400,
-  "timestamp": "2021-05-24T16:08:07.666+00:00"
-}
-```
-
-### 2. the necessary arguments are missing.
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"limit": 15}'|json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Bad Request",
-  "message": "[ERROR : ArgMissingError] The argument 'title' is missing.",
-  "path": "/movies/recommendations",
-  "status": 400,
-  "timestamp": "2021-05-24T16:12:18.195+00:00"
-}
-```
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "F", "occupation":"artist", "genres":"Romance"}'|json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Bad Request",
-  "message": "[ERROR : ArgMissingError] The argument 'age' is missing.",
-  "path": "/movies/recommendations",
-  "status": 400,
-  "timestamp": "2021-05-24T16:12:18.195+00:00"
-}
-```
-
-### 3. the movie title that is given does not exist.
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": "NOT_EXISTING_MOVIE", "limit": 15}'|json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Not Found",
-  "message": "[ERROR : MovieNotExistError] Can't find a movie titled: NOT_EXISTING_MOVIE",
-  "path": "/movies/recommendations",
-  "status": 404,
-  "timestamp": "2021-05-24T16:14:19.183+00:00"
-}
-```
-
-### 4. the invalid arguments are put as specified in **User Guide**.
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "F", "age": "15", "occupation":"NOT_EXISTING_JOB"}'|json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Bad Request",
-  "message": "[ERROR : ArgNotExistError] Can't find [NOT_EXISTING_JOB] in the available occupation list.",
-  "path": "/users/recommendations",
-  "status": 400,
-  "timestamp": "2021-05-24T16:22:23.370+00:00"
-}
-```
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": "Toy Story", "limit": -3}' |json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Bad Request",
-  "message": "[ERROR : WrongArgError] limit size should be greater than 0.",
-  "path": "/movies/recommendations",
-  "status": 400,
-  "timestamp": "2021-05-25T10:13:48.445+00:00"
-}
-```
-
-### 5. the name of fields is wrong.
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "M", "age": "", "occupation": "retired", "INVALID_FIELD": ""}' |json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Bad Request",
-  "message": "[ERROR : WrongArgError] There is unknown argument. [Valid arguments : gender, age, occupation, genres(optional)]",
-  "path": "/users/recommendations",
-  "status": 400,
-  "timestamp": "2021-05-25T06:25:38.771+00:00"
-}
-```
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": "Toy Story", "INVALID_FIELD": ""}' |json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Bad Request",
-  "message": "[ERROR : WrongArgError] There is unknown argument. [Valid arguments : title, limit(optional)]",
-  "path": "/movies/recommendations",
-  "status": 400,
-  "timestamp": "2021-05-25T06:30:37.902+00:00"
-}
-```
-
----
-
-With a valid input, the output of this program is a list of 10 or [limit] moives like:
-
-```json
-{
-  "genres": "xxx",
-  "imdb": "xxx",
-  "title": "https://www.imdb.com/title/ttXXXXXXX"
-}
-```
-
-Sample for Recommend Top 10 movies given user data:<br/>
--Input:
-
-```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender" : "", "age" : "", "occupation" : "", "genres" : "Romance|comedy"}' | json_pp
-```
-
--Output:
-
-```json
-[
-  {
-    "genres": "Comedy",
-    "imdb": "(http://www.imdb.com/title/tt0062281)",
-    "title": "Smashing Time (1967)"
-  },
-  {
-    "genres": "Comedy|Drama|Western",
-    "imdb": "(http://www.imdb.com/title/tt0070481)",
-    "title": "One Little Indian (1973)"
-  },
-  {
-    "genres": "Comedy",
-    "imdb": "(http://www.imdb.com/title/tt0119139)",
-    "title": "Follow the Bitch (1998)"
-  },
-  {
-    "genres": "Animation|Comedy|Thriller",
-    "imdb": "(http://www.imdb.com/title/tt0112691)",
-    "title": "Close Shave, A (1995)"
-  },
-  {
-    "genres": "Animation|Comedy",
-    "imdb": "(http://www.imdb.com/title/tt0108598)",
-    "title": "Wrong Trousers, The (1993)"
-  },
-  {
-    "genres": "Drama|Romance",
-    "imdb": "(http://www.imdb.com/title/tt0209322)",
-    "title": "Skipped Parts (2000)"
-  },
-  {
-    "genres": "Drama|Romance|War",
-    "imdb": "(http://www.imdb.com/title/tt0034583)",
-    "title": "Casablanca (1942)"
-  },
-  {
-    "genres": "Comedy|Drama|Western",
-    "imdb": "(http://www.imdb.com/title/tt0055630)",
-    "title": "Yojimbo (1961)"
-  },
-  {
-    "genres": "Comedy|Drama|Romance",
-    "imdb": "(http://www.imdb.com/title/tt0021749)",
-    "title": "City Lights (1931)"
-  },
-  {
-    "genres": "Comedy",
-    "imdb": "(http://www.imdb.com/title/tt0017925)",
-    "title": "General, The (1927)"
-  }
-]
-```
-
-Sample for Recommend movies given a movie title:<br/>
--Input:
-
-```sh
-curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": "Toy Story (1995)", "limit": 5}' |json_pp
-```
-
--Output:
-
-```json
-[
-  {
-    "genres": "Animation|Children's|Comedy",
-    "imdb": "(http://www.imdb.com/title/tt0120363)",
-    "title": "Toy Story 2 (1999)"
-  },
-  {
-    "genres": "Animation|Children's|Comedy",
-    "imdb": "(http://www.imdb.com/title/tt0120623)",
-    "title": "Bug's Life, A (1998)"
-  },
-  {
-    "genres": "Animation|Children's|Comedy",
-    "imdb": "(http://www.imdb.com/title/tt0120630)",
-    "title": "Chicken Run (2000)"
-  },
-  {
-    "genres": "Animation|Children's|Comedy|Musical",
-    "imdb": "(http://www.imdb.com/title/tt0827990)",
-    "title": "Aladdin (1992)"
-  },
-  {
-    "genres": "Animation|Children's|Comedy|Musical",
-    "imdb": "(http://www.imdb.com/title/tt0061852)",
-    "title": "Jungle Book, The (1967)"
-  }
-]
-```
+The following is examples of a Movie Based Recommender.
+![moviebased_sample_example2](https://user-images.githubusercontent.com/80080164/122675653-670d4080-d215-11eb-854a-e41ac130c9e5.PNG)
+![moviebased_sample_example](https://user-images.githubusercontent.com/80080164/122675641-4f35bc80-d215-11eb-9447-d2424f55e4bc.PNG)
 
 ---
 
