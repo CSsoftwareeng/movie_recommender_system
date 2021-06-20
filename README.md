@@ -1,4 +1,5 @@
 # RecoMAX
+![image](https://user-images.githubusercontent.com/41867381/122676871-d6d1fa00-d21a-11eb-90dd-80fd60cf8602.png)
 
 The movie platform system supports a great multitude of movies, so it is not easy to choose which movie to watch. Using RecoMAX, you can see which movies other users with similar traits are most satisfied with or a list of movies that are similar to your favorite movies. RecoMAX will show a poster of recommended movies based on your traits or your favorite movie.
 
@@ -8,17 +9,29 @@ The movie platform system supports a great multitude of movies, so it is not eas
 
 RecoMax provides powerful user customized movie recommend system. This function is shown up as a default when you first access RecoMAX page. When you choose your gender, age, occupation, and genres, then you will receive up to 10 lists of movies that best match your taste.
 
+![image](https://user-images.githubusercontent.com/41867381/122676915-01bc4e00-d21b-11eb-9534-d9038f9243f6.png)
+
+
 ### Movie Basaed Recommender
 
 If you know the title of the movie that impressed you, RecoMAX recommends similar movies that you might like. You can access this function by clicking tab on the navigation bar. Enter the title of the movie and the number of movies to be recommended to create a recommendation lists.
+
+![image](https://user-images.githubusercontent.com/41867381/122676938-17317800-d21b-11eb-846e-b0549ff321cb.png)
+
 
 ### Convenient User Interface for Option Selection
 
 You can easily access two different kinds of recommender system just by clicking the tab menu. And the drop-down selection boxes make it easier for users to input various and reliable user inputs. In particular, the 'genre' option of a user based recommender can be conveniently entered in multiple numbers depending on your preference.
 
+![image](https://user-images.githubusercontent.com/41867381/122676971-38926400-d21b-11eb-8657-b266f22b3056.png)
+
+
 ### Intuitive Poster Preview Display
 
 The list of recommendations is provided with thumbnail of movie posters. If there is no movie poster data, the title is displayed as a thumbnail. The first page of RecoMAX shows the 40 best-rated films in the entire genre, action genre, drama genre, and animation genre.
+
+![image](https://user-images.githubusercontent.com/41867381/122676990-4c3dca80-d21b-11eb-95d9-a30fd4f74eaf.png)
+
 
 ## Algorithm
 
