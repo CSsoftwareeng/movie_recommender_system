@@ -29,17 +29,17 @@ jobs:
     - name: Create mongoDB Docker container      
       run: sudo docker run -d -p 27017:27017 mongo:latest
     - name: Add links data
-      run: mongoimport --type csv -d recommender -c link --headerline --columnsHaveTypes --drop ./resources/links.csv
+      run: mongoimport --type csv -d test -c link --headerline --columnsHaveTypes --drop ./resources/links.csv
     - name: Add rating data
-      run: mongoimport --type csv -d recommender -c review --headerline --drop ./resources/ratings.csv
+      run: mongoimport --type csv -d test -c review --headerline --drop ./resources/ratings.csv
     - name: Add movies_corrected data
-      run: mongoimport --type csv -d recommender -c movie --headerline --drop ./resources/movies_corrected.csv
+      run: mongoimport --type csv -d test -c movie --headerline --drop ./resources/movies_corrected.csv
     - name: Add movie_poster data
-      run: mongoimport --type csv -d recommender -c poster --headerline --drop ./resources/movie_poster.csv
+      run: mongoimport --type csv -d test -c poster --headerline --drop ./resources/movie_poster.csv
     - name: Add users data
-      run: mongoimport --type csv -d recommender -c user --headerline --drop ./resources/users.csv
+      run: mongoimport --type csv -d test -c user --headerline --drop ./resources/users.csv
     - name: Add cache data
-      run: mongoimport --type csv -d recommender -c cache --headerline --columnsHaveTypes --drop ./resources/cache.csv
+      run: mongoimport --type csv -d test -c cache --headerline --columnsHaveTypes --drop ./resources/cache.csv
 
     - name: Build with Maven
       run: mvn package
