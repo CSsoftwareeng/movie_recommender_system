@@ -100,8 +100,7 @@ sed -i 's/\r$//' run.sh
 
 ## User Guide
 
-When you access the RecoMAX homepage, you can see the main page as follows. -메인화면 캡처
-On the first screen of RecoMAX, you can check the 10 most popular movies including all genres and the 10 most popular movies in each of Action, Drama, and Animation genres. Under the RecoMAX logo you can find User Based Recommender and Movie Based Recommender tabs, and click to use each function.
+Under the RecoMAX logo you can find User Based Recommender and Movie Based Recommender tabs, and click to use each function.
 
 ### **User-Based Recommend System**
 
@@ -140,6 +139,12 @@ The following is examples of a User Based Recommender.
 This is the first page of a Movie Based Recommender.
 ![moviebased_main](https://user-images.githubusercontent.com/80080164/122675529-d33b7480-d214-11eb-9deb-d252a3097fc1.PNG)
 Please enter the title of your favorite movie and the number of movies you want to recommend. You can check the list of recommended movies by clicking the "Search" icon.<br/>
+
+**Note for the title**
+- Case-insensitive
+- Spaces must be followed.
+- Although the results are provided even if the year is not written, it is recommended to write the year with title for accurate results.
+- No results are provided for invalid movie titles.
 
 #### Example
 
