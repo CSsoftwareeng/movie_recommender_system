@@ -25,68 +25,36 @@ public class MovieBasedRecommControllerTest {
 
   @Test
   public void testValidRequest() throws Exception {
-    String json = "{\"title\" : \"Toy Story (1995)\", \"limit\" : 20}";
 
     mvc
       .perform(
         get("/movies/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("title", "Toy Story")
+            .param("limit", "20")
       )
       .andExpect(status().isOk())
       .andExpect(jsonPath("$.length()").value(20));
   }
 
   @Test
-  public void testValidRequestWoYear() throws Exception {
-    String jsonWithYear = "{\"title\" : \"Toy Story (1995)\", \"limit\" : 20}";
-    String jsonWoYear = "{\"title\" : \"Toy Story\", \"limit\" : 20}";
-
-    MvcResult resultWithYear = mvc
-      .perform(
-        get("/movies/recommendations")
-          .content(jsonWithYear)
-          .contentType(MediaType.APPLICATION_JSON)
-      )
-      .andReturn();
-
-    String contentWithYear = resultWithYear.getResponse().getContentAsString();
-
-    MvcResult resultWoYear = mvc
-      .perform(
-        get("/movies/recommendations")
-          .content(jsonWoYear)
-          .contentType(MediaType.APPLICATION_JSON)
-      )
-      .andReturn();
-
-    String contentWoYear = resultWoYear.getResponse().getContentAsString();
-
-    Assert.assertEquals(contentWithYear, contentWoYear);
-  }
-
-  @Test
   public void testValidRequestWithExtremeLimit() throws Exception {
-    String json = "{\"title\" : \"Toy Story (1995)\", \"limit\" : 4000}";
 
     mvc
       .perform(
         get("/movies/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("title", "Toy Story")
+            .param("limit", "4000")
       )
       .andExpect(status().isOk());
   }
 
   @Test
   public void testValidRequestWoLimit() throws Exception {
-    String json = "{\"title\" : \"Toy Story (1995)\"}";
 
     mvc
       .perform(
         get("/movies/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("title", "Toy Story")
       )
       .andExpect(status().isOk())
       .andExpect(jsonPath("$.length()").value(10));
@@ -99,8 +67,6 @@ public class MovieBasedRecommControllerTest {
     mvc
       .perform(
         get("/movies/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
       )
       .andExpect(status().isBadRequest())
       .andExpect(status().reason(containsString("ArgCntError")));
@@ -108,13 +74,12 @@ public class MovieBasedRecommControllerTest {
 
   @Test
   public void testInvalidTitle() throws Exception {
-    String json = "{\"title\" : \"INVALID_STRING\", \"limit\" : 20}";
 
     mvc
       .perform(
         get("/movies/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("title", "INVALID_STRING")
+            .param("limit", "20")
       )
       .andExpect(status().isNotFound())
       .andExpect(status().reason(containsString("MovieNotExistError")));
@@ -122,13 +87,12 @@ public class MovieBasedRecommControllerTest {
 
   @Test
   public void testInvalidLimit() throws Exception {
-    String json = "{\"title\" : \"INVALID_STRING\", \"limit\" : -5}";
 
     mvc
       .perform(
         get("/movies/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("title", "Toy Story")
+            .param("limit", "-5")
       )
       .andExpect(status().isBadRequest())
       .andExpect(status().reason(containsString("WrongArgError")));
@@ -136,13 +100,12 @@ public class MovieBasedRecommControllerTest {
 
   @Test
   public void testWrongArguments() throws Exception {
-    String json = "{\"title\" : \"INVALID_STRING\", \"INVALID_FILED\" : \"INVALID_STRING\"}";
-
+      
     mvc
       .perform(
         get("/movies/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("title", "INVALID_STRING")
+            .param("INVALID_FILED", "INVALID_STRING")
       )
       .andExpect(status().isBadRequest())
       .andExpect(status().reason(containsString("WrongArgError")))
@@ -156,8 +119,7 @@ public class MovieBasedRecommControllerTest {
     mvc
       .perform(
         get("/movies/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("limit", "20")
       )
       .andExpect(status().isBadRequest())
       .andExpect(status().reason(containsString("ArgMissingError")));

@@ -1,21 +1,32 @@
 package com.recommend.app;
 
+import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
 import java.util.*;
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class RatingCalculatorTest {
+  @Autowired
+  UserList userlist;
+  @Autowired
+  MovieList movielist;
+  @Autowired
+  RatingCalculator rating;
 
   @Test
   public void testrankUserBasedRating() {
     List<String> genres = new ArrayList<String>();
     genres.add("Romance");
 
-    MovieList movielist = new MovieList(genres);
-    UserList userlist = new UserList();
-    userlist.searchSimilarUser("F", "30", "artist");
+    movielist.searchID(genres);
+    userlist.searchSimilarUser("F", "25", "2");
 
-    RatingCalculator rating = new RatingCalculator(movielist, userlist);
+    rating.setLists(movielist, userlist);
     rating.rankUserBasedRating(10);
     rating.calcResult();
     Assert.assertEquals(10, rating.numMoviesResult());
@@ -24,16 +35,27 @@ public class RatingCalculatorTest {
 
   @Test
   public void testrankGenreBasedRating() {
-    String title = "Toy Story (1995)";
-
-    MovieList movielist = new MovieList();
-    UserList userlist = new UserList();
+    String title = "Toy Story";
 
     movielist.registerFavoriteMovie(title);
-    userlist.searchFavoriteUsers(title);
+    userlist.searchFavoriteUsers(movielist.favoriteMovieID);
 
-    RatingCalculator rating = new RatingCalculator(movielist, userlist);
+    rating.setLists(movielist, userlist);
     rating.rankGenreBasedRating(20, true);
+    rating.calcResult();
+    Assert.assertEquals(20, rating.numMoviesResult());
+    Assert.assertEquals(20, rating.moviesResult.size());
+  }
+
+  @Test
+  public void testrankGenreBasedRatingWoUserFilter() {
+    String title = "Toy Story";
+
+    movielist.registerFavoriteMovie(title);
+    userlist.searchFavoriteUsers(movielist.favoriteMovieID);
+
+    rating.setLists(movielist, userlist);
+    rating.rankGenreBasedRating(20, false);
     rating.calcResult();
     Assert.assertEquals(20, rating.numMoviesResult());
     Assert.assertEquals(20, rating.moviesResult.size());

@@ -10,23 +10,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 public class UsersBasedRecommController {
 
+  @Autowired
+  private MovieList movielist;
+  @Autowired
+  private UserList userlist;
+  @Autowired
+  private RatingCalculator rating;
+
   @GetMapping("/users/recommendations")
-  public List<Movie> userBasedAPI(
-    @RequestBody Map<String, String> requestBody
+  public List<Movies> userBasedAPI(
+    @RequestParam Map<String, String> requestParam
   ) {
     try {
-      String gender = requestBody.get("gender");
-      String age = requestBody.get("age");
-      String occupation = requestBody.get("occupation");
-      String genres = requestBody.get("genres");
+      String gender = requestParam.get("gender");
+      String age = requestParam.get("age");
+      String occupation = requestParam.get("occupation");
+      String genres = requestParam.get("genres");
 
       if (
-        requestBody.size() <= 2 || requestBody.size() > 4
-      ) throw new ArgCntError((Integer) requestBody.size());
+        requestParam.size() <= 2 || requestParam.size() > 4
+      ) throw new ArgCntError((Integer) requestParam.size());
 
       if (gender == null) throw new ArgMissingError("gender"); else if (
         age == null
@@ -36,18 +44,17 @@ public class UsersBasedRecommController {
 
       Arguments arg;
       if (genres == null) {
-        if (requestBody.size() == 4) throw new WrongArgError("user");
+        if (requestParam.size() == 4) throw new WrongArgError("user");
         arg = new Arguments(gender, age, occupation);
       } else arg = new Arguments(gender, age, occupation, genres);
 
-      MovieList movielist = new MovieList(arg.getGenres());
-      UserList userlist = new UserList();
+      movielist.searchID(arg.getGenres());
       userlist.searchSimilarUser(
         arg.getGender(),
         arg.getAge(),
         arg.getOccupation()
       );
-      RatingCalculator rating = new RatingCalculator(movielist, userlist);
+      rating.setLists(movielist, userlist);
       rating.rankUserBasedRating(10);
       rating.calcResult();
       return rating.getMoviesResult();

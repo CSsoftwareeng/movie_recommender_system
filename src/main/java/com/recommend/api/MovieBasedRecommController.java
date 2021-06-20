@@ -10,38 +10,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 public class MovieBasedRecommController {
 
+  @Autowired
+  private MovieList movielist;
+  @Autowired
+  private UserList userlist;
+  @Autowired
+  private RatingCalculator rating;
+
   @GetMapping("/movies/recommendations")
-  public List<Movie> movieBasedAPI(
-    @RequestBody Map<String, Object> requestBody
+  public List<Movies> movieBasedAPI(
+    @RequestParam Map<String, String> requestParam
   ) {
     try {
-      int bodysize = requestBody.size();
+      int bodysize = requestParam.size();
       if (bodysize == 0 || bodysize > 2) throw new ArgCntError(
         (Integer) bodysize
       );
-      String title = (String) requestBody.get("title");
+      String title = (String) requestParam.get("title");
       if (title == null) throw new ArgMissingError("title");
-
-      Integer limit = (Integer) requestBody.get("limit");
-      if (limit == null) {
+      
+      String limit_str = requestParam.get("limit");
+      Integer limit;
+      if (limit_str == null) {
         if (bodysize == 2) throw new WrongArgError("movie");
         limit = 10;
+      } else {
+        limit = Integer.parseInt(limit_str);
       }
       if (limit <= 0) {
         throw new WrongArgError("limit");
       }
 
-      MovieList movielist = new MovieList();
-      UserList userlist = new UserList();
-
       movielist.registerFavoriteMovie(title);
-      userlist.searchFavoriteUsers(title);
+      userlist.searchFavoriteUsers(movielist.favoriteMovieID);
 
-      RatingCalculator rating = new RatingCalculator(movielist, userlist);
+      rating.setLists(movielist, userlist);
       rating.rankGenreBasedRating(limit, true);
       if (rating.numMoviesResult() < limit) rating.rankGenreBasedRating(
         limit,

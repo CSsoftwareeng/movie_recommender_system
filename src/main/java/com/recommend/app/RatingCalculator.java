@@ -1,63 +1,55 @@
 package com.recommend.app;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import java.io.*;
 import java.util.*;
 
+@Component
 public class RatingCalculator {
+
+  @Autowired
+  private ReviewRepository reviewRepository;
+  @Autowired
+  private PosterRepository posterRepository;
+  @Autowired
+  private LinkRepository linkRepository;
 
   HashMap<Integer, Rating> map = new HashMap<>();
   LinkedHashMap<Integer, Rating> result = new LinkedHashMap<>();
   List<String> names;
   List<String> genres;
   List<Integer> ID;
-  List moviesResult = new ArrayList<Movie>();
+  List moviesResult = new ArrayList<Movies>();
   MovieList movies;
   UserList users;
 
-  public RatingCalculator(MovieList movieList, UserList userList) {
+  void setLists(MovieList movieList, UserList userList) {
     this.movies = movieList;
     this.users = userList;
   }
 
   void rankUserBasedRating(int limit) {
-    try {
-      File usersFile = new File("./data/ratings.dat");
-      FileReader reader = new FileReader(usersFile);
-      BufferedReader buffer = new BufferedReader(reader);
-      String line;
-      int matched = 3;
-      while ((line = buffer.readLine()) != null) {
-        String[] rating = line.split("::");
-        int user = Integer.parseInt(rating[0]);
-        int movie = Integer.parseInt(rating[1]);
-        if (users.isMatched(user)) {
-          matched = 3;
-        } else if (users.isSimilar(user)) {
-          matched = 2;
-        } else if (users.isLessSimilar(user)) {
-          matched = 1;
-        } else {
-          matched = 0;
-        }
+    
+    List<Review> matchedUsersReviews = reviewRepository.findByUseridIn(users.matchedUsers);
 
-        if (movies.findID(movie)) {
-          if (map.containsKey(movie)) {
-            if (map.get(movie).getMatch() == matched) {
-              int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
-              int tcount = map.get(movie).getCount() + 1;
-              map.put(movie, new Rating(tsum, tcount, matched));
-            } else if (map.get(movie).getMatch() < matched) {
-              map.put(
-                movie,
-                new Rating(Integer.parseInt(rating[2]), 1, matched)
-              );
-            }
-          } else {
-            map.put(movie, new Rating(Integer.parseInt(rating[2]), 1, matched));
-          }
+    map = new HashMap<>();
+    result = new LinkedHashMap<>();
+
+    for (Review review : matchedUsersReviews) {
+      int movie = review.movieid;
+      int rating = review.rating;
+
+      if (movies.findID(movie)) {
+        if (map.containsKey(movie)) {
+          int tsum = map.get(movie).getSum() + rating;
+          int tcount = map.get(movie).getCount() + 1;
+          map.put(movie, new Rating(tsum, tcount, 3));
+        } else {
+          map.put(movie, new Rating(rating, 1, 3));
         }
       }
-    } catch (IOException e) {}
+    }
 
     List<Map.Entry<Integer, Rating>> entries = new LinkedList<>(map.entrySet());
     Collections.sort(
@@ -72,38 +64,40 @@ public class RatingCalculator {
       ); else break;
     }
   }
-
+  
   void rankGenreBasedRating(int limit, boolean userfilter) {
-    try {
-      File usersFile = new File("./data/ratings.dat");
-      FileReader reader = new FileReader(usersFile);
-      BufferedReader buffer = new BufferedReader(reader);
-      String line;
+    map = new HashMap<>();
+    if(userfilter)
+      result = new LinkedHashMap<>();
+    List<Review> reviews;
+    if (userfilter) {
+      reviews = reviewRepository.findByUseridIn(users.favoriteUsers);
+    } else {
+      reviews = reviewRepository.findAll();
+    }
 
-      while ((line = buffer.readLine()) != null) {
-        String[] rating = line.split("::");
-        int user = Integer.parseInt(rating[0]);
-        int movie = Integer.parseInt(rating[1]);
+    for (Review review : reviews) {
+      int user = review.userid;
+      int movie = review.movieid;
+      int rating = review.rating;
+      
+      if (map.containsKey(movie)) {
+        int match = map.get(movie).match;
+        int tsum = map.get(movie).getSum() + rating;
+        int tcount = map.get(movie).getCount() + 1;
+        map.put(movie, new Rating(tsum, tcount, match));
+      } else {
         int match = movies.countMathcedGenres(movie);
-
-        if (!userfilter || users.isFavorite(user)) {
-          if (map.containsKey(movie)) {
-            int tsum = map.get(movie).getSum() + Integer.parseInt(rating[2]);
-            int tcount = map.get(movie).getCount() + 1;
-            map.put(movie, new Rating(tsum, tcount, match));
-          } else {
-            map.put(movie, new Rating(Integer.parseInt(rating[2]), 1, match));
-          }
-        }
+        map.put(movie, new Rating(rating, 1, match));
       }
-      map.remove(movies.favoriteMovieID);
-      if (!userfilter) {
-        List<Integer> keys = new ArrayList<>(result.keySet());
-        for (Integer key : keys) {
-          map.remove(key);
-        }
+    }
+    map.remove(movies.favoriteMovieID);
+    if (!userfilter) {
+      List<Integer> keys = new ArrayList<>(result.keySet());
+      for (Integer key : keys) {
+        map.remove(key);
       }
-    } catch (IOException e) {}
+    }
 
     List<Map.Entry<Integer, Rating>> entries = new LinkedList<>(map.entrySet());
     Collections.sort(
@@ -120,41 +114,35 @@ public class RatingCalculator {
   }
 
   public void calcResult() {
-    String moviename = "";
-    String moviegenre = "";
-    String movielink = "";
-    int i = 0;
+    moviesResult = new ArrayList<Movies>();
     ID = new ArrayList<>(result.keySet());
     movies.searchName(ID);
     names = movies.getMoviesName();
     genres = movies.getMovieGenres();
 
-    try {
-      for (Integer key : result.keySet()) {
-        File linkfile = new File("./data/links.dat");
-        FileReader fileReader = new FileReader(linkfile);
-        BufferedReader bufReader = new BufferedReader(fileReader);
-        String data = "";
+    int sizeID = ID.size();
 
-        moviename = names.get(i);
-        moviegenre = genres.get(i);
-        i += 1;
+    for (int i = 0; i < sizeID; i++) {
+      String link = "-";
+      String poster = "-";
+      Link linkDoc = linkRepository.findByMovieid(ID.get(i));
+      Poster posterDoc = posterRepository.findByMovieid(ID.get(i));
+      if (linkDoc != null)
+        link = linkDoc.link;
+      if (posterDoc != null)
+        poster = posterDoc.poster;
 
-        while ((data = bufReader.readLine()) != null) {
-          String[] temp = data.split("::");
-          if (key == Integer.parseInt(temp[0])) {
-            movielink = temp[1];
-            break;
-          }
-        }
-        Movie movie = new Movie(
-          moviename,
-          moviegenre,
-          "(http://www.imdb.com/title/tt" + movielink + ")"
-        );
-        this.moviesResult.add(movie);
-      }
-    } catch (IOException e) {}
+
+      Movies movie = new Movies(
+        names.get(i),
+        genres.get(i),
+        "(http://www.imdb.com/title/tt" + link + ")",
+        poster
+      );
+
+      this.moviesResult.add(movie);
+
+    }
   }
 
   public List getMoviesResult() {

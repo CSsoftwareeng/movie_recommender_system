@@ -23,14 +23,14 @@ public class UsersBasedRecommControllerTest {
 
   @Test
   public void testValidRequest() throws Exception {
-    String json =
-      "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\", \"genres\" : \"Romance|comedy\"}";
 
     mvc
       .perform(
         get("/users/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("gender", "")
+            .param("age", "")
+            .param("occupation", "")
+            .param("genres", "Romance|comedy")
       )
       .andExpect(status().isOk())
       .andExpect(jsonPath("$.length()").value(10));
@@ -38,14 +38,14 @@ public class UsersBasedRecommControllerTest {
 
   @Test
   public void testValidRequestWithFullConditions() throws Exception {
-    String json =
-      "{\"gender\" : \"F\", \"age\" : \"30\", \"occupation\" : \"artist\", \"genres\" : \"Romance|comedy\"}";
 
     mvc
       .perform(
         get("/users/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("gender", "F")
+            .param("age", "30")
+            .param("occupation", "artist")
+            .param("genres", "Romance|comedy")
       )
       .andExpect(status().isOk())
       .andExpect(jsonPath("$.length()").value(10));
@@ -53,13 +53,13 @@ public class UsersBasedRecommControllerTest {
 
   @Test
   public void testValidRequestWoGenres() throws Exception {
-    String json = "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\"}";
 
     mvc
       .perform(
         get("/users/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("gender", "")
+            .param("age", "")
+            .param("occupation", "")
       )
       .andExpect(status().isOk())
       .andExpect(jsonPath("$.length()").value(10));
@@ -67,13 +67,12 @@ public class UsersBasedRecommControllerTest {
 
   @Test
   public void testTooFewArguments() throws Exception {
-    String json = "{\"occupation\" : \"\", \"genres\" : \"Romance|comedy\"}";
 
     mvc
       .perform(
         get("/users/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("occupation", "")
+            .param("genres", "Romance|comedy")
       )
       .andExpect(status().isBadRequest())
       .andExpect(status().reason(containsString("ArgCntError")));
@@ -81,14 +80,15 @@ public class UsersBasedRecommControllerTest {
 
   @Test
   public void testTooManyArguments() throws Exception {
-    String json =
-      "{ \"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\", \"genres\" : \"Romance|comedy\", \"DUMMY_FILED\" : \"DUMMY_STRING\"}";
 
     mvc
       .perform(
         get("/users/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("gender", "")
+            .param("age", "")
+            .param("occupation", "")
+            .param("genres", "Romance|comedy")
+            .param("DUMMY_FILED", "DUMMY_STRING")
       )
       .andExpect(status().isBadRequest())
       .andExpect(status().reason(containsString("ArgCntError")));
@@ -96,14 +96,14 @@ public class UsersBasedRecommControllerTest {
 
   @Test
   public void testWrongArguments() throws Exception {
-    String json =
-      "{ \"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"\", \"INVALID_FILED\" : \"INVALID_STRING\"}";
 
     mvc
       .perform(
         get("/users/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("gender", "")
+            .param("age", "")
+            .param("occupation", "")
+            .param("INVALID_FILED", "INVALID_STRING")
       )
       .andExpect(status().isBadRequest())
       .andExpect(status().reason(containsString("WrongArgError")))
@@ -112,14 +112,14 @@ public class UsersBasedRecommControllerTest {
 
   @Test
   public void testInvalidAge() throws Exception {
-    String json =
-      "{\"gender\" : \"\", \"age\" : \"-1\", \"occupation\" : \"\", \"genres\" : \"Romance|comedy\"}";
-
+  
     mvc
       .perform(
         get("/users/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("gender", "")
+            .param("age", "-1")
+            .param("occupation", "")
+            .param("genres", "Romance|comedy")
       )
       .andExpect(status().isBadRequest())
       .andExpect(status().reason(containsString("age")));
@@ -127,14 +127,14 @@ public class UsersBasedRecommControllerTest {
 
   @Test
   public void testInvalidGender() throws Exception {
-    String json =
-      "{\"gender\" : \"Q\", \"age\" : \"\", \"occupation\" : \"\", \"genres\" : \"Romance|comedy\"}";
-
+    
     mvc
       .perform(
         get("/users/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("gender", "INVALID_STRING")
+            .param("age", "")
+            .param("occupation", "")
+            .param("genres", "Romance|comedy")
       )
       .andExpect(status().isBadRequest())
       .andExpect(status().reason(containsString("gender")));
@@ -142,14 +142,14 @@ public class UsersBasedRecommControllerTest {
 
   @Test
   public void testInvalidOccupation() throws Exception {
-    String json =
-      "{\"gender\" : \"\", \"age\" : \"\", \"occupation\" : \"Q\", \"genres\" : \"Romance|comedy\"}";
 
     mvc
       .perform(
         get("/users/recommendations")
-          .content(json)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("gender", "")
+            .param("age", "")
+            .param("occupation", "INVALID_STRING")
+            .param("genres", "Romance|comedy")
       )
       .andExpect(status().isBadRequest())
       .andExpect(status().reason(containsString("occupation")));
@@ -167,8 +167,9 @@ public class UsersBasedRecommControllerTest {
     mvc
       .perform(
         get("/users/recommendations")
-          .content(jsonMissingAge)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("gender", "")
+            .param("occupation", "")
+            .param("genres", "Romance|comedy")
       )
       .andExpect(status().isBadRequest())
       .andExpect(status().reason(containsString("'age' is missing")));
@@ -176,8 +177,9 @@ public class UsersBasedRecommControllerTest {
     mvc
       .perform(
         get("/users/recommendations")
-          .content(jsonMissingGender)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("age", "")
+            .param("occupation", "")
+            .param("genres", "Romance|comedy")
       )
       .andExpect(status().isBadRequest())
       .andExpect(status().reason(containsString("'gender' is missing")));
@@ -185,8 +187,9 @@ public class UsersBasedRecommControllerTest {
     mvc
       .perform(
         get("/users/recommendations")
-          .content(jsonMissingOccupation)
-          .contentType(MediaType.APPLICATION_JSON)
+            .param("gender", "")
+            .param("age", "")
+            .param("genres", "Romance|comedy")
       )
       .andExpect(status().isBadRequest())
       .andExpect(status().reason(containsString("'occupation' is missing")));

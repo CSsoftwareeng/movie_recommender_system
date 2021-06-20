@@ -286,7 +286,6 @@ curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:applica
 }
 ```
 
-
 - input
 
 ```sh
@@ -297,11 +296,11 @@ curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:applic
 
 ```json
 {
-   "error" : "Bad Request",
-   "message" : "[ERROR : WrongArgError] limit size should be greater than 0.",
-   "path" : "/movies/recommendations",
-   "status" : 400,
-   "timestamp" : "2021-05-25T10:13:48.445+00:00"
+  "error": "Bad Request",
+  "message": "[ERROR : WrongArgError] limit size should be greater than 0.",
+  "path": "/movies/recommendations",
+  "status": 400,
+  "timestamp": "2021-05-25T10:13:48.445+00:00"
 }
 ```
 
@@ -317,11 +316,11 @@ curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:applica
 
 ```json
 {
-   "error" : "Bad Request",
-   "message" : "[ERROR : WrongArgError] There is unknown argument. [Valid arguments : gender, age, occupation, genres(optional)]",
-   "path" : "/users/recommendations",
-   "status" : 400,
-   "timestamp" : "2021-05-25T06:25:38.771+00:00"
+  "error": "Bad Request",
+  "message": "[ERROR : WrongArgError] There is unknown argument. [Valid arguments : gender, age, occupation, genres(optional)]",
+  "path": "/users/recommendations",
+  "status": 400,
+  "timestamp": "2021-05-25T06:25:38.771+00:00"
 }
 ```
 
@@ -335,11 +334,11 @@ curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:applic
 
 ```json
 {
-   "error" : "Bad Request",
-   "message" : "[ERROR : WrongArgError] There is unknown argument. [Valid arguments : title, limit(optional)]",
-   "path" : "/movies/recommendations",
-   "status" : 400,
-   "timestamp" : "2021-05-25T06:30:37.902+00:00"
+  "error": "Bad Request",
+  "message": "[ERROR : WrongArgError] There is unknown argument. [Valid arguments : title, limit(optional)]",
+  "path": "/movies/recommendations",
+  "status": 400,
+  "timestamp": "2021-05-25T06:30:37.902+00:00"
 }
 ```
 

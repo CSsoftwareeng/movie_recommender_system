@@ -1,11 +1,19 @@
 package com.recommend.app;
 
+import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
 import com.recommend.utils.errors.MovieNotExistError;
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.*;
 import org.junit.Assert;
 import org.junit.Test;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class MovieListTest {
+  @Autowired
+  MovieList movie;
 
   List<String> genres = new ArrayList<String>();
   List<Integer> ids = new ArrayList<Integer>();
@@ -26,12 +34,12 @@ public class MovieListTest {
   @Test(expected = MovieNotExistError.class)
   public void testMovieNotExistError() {
     genres.add("ABCDE");
-    MovieList movie = new MovieList(genres);
+    movie.searchID(genres);
   }
 
   @Test
   public void testGenreNotSpecifiedSearchID() {
-    MovieList movie = new MovieList(genres);
+    movie.searchID(genres);
     Assert.assertEquals(
       "testGenreNotSpecifiedSearchID",
       3883,
@@ -42,7 +50,7 @@ public class MovieListTest {
   @Test
   public void testEmptySearchID() {
     genres.add("");
-    MovieList movie = new MovieList(genres);
+    movie.searchID(genres);
     Assert.assertEquals("testEmptySearchID", 3883, movie.getMoviesID().size());
   }
 
@@ -50,7 +58,7 @@ public class MovieListTest {
   public void testSearchID() {
     genres.add("Action");
     genres.add("Drama");
-    MovieList movie = new MovieList(genres);
+    movie.searchID(genres);
     Assert.assertEquals("testSearchID", 2006, movie.getMoviesID().size());
   }
 
@@ -58,7 +66,7 @@ public class MovieListTest {
   public void testFindID() {
     genres.add("Action");
     genres.add("Drama");
-    MovieList movie = new MovieList(genres);
+    movie.searchID(genres);
     Assert.assertEquals("testFindID1", true, movie.findID(17));
     Assert.assertEquals("testFindID2", true, movie.findID(20));
     Assert.assertEquals("testFindID3", false, movie.findID(176));
@@ -67,7 +75,7 @@ public class MovieListTest {
   @Test
   public void testEmptySearchName() {
     List<String> expected = new ArrayList<String>();
-    MovieList movie = new MovieList(genres);
+    movie.searchID(genres);
     movie.searchName(ids);
     Assert.assertEquals("testEmptySearchName", expected, movie.getMoviesName());
   }
@@ -77,7 +85,7 @@ public class MovieListTest {
     List<String> expected = new ArrayList<String>();
     expected.addAll(Arrays.asList(arrayname));
     ids.addAll(Arrays.asList(arrayid));
-    MovieList movie = new MovieList(genres);
+    movie.searchID(genres);
     movie.searchName(ids);
     Assert.assertEquals("testSearchNmae", expected, movie.getMoviesName());
   }
@@ -89,14 +97,13 @@ public class MovieListTest {
     ids.addAll(Arrays.asList(arrayid));
     ids.add(3952);
     expected.add("Contender, The (2000)");
-    MovieList movie = new MovieList(genres);
+    movie.searchID(genres);
     movie.searchName(ids);
     Assert.assertEquals("testBufferSearch", expected, movie.getMoviesName());
   }
 
   @Test
   public void testSearchSimilarID() {
-    MovieList movie = new MovieList();
     List<String> genres = new ArrayList<String>();
     genres.add("Romance");
     genres.add("Comedy");
@@ -107,8 +114,7 @@ public class MovieListTest {
 
   @Test
   public void testRegisterFavoriteMovie() {
-    MovieList movie = new MovieList();
-    movie.registerFavoriteMovie("Toy Story (1995)");
+    movie.registerFavoriteMovie("Toy Story");
 
     Assert.assertEquals(3, movie.similarMovies.size());
     Assert.assertEquals(3, movie.countMathcedGenres(1));

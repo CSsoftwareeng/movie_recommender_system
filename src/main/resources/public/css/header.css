@@ -1,0 +1,48 @@
+.header {
+  margin-top: 1rem;
+}
+
+.top-header {
+  margin: 0.5rem 0.5rem;
+  font-size: 0.5rem;
+  height: 1rem;
+  display: flex;
+}
+
+.title {
+  margin: 0 1rem;
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 8rem;
+  display: flex;
+  justify-content: start;
+}
+
+.title-MAX {
+  color: orangered;
+}
+
+.nav-bar {
+  padding: 1rem 0 0 2rem;
+  height: 4rem;
+  width: 100%;
+  background-color: #47597e;
+  display: flex;
+  justify-content: flex-start;
+  border-radius: 1rem;
+}
+
+.user-tab,
+.movie-tab {
+  margin: 0 1.5rem;
+  padding: 0 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 4rem;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.user-tab:hover,
+.movie-tab:hover {
+  background-color: #293b5f;
+}
