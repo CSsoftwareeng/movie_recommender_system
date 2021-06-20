@@ -1,4 +1,4 @@
-# Movie Recommender System
+# RecoMAX
 
 The movie platform system supports a great multitude of movies, so it is not easy to choose which movie to watch. At this point, if you can see which movies other users with similar traits are most satisfied with or if you can see a list of movies that are similar to your favorite movies, you can choose a movie more easily. RecoMAX will show a poster of recommended movies based on your traits or your favorite movie.
 
@@ -74,15 +74,14 @@ When you access the RecoMAX homepage, you can see the main page as follows.
 On the first screen of RecoMAX, you can check the 10 most popular movies including all genres and the 10 most popular movies in each of Action, Drama, and Animation genres. Under the RecoMAX logo you can find User Based Recommender and Movie Based Recommender tabs, and click to use each function.
 
 ### **User-Based Recommend System**
-This is the first page of a user based movie recommender.
+This is the first page of a User Based Recommender.
 ![userbased_main](https://user-images.githubusercontent.com/80080164/122674945-38419b00-d212-11eb-999e-2ddcf3d18baf.PNG)
-You can select your gender, age, occupation and your favorite movie genres. Enter your age, and select your gender, occupation and genre through the drop down box. 
-
-
+You can select your gender, age, occupation and your favorite movie genres. Please enter your age, and select your gender, occupation and genre through the drop down box. If you want to specify multiple genres, you can add them by clicking the "+" icon. If you specify gender, age, occupation, and genre and click the "Search" icon, you can see posters for the top 10 recommended movies based on your information. Gender, occupation, and genre can be selected from the following list. 
 
 **[gender]**
 
-Female | Male
+Female
+Male
 
 **[occupation]**
 
@@ -97,26 +96,22 @@ Female | Male
 | :-----------: | :--------: | :---------: | :---------: | :---------: | :--------: | :----------: | :-----: | :---------: |
 | **Film-Noir** | **Horror** | **Musical** | **Mystery** | **Romance** | **Sci-Fi** | **Thriller** | **War** | **Western** |
 
+#### Example
+The following is examples of a User Based Recommender.
+![userbased_sample_example3](https://user-images.githubusercontent.com/80080164/122675354-f74a8600-d213-11eb-9cef-518d3f8baa72.PNG)
+![userbased_sample_example2](https://user-images.githubusercontent.com/80080164/122675689-8c9a4a00-d215-11eb-93aa-59a5540ed9a1.PNG)
 
+---
 
 ### **Movie Based Recommend System**
 
-This is an argument style guide when you request **GET** with **/movies/recommendandations**.
-
-**[title]**
-
-- Enter the full title including year
-- Only one title is allowed.
-- If you find movies based on movie title, you must enter movie title.
-- Although the results are provided even if the year is not written, it is recommended to write the year with title for accurate results.
-
-**[limit]**
-
-- Enter the limit number in integer type.
-- Limit should be positive integer.
-- Only one limit is allowed.
-- If you don't specify the **limit** field, the **limit** will set to 10 as a default.
-
+This is the first page of a Movie Based Recommender.
+![moviebased_main](https://user-images.githubusercontent.com/80080164/122675529-d33b7480-d214-11eb-9deb-d252a3097fc1.PNG)
+Please enter the title of your favorite movie and the number of movies you want to recommend. You can check the list of recommended movies by clicking the "Search" icon.<br/>
+#### Example
+The following is examples of a Movie Based Recommender.
+![moviebased_sample_example2](https://user-images.githubusercontent.com/80080164/122675653-670d4080-d215-11eb-854a-e41ac130c9e5.PNG)
+![moviebased_sample_example](https://user-images.githubusercontent.com/80080164/122675641-4f35bc80-d215-11eb-9447-d2424f55e4bc.PNG)
 
 
 
