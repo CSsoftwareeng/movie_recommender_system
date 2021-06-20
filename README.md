@@ -1,6 +1,6 @@
 # Movie Recommender System
 
-The movie platform system supports a great multitude of movies, so it is not easy to choose which movie to watch. At this point, if you can see which movies other users with similar traits are most satisfied with or if you can see a list of movies that are similar to your favorite movies, you can choose a movie more easily. This program will show a list of recommended movies based on your traits or your favorite movie.
+The movie platform system supports a great multitude of movies, so it is not easy to choose which movie to watch. At this point, if you can see which movies other users with similar traits are most satisfied with or if you can see a list of movies that are similar to your favorite movies, you can choose a movie more easily. RecoMAX will show a poster of recommended movies based on your traits or your favorite movie.
 
 ## Algorithm
 
@@ -69,28 +69,22 @@ sed -i 's/\r$//' run.sh
 
 ## User Guide
 
-When you pass arguments to body parameter, you should take care followings.
+When you access the RecoMAX homepage, you can see the main page as follows.
+-메인화면 캡처
+On the first screen of RecoMAX, you can check the 10 most popular movies including all genres and the 10 most popular movies in each of Action, Drama, and Animation genres. Under the RecoMAX logo you can find User Based Recommender and Movie Based Recommender tabs, and click to use each function.
 
 ### **User-Based Recommend System**
+This is the first page of a user based movie recommender.
+![userbased_main](https://user-images.githubusercontent.com/80080164/122674945-38419b00-d212-11eb-999e-2ddcf3d18baf.PNG)
+You can select your gender, age, occupation and your favorite movie genres. Enter your age, and select your gender, occupation and genre through the drop down box. 
 
-This is an argument style guide when you request **GET** with **/users/recommendandations**.
+
 
 **[gender]**
 
-- Enter the gender with double quotes -> Ex : "F" or "M"
-- If gender is passed through as an empty string "", the program doesn't take gender into account when selecting a list of recommended movies.
-
-**[age]**
-
-- Enter the age with double quotes -> EX: "22"
-- If age is passed through as an empty string "", the program doesn't take age into account when selecting a list of recommended movies.
+Female | Male
 
 **[occupation]**
-
-- Enter the occupation with double quotes -> Ex : "educator"
-- Only one occupation is allowed.
-- If you pass through an occupation as an empty string "", the program doesn't take occupation into account when selecting a list of recommended movies.
-- Occupation can be chosen from the following choices:<br/>
 
 |      other      |   academic    |     educator      |     artist     |   clerical    |      admin       |    college    |  grad student  | customer service |  doctor   |
 | :-------------: | :-----------: | :---------------: | :------------: | :-----------: | :--------------: | :-----------: | :------------: | :--------------: | :-------: |
@@ -99,29 +93,11 @@ This is an argument style guide when you request **GET** with **/users/recommend
 
 **[genres]**
 
-- Enter the movie genres you want with double quotes -> Ex : "Documentary"
-- You can put multiple genres separated with '|' -> Ex : "Adventure|Comedy"
-- Output is a list of recommended movies that belong to at least one selected categories.
-- If you pass through an genre as an empty string "", the program doesn't take genres into account when selecting a list of recommended movies.
-- For user convenience, the program treats it the same as an empty string if the "genres" field is not specified.
-- Genres can be chosen from the following choices:<br/>
-
 |    Action     | Adventure  |  Animation  | Children's  |   Comedy    |   Crime    | Documentary  |  Drama  |   Fantasy   |
 | :-----------: | :--------: | :---------: | :---------: | :---------: | :--------: | :----------: | :-----: | :---------: |
 | **Film-Noir** | **Horror** | **Musical** | **Mystery** | **Romance** | **Sci-Fi** | **Thriller** | **War** | **Western** |
 
-**Body Parameter Examples :**
 
-```json
-{
-  "gender": "F",
-  "age": "25",
-  "occupation": "educator",
-  "genres": "Adventure|Comedy"
-}
-```
-
----
 
 ### **Movie Based Recommend System**
 
@@ -141,321 +117,8 @@ This is an argument style guide when you request **GET** with **/movies/recommen
 - Only one limit is allowed.
 - If you don't specify the **limit** field, the **limit** will set to 10 as a default.
 
-**Body Parameter Examples :**
 
-```json
-{
-  "title": "Toy Story (1995)"
-}
-```
 
-```json
-{
-  "title": "Toy Story",
-  "limit": 15
-}
-```
-
----
-
-### **For user convenience, following cases are acceptable as arguments:**
-
-      1. Case-insensitive
-      2. Fixing a spacing error
-      3. In case that '-' is omitted or replaced by spacing
-
-For example, both cases shown below will yield the same outputs.
-
-```json
-{
-  "gender": "F",
-  "age": "25",
-  "occupation": "self-employed",
-  "genres": "Sci-Fi|Action"
-}
-```
-
-```json
-{
-  "gender": "f",
-  "age": "25",
-  "occupation": "SELF EMPLOYED",
-  "genres": "sci FI| a c t i o n"
-}
-```
-
----
-
-**The API will return response code without expected results if:**
-
-### 1. the number of arguments is less than 3 when you request **/users/recomendations**.
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "F", "age": "15"}'|json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Bad Request",
-  "message": "[ERROR : ArgCntError] 2 is invalid number of arguments.",
-  "path": "/users/recommendations",
-  "status": 400,
-  "timestamp": "2021-05-24T16:08:07.666+00:00"
-}
-```
-
-### 2. the necessary arguments are missing.
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"limit": 15}'|json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Bad Request",
-  "message": "[ERROR : ArgMissingError] The argument 'title' is missing.",
-  "path": "/movies/recommendations",
-  "status": 400,
-  "timestamp": "2021-05-24T16:12:18.195+00:00"
-}
-```
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "F", "occupation":"artist", "genres":"Romance"}'|json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Bad Request",
-  "message": "[ERROR : ArgMissingError] The argument 'age' is missing.",
-  "path": "/movies/recommendations",
-  "status": 400,
-  "timestamp": "2021-05-24T16:12:18.195+00:00"
-}
-```
-
-### 3. the movie title that is given does not exist.
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": "NOT_EXISTING_MOVIE", "limit": 15}'|json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Not Found",
-  "message": "[ERROR : MovieNotExistError] Can't find a movie titled: NOT_EXISTING_MOVIE",
-  "path": "/movies/recommendations",
-  "status": 404,
-  "timestamp": "2021-05-24T16:14:19.183+00:00"
-}
-```
-
-### 4. the invalid arguments are put as specified in **User Guide**.
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "F", "age": "15", "occupation":"NOT_EXISTING_JOB"}'|json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Bad Request",
-  "message": "[ERROR : ArgNotExistError] Can't find [NOT_EXISTING_JOB] in the available occupation list.",
-  "path": "/users/recommendations",
-  "status": 400,
-  "timestamp": "2021-05-24T16:22:23.370+00:00"
-}
-```
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": "Toy Story", "limit": -3}' |json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Bad Request",
-  "message": "[ERROR : WrongArgError] limit size should be greater than 0.",
-  "path": "/movies/recommendations",
-  "status": 400,
-  "timestamp": "2021-05-25T10:13:48.445+00:00"
-}
-```
-
-### 5. the name of fields is wrong.
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender": "M", "age": "", "occupation": "retired", "INVALID_FIELD": ""}' |json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Bad Request",
-  "message": "[ERROR : WrongArgError] There is unknown argument. [Valid arguments : gender, age, occupation, genres(optional)]",
-  "path": "/users/recommendations",
-  "status": 400,
-  "timestamp": "2021-05-25T06:25:38.771+00:00"
-}
-```
-
-- input
-
-```sh
-curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": "Toy Story", "INVALID_FIELD": ""}' |json_pp
-```
-
-- output
-
-```json
-{
-  "error": "Bad Request",
-  "message": "[ERROR : WrongArgError] There is unknown argument. [Valid arguments : title, limit(optional)]",
-  "path": "/movies/recommendations",
-  "status": 400,
-  "timestamp": "2021-05-25T06:30:37.902+00:00"
-}
-```
-
----
-
-With a valid input, the output of this program is a list of 10 or [limit] moives like:
-
-```json
-{
-  "genres": "xxx",
-  "imdb": "xxx",
-  "title": "https://www.imdb.com/title/ttXXXXXXX"
-}
-```
-
-Sample for Recommend Top 10 movies given user data:<br/>
--Input:
-
-```sh
-curl -X GET http://localhost:8080/users/recommendations -H 'Content-type:application/json' -d '{"gender" : "", "age" : "", "occupation" : "", "genres" : "Romance|comedy"}' | json_pp
-```
-
--Output:
-
-```json
-[
-  {
-    "genres": "Comedy",
-    "imdb": "(http://www.imdb.com/title/tt0062281)",
-    "title": "Smashing Time (1967)"
-  },
-  {
-    "genres": "Comedy|Drama|Western",
-    "imdb": "(http://www.imdb.com/title/tt0070481)",
-    "title": "One Little Indian (1973)"
-  },
-  {
-    "genres": "Comedy",
-    "imdb": "(http://www.imdb.com/title/tt0119139)",
-    "title": "Follow the Bitch (1998)"
-  },
-  {
-    "genres": "Animation|Comedy|Thriller",
-    "imdb": "(http://www.imdb.com/title/tt0112691)",
-    "title": "Close Shave, A (1995)"
-  },
-  {
-    "genres": "Animation|Comedy",
-    "imdb": "(http://www.imdb.com/title/tt0108598)",
-    "title": "Wrong Trousers, The (1993)"
-  },
-  {
-    "genres": "Drama|Romance",
-    "imdb": "(http://www.imdb.com/title/tt0209322)",
-    "title": "Skipped Parts (2000)"
-  },
-  {
-    "genres": "Drama|Romance|War",
-    "imdb": "(http://www.imdb.com/title/tt0034583)",
-    "title": "Casablanca (1942)"
-  },
-  {
-    "genres": "Comedy|Drama|Western",
-    "imdb": "(http://www.imdb.com/title/tt0055630)",
-    "title": "Yojimbo (1961)"
-  },
-  {
-    "genres": "Comedy|Drama|Romance",
-    "imdb": "(http://www.imdb.com/title/tt0021749)",
-    "title": "City Lights (1931)"
-  },
-  {
-    "genres": "Comedy",
-    "imdb": "(http://www.imdb.com/title/tt0017925)",
-    "title": "General, The (1927)"
-  }
-]
-```
-
-Sample for Recommend movies given a movie title:<br/>
--Input:
-
-```sh
-curl -X GET http://localhost:8080/movies/recommendations -H 'Content-type:application/json' -d '{"title": "Toy Story (1995)", "limit": 5}' |json_pp
-```
-
--Output:
-
-```json
-[
-  {
-    "genres": "Animation|Children's|Comedy",
-    "imdb": "(http://www.imdb.com/title/tt0120363)",
-    "title": "Toy Story 2 (1999)"
-  },
-  {
-    "genres": "Animation|Children's|Comedy",
-    "imdb": "(http://www.imdb.com/title/tt0120623)",
-    "title": "Bug's Life, A (1998)"
-  },
-  {
-    "genres": "Animation|Children's|Comedy",
-    "imdb": "(http://www.imdb.com/title/tt0120630)",
-    "title": "Chicken Run (2000)"
-  },
-  {
-    "genres": "Animation|Children's|Comedy|Musical",
-    "imdb": "(http://www.imdb.com/title/tt0827990)",
-    "title": "Aladdin (1992)"
-  },
-  {
-    "genres": "Animation|Children's|Comedy|Musical",
-    "imdb": "(http://www.imdb.com/title/tt0061852)",
-    "title": "Jungle Book, The (1967)"
-  }
-]
-```
 
 ---
 
