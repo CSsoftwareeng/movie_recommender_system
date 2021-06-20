@@ -19,6 +19,13 @@ RUN mkdir /root/project
 RUN mkdir -p /data/db
 WORKDIR /root/project
 ADD run.sh ./
+ADD war.sh ./
+ADD resources ./resources
+RUN wget http://mirror.23media.de/apache/tomcat/tomcat-8/v8.5.30/bin/apache-tomcat-8.5.30.tar.gz
+RUN tar -zxvf apache-tomcat-8.5.30.tar.gz
+RUN mv apache-tomcat-8.5.30 tomcat
+ADD RECOMAX.war ./tomcat/webapps/
+
 ADD mongod /etc/init.d
 RUN chmod 755 /etc/init.d/mongod
 
